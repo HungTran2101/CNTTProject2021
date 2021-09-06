@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Marathon</title>
+</head>
+
+<body>
+    <div id="menu">
+        <h1 id="gameTitle">Marathon</h1>
+        <button type="button" id="playBtn" onclick="startgame()">
+            Play
+        </button>
+        <button type="button" id="storeBtn" onclick="storeBtn()">
+            Store
+        </button>
+        <div class="soundBtn" onclick="soundBtn()" id="soundBtn"></div>
+    </div>
+    <div id="playZone">
+        <canvas id="myCanvas" width="1600" height="900"></canvas>
+        <div id="pause" onclick="pause()"></div>
+        <div id="resume" onclick="resume()"></div>
+    </div>
+</body>
+
+<script src="dino.js"></script>
+<script src="obstical.js"></script>
+<script src="script.js"></script>
+
+</html>
