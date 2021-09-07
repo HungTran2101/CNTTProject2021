@@ -1,12 +1,11 @@
-class wolf {
-    contructor() {
+class wolf{
+    constructor() {
         this.x = 300
         this.img_run = null;
         this.img_jump = null;
         this.img_die = null;
         this.width = 400;
         this.height = 600;
-        loadImg();
     }
     loadImg(skin) {
         this.img_run = new Image;
@@ -18,7 +17,6 @@ class wolf {
             this.img_die.src = "images/wolf_die.png"
         }
         else if (skin == 1) {
-            console.log("vào skin r")
             this.img_run.src = "images/wolf_run1.png"
             this.img_jump.src = "images/wolf_jump1.png"
             this.img_die.src = "images/wolf_die1.png"
