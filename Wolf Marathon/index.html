@@ -13,17 +13,18 @@
       <main>
          <header></header>
          <div id="loginSection">
-            <button id="loginBtn">Login</button>
-            <button id="signinBtn">Sign in</button>
-            <label id="lblUser" for="userInput"
-               >Username <input type="text" id="userInput"
-            /></label>
-            <label id="lblPass" for="passInput"
-               >Password <input type="password" id="passInput"
-            /></label>
-            <label id="lblConfPass" for="confPassInput"
-               >Confirm Password <input type="password" id="confPassInput"
-            /></label>
+            <button type="button" id="loginBtn" onclick="loginGame()">Login</button>
+            <button type="button" id="signInBtn" onclick="signInGame()">Sign in</button>
+         </div>
+
+         <div id="loginForm">
+            <label id="lblUser" for="userInput">Username:<input type="text" id="userInput"/></label></br>
+            <label id="lblPass" for="passInput">Password:&nbsp<input type="password" id="passInput"/></label></br>
+            <label id="lblConfPass" for="confPassInput">Confirm Password:&nbsp<input type="password" id="confPassInput"/></label>
+            <div id="formBtn">
+               <button type="button" id="loginBtn1">Login</button>
+               <button type="button" id="cancelBtn">Cancel</button>
+            </div>
          </div>
          <hr id="headline" color="crimson" size="3px" />
          <div id="menu">
@@ -45,8 +46,6 @@
          </div>
          <button type="button" id="soundBtn" onclick="backMusic()"> </button>
          <hr id="footline" color="crimson" size="3px" />
-         test <br />test <br />test <br />test <br />test <br />test <br />test
-         <br />test <br />test <br />test <br />
       </main>
    </body>
    <script src="wolf.js"></script>

@@ -2,10 +2,110 @@ body {
    background-color: bisque;
    opacity: 1;
 }
+#loginSection {
+   text-align: center;
+   margin-bottom: 15px;
+}
+#loginSection button {
+   background-color: rgb(7, 165, 67);
+   border: 3px solid rgb(15, 20, 20);
+   border-radius: 25px;
+   margin-top: 20px;
+   cursor: pointer;
+   font-family: cursive;
+   font-weight: bold;
+   font-size: 16px;
+   width: 85px;
+   height: 45px;
+   transition: 200ms;
+}
+#loginSection button:hover {
+   font-size: 15px;
+   width: 90px;
+   height: 50px;
+   margin-top: 10px;
+   background-color: rgb(40, 230, 40);
+   transition: 200ms;
+}
+#loginBtn {
+   margin-right: 5px;
+}
+#signInBtn {
+   margin-left: 5px;
+}
+#loginBtn1 {
+   margin-right: 8px;
+}
+#cancelBtn {
+   margin-left: 8px;
+}
+#formBtn {
+   position: absolute;
+   left: 50%;
+   top: 33%;
+   transform: translate(-50%, -50%);
+}
+#formBtn button {
+   margin-top: 20px;
+   width:105px;
+   height: 55px;
+   position: relative;
+   background-color: greenyellow;
+   font-family: cursive;
+   font-weight: bold;
+   font-size: 18px;
+   cursor: pointer;
+   border: solid 2px;
+   border-radius: 4px;
+}
+#loginForm {
+   width: 400px;
+   height: 300px;
+   margin: auto;
+   border: 3px solid black;
+   border-radius: 5%;
+   background-color: darksalmon;
+   background-size: cover;
+   z-index: 2;
+}
+#lblUser {
+   font-family: cursive;
+   font-weight: bold;
+   font-size: 15px;
+   margin-left: 75px;
+}
+#lblPass {
+   font-family: cursive;
+   font-weight: bold;
+   font-size: 15px;
+   margin-left: 75px;
+}
+#lblConfPass {
+   font-family: cursive;
+   font-weight: bold;
+   font-size: 15px;
+   margin-left: 55px;
+   display: none;
+}
+#userInput {
+   margin-top: 40px;
+   margin-left: 10px;
+   width: 155px;
+}
+#passInput {
+   margin-top: 40px;
+   margin-left: 10px;
+   width: 155px;
+}
+#confPassInput {
+   margin-top: 40px;
+   margin-left: 10px;
+   width: 115px;
+}
 #headline{
    width: 50%;
    margin-bottom: 20px;
-   margin-top: 50px;
+   margin-top: 25px;
 }
 #footline{
    width: 50%;
@@ -18,7 +118,7 @@ body {
 #playZone section {
    max-width: fit-content;
    position: relative;
-   height: 0px;
+   height: 0;
    bottom: 695px;
    left: 340px;
 }
@@ -132,7 +232,4 @@ body {
    font-weight: bold;
    cursor: pointer;
    display: none;
-}
-::selection {
-   background: transparent;
 }
