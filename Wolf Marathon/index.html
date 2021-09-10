@@ -11,15 +11,15 @@
    
    <body>
       <header>
-         <br>
          <input class="noDisplay" type="checkbox" id="loginBtn">
-         <label class="lblLogin-SignUp" for="loginBtn" onclick="loginGame()">Login</label>
-         <br> <br>
+         <button type="button" class="btnLog-Sign" onclick="loginGame()">Login</button>
+         <br>
          <input class="noDisplay" type="checkbox" id="signUpBtn">
-         <label class="lblLogin-SignUp" for="signUpBtn" onclick="signUpGame()">Sign up</label>
+         <button type="button" class="btnLog-Sign" onclick="signUpGame()">Sign up</button>
          <div id="loginForm">
             <label id="lblUser" for="userInput">Username<br><input class="input" type="text" id="userInput" placeholder="Your name"/></label></br>
             <label id="lblPass" for="passInput">Password<br><input class="input" type="password" id="passInput" placeholder="Your password"/></label></br>
+            <input class="noDisplay" type="checkbox" id="chbxConfPass">
             <label id="lblConfPass" for="confPassInput">Confirm Password<br><input class="input" type="password" id="confPassInput" placeholder="Confirm here"/></label>
             <br>
                <button type="button" id="signInBtn">Sign in</button>
