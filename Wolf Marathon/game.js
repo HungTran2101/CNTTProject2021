@@ -1,9 +1,10 @@
 var g = null;
-var isMusic = false;
 var music = document.getElementById("music");
 var canvas = document.getElementById("playCanvas");
 var context = canvas.getContext("2d");
-var userInteract = false;
+var isPause = false;
+var isMusic = false;
+var isLoging = false;
 
 function startgame() {
     document.getElementById("menu").style.display = "none";
@@ -12,13 +13,15 @@ function startgame() {
     // player.loadImg(1);
     // context.drawImage(player.img_run, 0, 0, player.width, player.height);
 }
-function pauseGame() {
-    document.getElementById("pauseBtn").style.display = "none";
-    document.getElementById("resumeBtn").style.display = "block";
-}
-function resumeGame() {
-    document.getElementById("resumeBtn").style.display = "none";
-    document.getElementById("pauseBtn").style.display = "block";
+function pause_resumeGame() {
+    if (!isPause) {
+        document.getElementById("pauseBtn").style.backgroundImage = "url('images/resume_btn.png')"
+        isPause = true;
+    }
+    else {
+        document.getElementById("pauseBtn").style.backgroundImage = "url('images/pause_btn.png')"
+        isPause = false;
+    }
 }
 function backMusic() {
     console.log(2);
@@ -33,14 +36,27 @@ function backMusic() {
     }
 }
 function loginGame() {
-    document.getElementById("menu").style.display = "none";
-    document.getElementById("loginForm").style.display = "block";
-    document.getElementById("lblConfPass").style.display= "none";
-    document.getElementById("loginBtn1").innerText = "Login";
+    var login = document.getElementById("loginBtn");
+    document.getElementById("signUpBtn").checked = false;
+    document.getElementById("lblConfPass").style.display = "none";
+    if(login.checked){
+        document.getElementById("main").style.opacity = 1;
+    }else{
+        document.getElementById("main").style.opacity = 0.1;
+    }
 }
-function signInGame(){
-    document.getElementById("menu").style.display = "none";
-    document.getElementById("loginForm").style.display = "block";
-    document.getElementById("lblConfPass").style.display= "block";
-    document.getElementById("loginBtn1").innerText = "Sign in";
+function signUpGame(){
+    var signup = document.getElementById("signUpBtn");
+    document.getElementById("loginBtn").checked = false;
+    document.getElementById("lblConfPass").style.display = "block";
+    if(signup.checked){
+        document.getElementById("main").style.opacity = 1;
+    }else{
+        document.getElementById("main").style.opacity = 0.1;
+    }
+}
+function cancelLogin() {
+    document.getElementById("loginBtn").checked = false;
+    document.getElementById("signUpBtn").checked = false;
+    document.getElementById("main").style.opacity = 1;
 }

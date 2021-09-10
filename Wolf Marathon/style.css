@@ -1,151 +1,157 @@
 body {
-   background-color: bisque;
-   opacity: 1;
-}
-#loginSection {
+   background-image: linear-gradient(to bottom right, black, rgb(161, 161, 161));
    text-align: center;
-   margin-bottom: 15px;
 }
-#loginSection button {
-   background-color: rgb(7, 165, 67);
-   border: 3px solid rgb(15, 20, 20);
+main{
+   position: relative;
+   transition: opacity 300ms;
+}
+main hr{
+   width: 60%;
+   padding: 2.5px;
+   background-color: rgb(199, 202, 6);
+   border: none;
+   border-radius: 100%;
+}
+.noDisplay {
+   display: none;
+}
+header {
+   margin-bottom: 10px;
+}
+header input ~ div{     /*loginForm*/
+   position: absolute;
+   min-width: 360px;
+   margin-left: auto;
+   margin-right: auto;
+   left: 0px;
+   right: 0px;
+   width: 20vw;
+   top: -350px;
+   padding-bottom: 15px;
+   border: 3px solid black;
+   border-radius: 10%;
+   background-color: rgb(32, 32, 32);
+   background-size: cover;
+   text-align: center;
+   z-index: 1;
+   transition: all 700ms;
+}
+header input:checked ~ div{
+   top: 250px;
+}
+#loginBtn:checked + label{
+   padding-left: 4vw;
+   padding-right: 4vw;
+   background-color: rgb(35, 250, 100);
+   color: black;
+   border: 3px solid black;
+}
+#signUpBtn:checked + label{
+   padding-left: 4vw;
+   padding-right: 4vw;
+   background-color: rgb(35, 250, 100);
+   color: black;
+   border: 3px solid black;
+}
+.lblLogin-SignUp{
+   background-color: transparent;
+   border: 3px solid rgb(2, 227, 243);
    border-radius: 25px;
-   margin-top: 20px;
+   padding-left: 3vw;
+   padding-right: 3vw;
+   padding-bottom: 5px;
    cursor: pointer;
+   color: rgb(211, 248, 245);
    font-family: cursive;
    font-weight: bold;
-   font-size: 16px;
-   width: 85px;
-   height: 45px;
-   transition: 200ms;
+   font-size: 25px;
+   transition: all 300ms;
 }
-#loginSection button:hover {
-   font-size: 15px;
-   width: 90px;
-   height: 50px;
-   margin-top: 10px;
-   background-color: rgb(40, 230, 40);
-   transition: 200ms;
+.lblLogin-SignUp:hover{
+   padding-left: 4vw;
+   padding-right: 4vw;
+   background-color: rgb(35, 250, 100);
+   color: black;
+   border: 3px solid black;
 }
-#loginBtn {
-   margin-right: 5px;
+#loginForm button {
+   width:105px;
+   height: 40px;
+   font-family: cursive;
+   font-weight: bold;
+   font-size: 20px;
+   padding-bottom: 0px;
+   margin-top: 0px;
+   cursor: pointer;
+   color: black;
+   border: solid 2px rgb(192, 192, 192);
+   border-radius: 15px;
 }
 #signInBtn {
-   margin-left: 5px;
-}
-#loginBtn1 {
    margin-right: 8px;
+   background-color:rgb(50, 145, 37);
+   transition: background-color 300ms;
 }
 #cancelBtn {
    margin-left: 8px;
+   background-color: rgb(167, 63, 44);
+   transition: background-color 300ms;
 }
-#formBtn {
-   position: absolute;
-   left: 50%;
-   top: 33%;
-   transform: translate(-50%, -50%);
+#signInBtn:hover {
+   background-color:rgb(30, 255, 0);
+   border: solid 3px white;
 }
-#formBtn button {
-   margin-top: 20px;
-   width:105px;
-   height: 55px;
-   position: relative;
-   background-color: greenyellow;
+#cancelBtn:hover {
+   background-color: rgb(255, 38, 0);
+   border: solid 3px white;
+}
+#loginForm label{
    font-family: cursive;
    font-weight: bold;
-   font-size: 18px;
-   cursor: pointer;
-   border: solid 2px;
-   border-radius: 4px;
+   font-size: 20px;
+   color: rgb(162, 233, 171);
 }
-#loginForm {
-   width: 400px;
-   height: 300px;
-   margin: auto;
-   border: 3px solid black;
-   border-radius: 5%;
-   background-color: darksalmon;
-   background-size: cover;
-   z-index: 2;
+#lblConfPass{
+   display: block;
+   animation-name: fade;
+   animation-duration: 1.5s;
 }
-#lblUser {
+@keyframes fade{
+   from {opacity: 0}
+  to {opacity: 1}
+}
+.input{
+   outline: 0px;
+   min-width: 160px;
+   width: 12vw;
+   height: 4vh;
+   border: 3px solid cyan;
+   border-radius: 50px;
+   margin-bottom: 10px;
+   text-align: center;
    font-family: cursive;
-   font-weight: bold;
-   font-size: 15px;
-   margin-left: 75px;
-}
-#lblPass {
-   font-family: cursive;
-   font-weight: bold;
-   font-size: 15px;
-   margin-left: 75px;
-}
-#lblConfPass {
-   font-family: cursive;
-   font-weight: bold;
-   font-size: 15px;
-   margin-left: 55px;
-   display: none;
-}
-#userInput {
-   margin-top: 40px;
-   margin-left: 10px;
-   width: 155px;
-}
-#passInput {
-   margin-top: 40px;
-   margin-left: 10px;
-   width: 155px;
-}
-#confPassInput {
-   margin-top: 40px;
-   margin-left: 10px;
-   width: 115px;
+   font-size: 20px;
+   color: wheat;
+   background-color:transparent;
 }
 #headline{
-   width: 50%;
    margin-bottom: 20px;
    margin-top: 25px;
 }
-#footline{
-   width: 50%;
-   margin-top: 20px;
-}
-#playZone {
-   display: flex;
-   flex-direction: column;
-}
-#playZone section {
-   max-width: fit-content;
-   position: relative;
-   height: 0;
-   bottom: 695px;
-   left: 340px;
-}
-#playCanvas {
-   margin: auto;
-   display: none;
-   border: 3px solid black;
-   border-radius: 5%;
-   background-image: url("images/background.png");
-   background-size: cover;
-}
 #menu {
+   min-width: 470px;
    font-family: cursive;
    font-weight: bold;
    position: relative;
-   width: 1200px;
-   height: 700px;
+   width: 65vw;
+   height: 73vh;
    margin: auto;
-   border: 3px solid black;
+   border: 3px solid rgb(255, 255, 255);
    border-radius: 5%;
    background-image: url("images/background.png");
    background-size:cover;
    text-align: center;
-   z-index: 0;
-}
-#menu h3{
-   display: none;
 }
 #gameTitle {
    color: rgb(248, 175, 39);
@@ -154,8 +160,12 @@ body {
    text-align: center;
    -webkit-text-stroke: 3px black;
 }
-#playBtn {
-   background-color: rgb(7, 165, 67);
+#menu h3{
+   display: none;
+}
+#menu button{
+   min-width: 125px;
+   background-color: rgba(60, 255, 0, 0.411);
    border: 3px solid rgb(15, 20, 20);
    border-radius: 25px;
    cursor: pointer;
@@ -163,38 +173,48 @@ body {
    font-weight: bold;
    font-size: 20px;
    margin-top: 30px;
-   width: 125px;
-   height: 50px;
+   width: 7vw;
+   height: 5vh;
    transition: 200ms;
 }
-#playBtn:hover {
+#menu button:hover{
    font-size: 25px;
-   width: 135px;
-   height: 60px;
-   margin-top: 23px;
-   background-color: rgb(40, 230, 40);
+   width: 8vw;
+   height: 6vh;
+   margin-top: 21px;
+   background-color: rgb(0, 255, 0);
    transition: 200ms;
 }
-#storeBtn {
-   background-color: rgb(7, 165, 67);
-   border: 3px solid rgb(15, 20, 20);
-   border-radius: 25px;
+#footline{
+   margin-top: 20px;
+}
+#playZone section {
+   position: relative;
+   height: 0;
+   bottom: 72vh;
+   left: 17vw;
+}
+#playZone section div{
+   width: 60px;
+   height: 60px;
+   background-image: url("images/pause_btn.png");
+   background-size: cover;
+   background-color: transparent;
    cursor: pointer;
    font-family: cursive;
    font-weight: bold;
-   font-size: 20px;
-   margin-top: 30px;
-   width: 125px;
-   height: 50px;
-   transition: 200ms;
+   display: none;
 }
-#storeBtn:hover {
-   font-size: 25px;
-   width: 135px;
-   height: 60px;
-   margin-top: 23px;
-   background-color: rgb(40, 230, 40);
-   transition: 200ms;
+#playCanvas {
+   min-width: 470px;
+   width: 65vw;
+   height: 73vh;
+   margin: auto;
+   display: none;
+   border: 3px solid rgb(255, 255, 255);
+   border-radius: 5%;
+   background-image: url("images/background.png");
+   background-size: cover;
 }
 #soundBtn {
    width: 80px;
@@ -206,30 +226,8 @@ body {
    font-weight: bold;
    cursor: pointer;
    position: absolute;
-   left: 345px;
-   bottom: 135px;
+   left: 18vw;
+   bottom: 3vh;
    border: none;
    display: block;
-}
-#pauseBtn {
-   width: 60px;
-   height: 60px;
-   background-image: url("images/pause_btn.png");
-   background-size: cover;
-   background-color: transparent;
-   cursor: pointer;
-   font-family: cursive;
-   font-weight: bold;
-   display: none;
-}
-#resumeBtn {
-   width: 60px;
-   height: 60px;
-   background-image: url("images/resume_btn.png");
-   background-size: cover;
-   background-color: transparent;
-   font-family: cursive;
-   font-weight: bold;
-   cursor: pointer;
-   display: none;
 }
