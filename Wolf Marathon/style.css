@@ -1,6 +1,6 @@
-body {
-   background-image: linear-gradient(to bottom right, black, rgb(161, 161, 161));
-   text-align: center;
+body {   
+   background-image: linear-gradient(to bottom right, black, rgb(99, 98, 98));
+   margin: 0px;
 }
 main{
    position: relative;
@@ -15,6 +15,9 @@ main hr{
 }
 .noDisplay {
    display: none;
+}
+header{
+   text-align: center;
 }
 header input:checked ~ #loginForm{
    border: 5px solid rgb(143, 142, 142);
@@ -71,7 +74,7 @@ header #signUpBtn:checked ~ #loginForm{
    border-radius: 10%;
    background-color: rgb(32, 32, 32);
    border: 0px solid rgb(143, 142, 142);
-   z-index: 1;
+   z-index: 3;
    transition: all 700ms;
    overflow: hidden;
 }
