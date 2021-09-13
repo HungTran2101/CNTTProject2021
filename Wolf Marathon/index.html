@@ -8,8 +8,8 @@
       <link rel="stylesheet" href="style.css" />
       <title>Wolf Marathon</title>
    </head>
-   
    <body>
+      
       <header>
          <input class="noDisplay" type="checkbox" id="loginBtn">
          <button type="button" class="btnLog-Sign" onclick="loginGame()">Login</button>
@@ -26,7 +26,6 @@
                <button type="button" id="cancelBtn" onclick="cancelLogin()">Cancel</button>
          </div>
       </header>
-      
       <main id="main">
          <hr id="headline" style="size:3px" />
          <div id="twoForms">
@@ -43,9 +42,7 @@
          </div>
          <div id="playZone">
             <canvas id="playCanvas"></canvas>
-            <section>
-               <div id="pauseBtn" onclick="pause_resumeGame()"></div>
-            </section>
+            <div id="pauseBtn" onclick="pause_resumeGame()"></div>
          </div>
          <button type="button" id="soundBtn" onclick="backMusic()"></button>
          <hr id="footline" style="size:3px" />

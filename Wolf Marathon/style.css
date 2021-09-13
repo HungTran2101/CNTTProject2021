@@ -1,6 +1,6 @@
-body {
-   background-image: linear-gradient(to bottom right, black, rgb(161, 161, 161));
-   text-align: center;
+body {   
+   background-image: linear-gradient(to bottom right, black, rgb(99, 98, 98));
+   margin: 0px;
 }
 main{
    position: relative;
@@ -15,6 +15,9 @@ main hr{
 }
 .noDisplay {
    display: none;
+}
+header{
+   text-align: center;
 }
 header input:checked ~ #loginForm{
    border: 5px solid rgb(143, 142, 142);
@@ -74,8 +77,8 @@ header input:checked ~ #loginForm{
    height: 0;
    border-radius: 10%;
    background-color: rgb(32, 32, 32);
-   border: 0 solid rgb(143, 142, 142);
-   z-index: 1;
+   border: 0px solid rgb(143, 142, 142);
+   z-index: 3;
    transition: all 700ms;
    overflow: hidden;
 }
@@ -213,13 +216,13 @@ header input:checked ~ #loginForm{
 #footline{
    margin-top: 20px;
 }
-#playZone section {
+#playZone {
    position: relative;
-   height: 0;
-   bottom: 72vh;
-   left: 17vw;
 }
-#playZone section div{
+#playZone div{
+   position: absolute;
+   top: 2vh;
+   left: 18vw;
    width: 60px;
    height: 60px;
    background-image: url("images/pause_btn.png");

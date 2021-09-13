@@ -1,5 +1,7 @@
 class wolf{
     constructor() {
+        this.x = 300;
+        this.y = 500;
         this.img_run = null;
         this.img_jump = null;
         this.img_die = null;

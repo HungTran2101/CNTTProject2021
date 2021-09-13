@@ -34,26 +34,28 @@ function backMusic() {
 }
 function loginGame() {
     var login = document.getElementById("loginBtn");
-    document.getElementById("signUpBtn").checked = false;
-    document.getElementById("chbxConfPass").checked = false;
     if(login.checked){
         document.getElementById("main").style.opacity = 1;
         login.checked = false;
     }else{
         document.getElementById("main").style.opacity = 0.1;
+        document.getElementById("signUpBtn").checked = false;
+        document.getElementById("chbxConfPass").checked = false;
+        document.getElementById("signInBtn").innerHTML = "Sign in";
         login.checked = true;
     }
     document.getElementById("signInBtn").innerText = "Sign in";
 }
 function signUpGame(){
     var signup = document.getElementById("signUpBtn");
-    document.getElementById("loginBtn").checked = false;
-    document.getElementById("chbxConfPass").checked = true;
     if(signup.checked){
         document.getElementById("main").style.opacity = 1;
         signup.checked = false;
     }else{
         document.getElementById("main").style.opacity = 0.1;
+        document.getElementById("chbxConfPass").checked = true;
+        document.getElementById("loginBtn").checked = false;
+        document.getElementById("signInBtn").innerHTML = "Sign up";
         signup.checked = true;
     }
     document.getElementById("signInBtn").innerText = "Sign up";
