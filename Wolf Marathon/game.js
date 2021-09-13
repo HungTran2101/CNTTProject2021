@@ -5,13 +5,10 @@ var context = canvas.getContext("2d");
 var isPause = false;
 var isMusic = false;
 var isLoging = false;
-
 function startgame() {
-    document.getElementById("menu").style.display = "none";
     document.getElementById("playCanvas").style.display = "block";
     document.getElementById("pauseBtn").style.display = "block";
-    // player.loadImg(1);
-    // context.drawImage(player.img_run, 0, 0, player.width, player.height);
+    document.getElementById("twoForms").style.display = "none";
 }
 function pause_resumeGame() {
     if (!isPause) {
@@ -46,6 +43,7 @@ function loginGame() {
         document.getElementById("main").style.opacity = 0.1;
         login.checked = true;
     }
+    document.getElementById("signInBtn").innerText = "Sign in";
 }
 function signUpGame(){
     var signup = document.getElementById("signUpBtn");
@@ -58,9 +56,21 @@ function signUpGame(){
         document.getElementById("main").style.opacity = 0.1;
         signup.checked = true;
     }
+    document.getElementById("signInBtn").innerText = "Sign up";
+}
+function login() {
+    document.getElementById("loginBtn").checked = false;
+    document.getElementById("signUpBtn").checked = false;
+    document.getElementById("main").style.opacity = 1;
 }
 function cancelLogin() {
     document.getElementById("loginBtn").checked = false;
     document.getElementById("signUpBtn").checked = false;
     document.getElementById("main").style.opacity = 1;
+}
+function storeBtn() {
+    document.getElementById("storeBtn").checked = true;
+}
+function backStore() {
+    document.getElementById("storeBtn").checked = false;
 }

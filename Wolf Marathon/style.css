@@ -20,11 +20,15 @@ header input:checked ~ #loginForm{
    border: 5px solid rgb(143, 142, 142);
    top: 250px;
 }
-header #loginBtn:checked ~ #loginForm{
+#loginBtn:checked ~ #loginForm {
    height: 242px;
 }
-header #signUpBtn:checked ~ #loginForm{
+#signUpBtn:checked ~ #loginForm {
    height: 330px;
+}
+#storeBtn:checked ~ #menu {
+   height: 0;
+   border: none;
 }
 #loginBtn:checked + button{
    width: 12vw;
@@ -63,14 +67,14 @@ header #signUpBtn:checked ~ #loginForm{
    min-width: 360px;
    margin-left: auto;
    margin-right: auto;
-   left: 0px;
-   right: 0px;
+   left: 0;
+   right: 0;
    width: 20vw;
-   top: 0px;
-   height: 0px;
+   top: 0;
+   height: 0;
    border-radius: 10%;
    background-color: rgb(32, 32, 32);
-   border: 0px solid rgb(143, 142, 142);
+   border: 0 solid rgb(143, 142, 142);
    z-index: 1;
    transition: all 700ms;
    overflow: hidden;
@@ -81,8 +85,8 @@ header #signUpBtn:checked ~ #loginForm{
    font-family: cursive;
    font-weight: bold;
    font-size: 20px;
-   padding-bottom: 0px;
-   margin-top: 0px;
+   padding-bottom: 0;
+   margin-top: 0;
    cursor: pointer;
    color: black;
    border: solid 2px rgb(192, 192, 192);
@@ -115,16 +119,16 @@ header #signUpBtn:checked ~ #loginForm{
 #lblConfPass{
    overflow: hidden;
    display: block;
-   height: 0px;
+   height: 0;
    opacity: 0;
    transition: all 500ms;
 }
 #chbxConfPass:checked ~ #lblConfPass{
    height: 84px;
-   opacity: 1;  
+   opacity: 1;
 }
 .input{
-   outline: 0px;
+   outline: 0;
    min-width: 160px;
    width: 12vw;
    height: 4vh;
@@ -141,17 +145,36 @@ header #signUpBtn:checked ~ #loginForm{
    margin-bottom: 20px;
    margin-top: 25px;
 }
+#twoForms {
+   width: 65vw;
+   height: 73vh;
+   position: relative;
+   border: 3px solid rgb(255, 255, 255);
+   border-radius: 5%;
+   margin: auto;
+   overflow: hidden;
+   display: grid;
+}
 #menu {
-   min-width: 470px;
    font-family: cursive;
    font-weight: bold;
    position: relative;
    width: 65vw;
    height: 73vh;
    margin: auto;
-   border: 3px solid rgb(255, 255, 255);
-   border-radius: 5%;
    background-image: url("images/background.png");
+   background-size: cover;
+   text-align: center;
+   transition: all 900ms;
+}
+#store {
+   font-family: cursive;
+   font-weight: bold;
+   position: relative;
+   width: 65vw;
+   height: 73vh;
+   margin: auto;
+   background-image: url("images/store.jpg");
    background-size:cover;
    text-align: center;
 }
@@ -207,6 +230,19 @@ header #signUpBtn:checked ~ #loginForm{
    font-weight: bold;
    display: none;
 }
+#backStore {
+   width: 60px;
+   height: 60px;
+   background-image: url("images/back.png");
+   background-size: cover;
+   background-color: transparent;
+   position: absolute;
+   top: 1vw;
+   left: 2vh;
+   border: none;
+   cursor: pointer;
+   display: block;
+}
 #playCanvas {
    min-width: 470px;
    width: 65vw;
@@ -232,4 +268,15 @@ header #signUpBtn:checked ~ #loginForm{
    bottom: 3vh;
    border: none;
    display: block;
+}
+#note {
+   text-align: center;
+   font-family: cursive;
+   color: white;
+}
+#note1 {
+   text-align: center;
+   font-family: cursive;
+   color: white;
+   font-size: 15px;
 }
