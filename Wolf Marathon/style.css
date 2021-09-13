@@ -193,13 +193,13 @@ header #signUpBtn:checked ~ #loginForm{
 #footline{
    margin-top: 20px;
 }
-#playZone section {
+#playZone {
    position: relative;
-   height: 0;
-   bottom: 72vh;
-   left: 17vw;
 }
-#playZone section div{
+#playZone div{
+   position: absolute;
+   top: 2vh;
+   left: 18vw;
    width: 60px;
    height: 60px;
    background-image: url("images/pause_btn.png");
