@@ -1,6 +1,7 @@
 body {   
    background-image: linear-gradient(to bottom right, black, rgb(99, 98, 98));
    margin: 0px;
+   font-family: cursive;
 }
 main{
    position: relative;
@@ -13,25 +14,18 @@ main hr{
    border: none;
    border-radius: 100%;
 }
-.noDisplay {
-   display: none;
-}
 header{
    text-align: center;
 }
 header input:checked ~ #loginForm{
    border: 5px solid rgb(143, 142, 142);
-   top: 250px;
+   top: 300px;
 }
 #loginBtn:checked ~ #loginForm {
    height: 242px;
 }
 #signUpBtn:checked ~ #loginForm {
    height: 330px;
-}
-#storeBtn:checked ~ #menu {
-   height: 0;
-   border: none;
 }
 #loginBtn:checked + button{
    width: 12vw;
@@ -45,27 +39,7 @@ header input:checked ~ #loginForm{
    color: black;
    border: 3px solid black;
 }
-.btnLog-Sign{
-   min-width: 120px;
-   background-color: transparent;
-   border: 3px solid rgb(2, 227, 243);
-   border-radius: 25px;
-   margin-top: 15px;
-   width: 10vw;
-   cursor: pointer;
-   color: rgb(211, 248, 245);
-   font-family: cursive;
-   font-weight: bold;
-   font-size: 25px;
-   transition: all 300ms;
-}
-.btnLog-Sign:hover{
-   width: 12vw;
-   background-color: rgb(21, 163, 64);
-   color: black;
-   border: 3px solid black;
-}
-#loginForm{     /*loginForm*/
+#loginForm{
    position: absolute;
    min-width: 360px;
    margin-left: auto;
@@ -78,7 +52,7 @@ header input:checked ~ #loginForm{
    border-radius: 10%;
    background-color: rgb(32, 32, 32);
    border: 0px solid rgb(143, 142, 142);
-   z-index: 3;
+   z-index: 5;
    transition: all 700ms;
    overflow: hidden;
 }
@@ -114,7 +88,6 @@ header input:checked ~ #loginForm{
    border: solid 3px white;
 }
 #loginForm label{
-   font-family: cursive;
    font-weight: bold;
    font-size: 20px;
    color: rgb(162, 233, 171);
@@ -148,18 +121,16 @@ header input:checked ~ #loginForm{
    margin-bottom: 20px;
    margin-top: 25px;
 }
-#twoForms {
-   width: 65vw;
+#Forms {
+   flex-direction: column;
+   width: fit-content;
    height: 73vh;
-   position: relative;
    border: 3px solid rgb(255, 255, 255);
    border-radius: 5%;
    margin: auto;
    overflow: hidden;
-   display: grid;
 }
 #menu {
-   font-family: cursive;
    font-weight: bold;
    position: relative;
    width: 65vw;
@@ -168,28 +139,7 @@ header input:checked ~ #loginForm{
    background-image: url("images/background.png");
    background-size: cover;
    text-align: center;
-   transition: all 900ms;
-}
-#store {
-   font-family: cursive;
-   font-weight: bold;
-   position: relative;
-   width: 65vw;
-   height: 73vh;
-   margin: auto;
-   background-image: url("images/store.jpg");
-   background-size:cover;
-   text-align: center;
-}
-#gameTitle {
-   color: rgb(248, 175, 39);
-   font-size: 90px;
-   margin-top: 150px;
-   text-align: center;
-   -webkit-text-stroke: 3px black;
-}
-#menu h3{
-   display: none;
+   transition: height 700ms;
 }
 #menu button{
    min-width: 125px;
@@ -200,7 +150,6 @@ header input:checked ~ #loginForm{
    font-family: cursive;
    font-weight: bold;
    font-size: 20px;
-   margin-top: 30px;
    width: 7vw;
    height: 5vh;
    transition: 200ms;
@@ -209,10 +158,34 @@ header input:checked ~ #loginForm{
    font-size: 25px;
    width: 8vw;
    height: 6vh;
-   margin-top: 21px;
    background-color: rgb(0, 255, 0);
    transition: 200ms;
 }
+#store {
+   font-weight: bold;
+   position: relative;
+   width: 65vw;
+   height: 73vh;
+   margin: auto;
+   background-image: url("images/store.png");
+   background-size:cover;
+}
+#storeBtn:checked ~ #menu {
+   height: 0;
+}
+#gameTitle {
+   color: rgb(248, 175, 39);
+   font-size: 90px;
+   margin-top: 0px;
+   margin-bottom: 40px;
+   padding-top: 150px;
+   text-align: center;
+   -webkit-text-stroke: 3px black;
+}
+#menu h3{
+   display: none;
+}
+
 #footline{
    margin-top: 20px;
 }
@@ -263,8 +236,6 @@ header input:checked ~ #loginForm{
    background-image: url("images/sound_on.png");
    background-size: cover;
    background-color: transparent;
-   font-family: cursive;
-   font-weight: bold;
    cursor: pointer;
    position: absolute;
    left: 18vw;
@@ -272,14 +243,31 @@ header input:checked ~ #loginForm{
    border: none;
    display: block;
 }
-#note {
+footer{
    text-align: center;
    font-family: cursive;
    color: white;
 }
-#note1 {
-   text-align: center;
+.btnLog-Sign{
+   min-width: 120px;
+   background-color: transparent;
+   border: 3px solid rgb(2, 227, 243);
+   border-radius: 25px;
+   margin-top: 15px;
+   width: 10vw;
+   cursor: pointer;
+   color: rgb(211, 248, 245);
    font-family: cursive;
-   color: white;
-   font-size: 15px;
+   font-weight: bold;
+   font-size: 25px;
+   transition: all 300ms;
+}
+.btnLog-Sign:hover{
+   width: 12vw;
+   background-color: rgb(21, 163, 64);
+   color: black;
+   border: 3px solid black;
+}
+.noDisplay {
+   display: none;
 }

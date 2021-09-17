@@ -1,14 +1,15 @@
-var g = null;
 var music = document.getElementById("music");
 var canvas = document.getElementById("playCanvas");
 var context = canvas.getContext("2d");
+var player = new wolf()
+var obs = new obsticals();
 var isPause = false;
 var isMusic = false;
 var isLoging = false;
 function startgame() {
     document.getElementById("playCanvas").style.display = "block";
     document.getElementById("pauseBtn").style.display = "block";
-    document.getElementById("twoForms").style.display = "none";
+    document.getElementById("Forms").style.display = "none";
 }
 function pause_resumeGame() {
     if (!isPause) {
@@ -20,7 +21,7 @@ function pause_resumeGame() {
         isPause = false;
     }
 }
-function backMusic() {
+function music() {
     console.log(2);
     if (!isMusic) {
         music.play();
@@ -44,7 +45,6 @@ function loginGame() {
         document.getElementById("signInBtn").innerHTML = "Sign in";
         login.checked = true;
     }
-    document.getElementById("signInBtn").innerText = "Sign in";
 }
 function signUpGame(){
     var signup = document.getElementById("signUpBtn");
@@ -58,7 +58,6 @@ function signUpGame(){
         document.getElementById("signInBtn").innerHTML = "Sign up";
         signup.checked = true;
     }
-    document.getElementById("signInBtn").innerText = "Sign up";
 }
 function login() {
     document.getElementById("loginBtn").checked = false;

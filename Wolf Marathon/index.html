@@ -1,57 +1,65 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" href="style.css" />
-      <title>Wolf Marathon</title>
-   </head>
-   <body>
-      
-      <header>
-         <input class="noDisplay" type="checkbox" id="loginBtn">
-         <button type="button" class="btnLog-Sign" onclick="loginGame()">Login</button>
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="stylesheet" href="style.css" />
+   <title>Wolf Marathon</title>
+</head>
+
+<body>
+   <header>
+      <input class="noDisplay" type="checkbox" id="loginBtn">
+      <button type="button" class="btnLog-Sign" onclick="loginGame()">Login</button>
+      <br>
+      <input class="noDisplay" type="checkbox" id="signUpBtn">
+      <button type="button" class="btnLog-Sign" onclick="signUpGame()">Sign up</button>
+      <div id="loginForm">
+         <label id="lblUser" for="userInput">Username<br><input class="input" type="text" id="userInput"
+               placeholder="Your name" /></label></br>
+         <label id="lblPass" for="passInput">Password<br><input class="input" type="password" id="passInput"
+               placeholder="Your password" /></label></br>
+         <input class="noDisplay" type="checkbox" id="chbxConfPass">
+         <label id="lblConfPass" for="confPassInput">Confirm Password<br><input class="input" type="password"
+               id="confPassInput" placeholder="Confirm here" /></label>
          <br>
-         <input class="noDisplay" type="checkbox" id="signUpBtn">
-         <button type="button" class="btnLog-Sign" onclick="signUpGame()">Sign up</button>
-         <div id="loginForm">
-            <label id="lblUser" for="userInput">Username<br><input class="input" type="text" id="userInput" placeholder="Your name"/></label></br>
-            <label id="lblPass" for="passInput">Password<br><input class="input" type="password" id="passInput" placeholder="Your password"/></label></br>
-            <input class="noDisplay" type="checkbox" id="chbxConfPass">
-            <label id="lblConfPass" for="confPassInput">Confirm Password<br><input class="input" type="password" id="confPassInput" placeholder="Confirm here"/></label>
-            <br>
-               <button type="button" id="signInBtn" onclick="login()">Sign in</button>
-               <button type="button" id="cancelBtn" onclick="cancelLogin()">Cancel</button>
+         <button type="button" id="signInBtn" onclick="login()">Sign in</button>
+         <button type="button" id="cancelBtn" onclick="cancelLogin()">Cancel</button>
+      </div>
+   </header>
+   <main id="main">
+      <hr id="headline" style="size:3px" />
+      <div id="Forms">
+         <input class="noDisplay" type="checkbox" id="storeBtn">
+         <div id="menu">
+            <h1 id="gameTitle">Wolf Marathon</h1>
+            <h3>You must login first to play!</h3>
+            <button type="button" class="menuBtn" id="playBtn" onclick="startgame()">PLAY</button>
+            <button type="button" class="menuBtn" onclick="storeBtn()">STORE</button>
          </div>
-      </header>
-      <main id="main">
-         <hr id="headline" style="size:3px" />
-         <div id="twoForms">
-            <input class="noDisplay" type="checkbox" id="storeBtn">
-            <div id="menu">
-               <h1 id="gameTitle">Wolf Marathon</h1>
-               <h3>You must login first to play!</h3>
-               <button type="button" id="playBtn" onclick="startgame()">PLAY</button>
-               <button type="button" onclick="storeBtn()">STORE</button>
-            </div>
-            <div id="store">
-               <button type="button" id="backStore" onclick="backStore()"></button>
-            </div>
+         <div id="store">
+            <button type="button" id="backStore" onclick="backStore()"></button>
          </div>
-         <div id="playZone">
-            <canvas id="playCanvas"></canvas>
-            <div id="pauseBtn" onclick="pause_resumeGame()"></div>
-         </div>
-         <button type="button" id="soundBtn" onclick="backMusic()"></button>
-         <hr id="footline" style="size:3px" />
-      </main>
-      <h3 id="note">HOW TO PLAY?</h3>
-      <p><b id="note1">Press space bar or arrow up to jump. Avoid obstacle and collect coin for fabulous skins in store.</b></p>
-      <br><br><br>
-   </body>
-   <script src="wolf.js"></script>
-   <script src="obsticals.js"></script>
-   <script src="game.js"></script>
+      </div>
+      <div id="playZone">
+         <canvas id="playCanvas"></canvas>
+         <div id="pauseBtn" onclick="pause_resumeGame()"></div>
+      </div>
+      <button type="button" id="soundBtn" onclick="music()"></button>
+      <hr id="footline" style="size:3px" />
+   </main>
+   <footer>
+      <h3>HOW TO PLAY?</h3>
+      <h3>Press space bar or arrow up to jump. <br> Avoid obstacle and collect coin for fabulous skins in store.</h3>
+      <h4>Any bug found please contact <a style="color:coral;" href = "mailto:hung9cong@gmail.com?subject = Feedback&body = Message">here</a></h4>
+   </footer>
+   <br>
+</body>
+<script src="wolf.js"></script>
+<script src="obsticals.js"></script>
+<script src="game.js"></script>
+
 </html>
