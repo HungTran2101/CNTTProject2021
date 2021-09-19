@@ -1,15 +1,56 @@
-var music = document.getElementById("music");
 var canvas = document.getElementById("playCanvas");
 var context = canvas.getContext("2d");
-var player = new wolf()
-var obs = new obsticals();
+var menu = document.getElementById("menu");
+var info = menu.getBoundingClientRect();
+canvas.width = info.width;
+canvas.height = info.height;
+var music = document.getElementById("music");
+var player = new wolf(0);
+let chim;
+var obs;
+var score = 0;
+var wallet = 0;
 var isPause = false;
 var isMusic = false;
 var isLoging = false;
+var isJumping = false;
 function startgame() {
     document.getElementById("playCanvas").style.display = "block";
     document.getElementById("pauseBtn").style.display = "block";
     document.getElementById("Forms").style.display = "none";
+    document.addEventListener("keypress", function onPress(event) {
+        if (event.key == " ") {
+            event.preventDefault();
+            console.log(1);
+            isJumping = true;
+        }
+    });
+    loop();
+    //init();
+}
+function init(){
+    score = 0;
+    wallet = 0;
+    isPause = false;
+    isJumping = false;
+}
+function loop(){
+    if(!isPause){
+        context.clearRect(0,0,canvas.width,canvas.height);
+        drawPlayer();
+        
+    }
+    if(isJumping){
+        console.log(3);
+        document.removeEventListener("keypress", onPress());
+    }
+    setTimeout(() => loop(), 100);
+}
+function playerJump(){
+
+}
+function drawPlayer() {
+    context.drawImage(player.img_run, player.x, player.y, player.width, player.height);
 }
 function pause_resumeGame() {
     if (!isPause) {

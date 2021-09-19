@@ -1,12 +1,13 @@
 class wolf{
-    constructor() {
-        this.x = 300;
-        this.y = 500;
+    constructor(skin) {
+        this.x = 200;
+        this.y = 415;
         this.img_run = null;
         this.img_jump = null;
         this.img_die = null;
-        this.width = 400;
-        this.height = 600;
+        this.width = 100;
+        this.height = 120;
+        this.loadImg(skin);
     }
     loadImg(skin) {
         this.img_run = new Image;
@@ -28,9 +29,9 @@ class wolf{
             this.img_die.src = "images/wolf_die2.png"
         }
         else {
-            this.img_run.src = "images/wolf_run.png"
-            this.img_jump.src = "images/wolf_jump.png"
-            this.img_die.src = "images/wolf_die.png"
+            this.img_run.src = "images/wolf_run3.png"
+            this.img_jump.src = "images/wolf_jump3.png"
+            this.img_die.src = "images/wolf_die3.png"
         }
     }
 }
