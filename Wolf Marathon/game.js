@@ -2,56 +2,84 @@ var canvas = document.getElementById("playCanvas");
 var context = canvas.getContext("2d");
 var menu = document.getElementById("menu");
 var info = menu.getBoundingClientRect();
+var music = document.getElementById("music");
+
 canvas.width = info.width;
 canvas.height = info.height;
-var music = document.getElementById("music");
-var player = new wolf(0);
-let chim;
-var obs;
+music.volume = 0.4;
 var score = 0;
 var wallet = 0;
+var difficulty = 0;
+var playerStatus = 0; //0-run 1-jump 2-die
+
+var player = new wolf(info.height*0.605);
+var obs = new obsticals(info.width, 415);
+
 var isPause = false;
 var isMusic = false;
 var isLoging = false;
-var isJumping = false;
+//#region game mechanic
 function startgame() {
     document.getElementById("playCanvas").style.display = "block";
     document.getElementById("pauseBtn").style.display = "block";
     document.getElementById("Forms").style.display = "none";
     document.addEventListener("keypress", function onPress(event) {
-        if (event.key == " ") {
+        if (event.key == " " && !isPause) {
             event.preventDefault();
-            console.log(1);
-            isJumping = true;
+            player.isJump = true;
+            if (player.y < player.preY && player.y > (player.preY - player.jumpDistance / 1.5) && player.isFall) {
+                player.jumpDelay = true;
+            }
         }
     });
-    loop();
-    //init();
+    init();
 }
-function init(){
+function init() {
     score = 0;
     wallet = 0;
     isPause = false;
-    isJumping = false;
+    player.isJump = false;
+    player.loadImg(0);
+    loop();
 }
-function loop(){
-    if(!isPause){
-        context.clearRect(0,0,canvas.width,canvas.height);
+function loop() {
+    if (!isPause) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        if (player.isJump) {
+            if (player.jump(difficulty)) { //jump done
+                if(!player.jumpDelay)
+                    player.isJump = false;
+                player.g = 0.1;
+                player.isFall = false;
+                player.jumpDelay = false;
+            }
+            playerStatus = 1;
+        }
+        else {
+            playerStatus = 0;
+        }
+        spawnObstacle();
+        drawObstacle();
         drawPlayer();
         
     }
-    if(isJumping){
-        console.log(3);
-        document.removeEventListener("keypress", onPress());
-    }
-    setTimeout(() => loop(), 100);
+    setTimeout(() => loop(), 10);
 }
-function playerJump(){
+function spawnObstacle() {
+
+}
+function drawObstacle() {
 
 }
 function drawPlayer() {
-    context.drawImage(player.img_run, player.x, player.y, player.width, player.height);
+    switch (playerStatus) {
+        case 0: context.drawImage(player.img_run, player.x, player.y, player.width, player.height); break;
+        case 1: context.drawImage(player.img_jump, player.x, player.y, player.width, player.height); break;
+        case 2: context.drawImage(player.img_die, player.x, player.y, player.width, player.height); break;
+    }
 }
+//#endregion
+
 function pause_resumeGame() {
     if (!isPause) {
         document.getElementById("pauseBtn").style.backgroundImage = "url('images/resume_btn.png')"
@@ -62,8 +90,7 @@ function pause_resumeGame() {
         isPause = false;
     }
 }
-function music() {
-    console.log(2);
+function toggleMusic() {
     if (!isMusic) {
         music.play();
         isMusic = true;
@@ -76,10 +103,10 @@ function music() {
 }
 function loginGame() {
     var login = document.getElementById("loginBtn");
-    if(login.checked){
+    if (login.checked) {
         document.getElementById("main").style.opacity = 1;
         login.checked = false;
-    }else{
+    } else {
         document.getElementById("main").style.opacity = 0.1;
         document.getElementById("signUpBtn").checked = false;
         document.getElementById("chbxConfPass").checked = false;
@@ -87,23 +114,18 @@ function loginGame() {
         login.checked = true;
     }
 }
-function signUpGame(){
+function signUpGame() {
     var signup = document.getElementById("signUpBtn");
-    if(signup.checked){
+    if (signup.checked) {
         document.getElementById("main").style.opacity = 1;
         signup.checked = false;
-    }else{
+    } else {
         document.getElementById("main").style.opacity = 0.1;
         document.getElementById("chbxConfPass").checked = true;
         document.getElementById("loginBtn").checked = false;
         document.getElementById("signInBtn").innerHTML = "Sign up";
         signup.checked = true;
     }
-}
-function login() {
-    document.getElementById("loginBtn").checked = false;
-    document.getElementById("signUpBtn").checked = false;
-    document.getElementById("main").style.opacity = 1;
 }
 function cancelLogin() {
     document.getElementById("loginBtn").checked = false;

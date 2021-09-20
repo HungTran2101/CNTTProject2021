@@ -76,15 +76,16 @@
          <canvas id="playCanvas"></canvas>
          <div id="pauseBtn" onclick="pause_resumeGame()"></div>
       </div>
-      <button type="button" id="soundBtn" onclick="music()"></button>
+      <button type="button" id="soundBtn" onclick="toggleMusic()"></button>
       <hr id="footline" style="size:3px" />
    </main>
    <footer>
       <h3>HOW TO PLAY?</h3>
-      <h3>Press space bar or arrow up to jump. <br> Avoid obstacle and collect coin for fabulous skins in store.</h3>
+      <h3>Press space bar or arrow up to jump. <br> Avoid obstacles and collect coins for fabulous skins in store.</h3>
       <h4>Any bug found please contact <a style="color:coral;" href = "mailto:hung9cong@gmail.com?subject = Feedback&body = Message">here</a></h4>
    </footer>
    <br>
+   <audio src="sounds/background.mp3" id="music" loop></audio>
 </body>
 <script src="wolf.js"></script>
 <script src="obsticals.js"></script>

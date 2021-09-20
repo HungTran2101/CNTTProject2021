@@ -233,7 +233,7 @@ header input:checked ~ #loginForm{
 #soundBtn {
    width: 80px;
    height: 80px;
-   background-image: url("images/sound_on.png");
+   background-image: url("images/sound_off.png");
    background-size: cover;
    background-color: transparent;
    cursor: pointer;
