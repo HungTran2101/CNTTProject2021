@@ -80,7 +80,6 @@ function drawPlayer() {
 }
 //#endregion
 
-//#region menu mechanic
 function pause_resumeGame() {
     if (!isPause) {
         document.getElementById("pauseBtn").style.backgroundImage = "url('images/resume_btn.png')"
@@ -139,4 +138,51 @@ function storeBtn() {
 function backStore() {
     document.getElementById("storeBtn").checked = false;
 }
-//#endregion
+function buyWolf() {
+    var wolf = document.getElementsByClassName("wolfIcon");
+    var cactus = document.getElementsByClassName("cactusIcon");
+    var bear = document.getElementsByClassName("bearIcon");
+    for(var i=0; i<wolf.length;i++){
+        wolf[i].style.display = "block";
+        cactus[i].style.display = "none";
+        bear[i].style.display = "none";
+    }
+}
+function buyCactus() {
+    var wolf = document.getElementsByClassName("wolfIcon");
+    var cactus = document.getElementsByClassName("cactusIcon");
+    var bear = document.getElementsByClassName("bearIcon");
+    for(var i=0; i<wolf.length;i++){
+        wolf[i].style.display = "none";
+        cactus[i].style.display = "block";
+        bear[i].style.display = "none";
+    }
+}
+function buyBear() {
+    var wolf = document.getElementsByClassName("wolfIcon");
+    var cactus = document.getElementsByClassName("cactusIcon");
+    var bear = document.getElementsByClassName("bearIcon");
+    for(var i=0; i<wolf.length;i++){
+        wolf[i].style.display = "none";
+        cactus[i].style.display = "none";
+        bear[i].style.display = "block";
+    }
+}
+function buyWolf() {
+    document.getElementById("iconGold1").style.display = "none";
+    document.getElementById("btnImage1").innerText = "EQUIP";
+    let flag = document.querySelector("#btnImage1");
+    flag.addEventListener(flag.style.backgroundColor = "red");
+}
+function buyCactus() {
+    document.getElementById("iconGold2").style.display = "none";
+    document.getElementById("btnImage2").innerText = "EQUIP";
+    let flag = document.querySelector("#btnImage2");
+    flag.addEventListener(flag.style.backgroundColor = "red");
+}
+function buyBear() {
+    document.getElementById("iconGold3").style.display = "none";
+    document.getElementById("btnImage3").innerText = "EQUIP";
+    let flag = document.querySelector("#btnImage3");
+    flag.addEventListener(flag.style.backgroundColor = "red");
+}

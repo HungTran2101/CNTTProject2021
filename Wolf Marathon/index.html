@@ -7,6 +7,8 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link rel="stylesheet" href="style.css" />
+   <meta name="author" content="www.twitter.com/cheeriottis">
+   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
    <title>Wolf Marathon</title>
 </head>
 
@@ -41,7 +43,33 @@
             <button type="button" class="menuBtn" onclick="storeBtn()">STORE</button>
          </div>
          <div id="store">
+            <img src="images/coin1.png" id="totalCoin" alt="coin">
+            <p id="totalCoin2">Total Coins:</p>
             <button type="button" id="backStore" onclick="backStore()"></button>
+            <a href="#" class="action-button shadow animate green" id="myWolf" onclick="buyWolf()">Wolf</a>
+            <a href="#" class="action-button shadow animate yellow" id="myCactus" onclick="buyCactus()">Cactus</a>
+            <a href="#" class="action-button shadow animate red" id="myBear" onclick="buyBear()">Bear</a>
+            <div class="cactusBorder">
+               <img src="images/wolf_run1.png" class="myIcon wolfIcon" alt="Wolf">
+               <img src="images/cactus1.png" class="myIcon cactusIcon" alt="Cactus">
+               <img src="images/bear1.png" class="myIcon bearIcon" alt="Bear">
+            </div>
+            <div class="cactusBorder1">
+               <img src="images/wolf_run2.png" class="myIcon wolfIcon" alt="Wolf">
+               <img src="images/cactus2.png" class="myIcon cactusIcon" alt="Cactus">
+               <img src="images/bear2.png" class="myIcon bearIcon" alt="Bear">
+            </div>
+            <div class="cactusBorder2">
+               <img src="images/wolf_run3.png" class="myIcon wolfIcon" alt="Wolf">
+               <img src="images/cactus3.png" class="myIcon cactusIcon" alt="Cactus">
+               <img src="images/bear3.png" class="myIcon bearIcon" alt="Bear">
+            </div>
+            <button type="button" id="btnImage1" onclick="buyWolf()">200</button>
+            <button type="button" id="btnImage2" onclick="buyCactus()">400</button>
+            <button type="button" id="btnImage3" onclick="buyBear()">600</button>
+            <img src="images/coin1.png" alt="coin" id="iconGold1">
+            <img src="images/coin1.png" alt="coin" id="iconGold2">
+            <img src="images/coin1.png" alt="coin" id="iconGold3">
          </div>
       </div>
       <div id="playZone">
