@@ -1,6 +1,6 @@
 body {   
    background-image: linear-gradient(to bottom right, black, rgb(99, 98, 98));
-   margin: 0px;
+   margin: 0;
    font-family: cursive;
 }
 main{
@@ -51,7 +51,7 @@ header input:checked ~ #loginForm{
    height: 0;
    border-radius: 10%;
    background-color: rgb(32, 32, 32);
-   border: 0px solid rgb(143, 142, 142);
+   border: 0 solid rgb(143, 142, 142);
    z-index: 5;
    transition: all 700ms;
    overflow: hidden;
@@ -165,7 +165,7 @@ header input:checked ~ #loginForm{
    width: 65vw;
    height: 73vh;
    margin: auto;
-   background-image: url("images/store.png");
+   background-image: url("images/store1.png");
    background-size:cover;
 }
 #storeBtn:checked ~ #menu {
@@ -174,7 +174,7 @@ header input:checked ~ #loginForm{
 #gameTitle {
    color: rgb(248, 70, 39);
    font-size: 90px;
-   margin-top: 0px;
+   margin-top: 0;
    margin-bottom: 40px;
    padding-top: 150px;
    text-align: center;
@@ -270,4 +270,196 @@ footer{
 }
 .noDisplay {
    display: none;
+}
+#myWolf {
+   left: 175px;
+   top: 150px;
+}
+#myCactus {
+   left: 350px;
+   top: 150px;
+}
+#myBear {
+   left: 525px;
+   top: 150px;
+}
+.animate {
+   transition: all 0.1s;
+   -webkit-transition: all 0.1s;
+}
+
+.action-button {
+   position: relative;
+   padding: 10px 40px;
+   margin: 0 10px 10px 0;
+   float: left;
+   border-radius: 10px;
+   font-family: cursive;
+   font-size: 25px;
+   color: black;
+   text-decoration: none;
+}
+.red {
+   background-color: #E74C3C;
+   border-bottom: 5px solid #BD3E31;
+   text-shadow: 0 -2px #BD3E31;
+}
+.green {
+   background-color: #82BF56;
+   border-bottom: 5px solid #669644;
+   text-shadow: 0 -2px #669644;
+}
+.yellow {
+   background-color: #F2CF66;
+   border-bottom: 5px solid #D1B358;
+   text-shadow: 0 -2px #D1B358;
+}
+
+.action-button:active {
+   transform: translate(0px,5px);
+   -webkit-transform: translate(0px,5px);
+   border-bottom: 1px solid;
+}
+.cactusBorder {
+   width: 300px;
+   height: 350px;
+   background-size: 300px 350px;
+   background-repeat: no-repeat;
+   background-image: url("images/cactusBorder.png");
+   background-color: transparent;
+   position: absolute;
+   top: 230px;
+   left: 90px;
+   display: block;
+}
+.cactusBorder1 {
+   width: 300px;
+   height: 350px;
+   background-size: 300px 350px;
+   background-repeat: no-repeat;
+   background-image: url("images/cactusBorder.png");
+   background-color: transparent;
+   position: absolute;
+   top: 230px;
+   left: 435px;
+   display: block;
+}
+.cactusBorder2 {
+   width: 300px;
+   height: 350px;
+   background-size: 300px 350px;
+   background-repeat: no-repeat;
+   background-image: url("images/cactusBorder.png");
+   background-color: transparent;
+   position: absolute;
+   top: 230px;
+   left: 775px;
+   display: block;
+}
+.myIcon {
+   width: 180px;
+   height: 220px;
+   margin-left: 68px;
+   margin-top: 95px;
+}
+#btnImage1 {
+   width: 120px;
+   height: 40px;
+   top: 600px;
+   left: 195px;
+   position: absolute;
+   background-color: gold;
+   border-radius: 20px;
+   font-size: 16px;
+   font-family: cursive;
+   font-weight: bold;
+   cursor: pointer;
+   transition: 800ms;
+   border: 3px solid black;
+}
+#btnImage1:hover {
+   background-color: lightgreen;
+}
+#btnImage2 {
+   width: 120px;
+   height: 40px;
+   top: 600px;
+   left: 545px;
+   position: absolute;
+   background-color: gold;
+   border-radius: 20px;
+   font-size: 16px;
+   font-family: cursive;
+   font-weight: bold;
+   cursor: pointer;
+   transition: 800ms;
+   border: 3px solid black;
+}
+#btnImage2:hover {
+   background-color: lightgreen;
+}
+#btnImage3 {
+   width: 120px;
+   height: 40px;
+   top: 600px;
+   left: 885px;
+   position: absolute;
+   background-color: gold;
+   border-radius: 20px;
+   font-size: 16px;
+   font-family: cursive;
+   font-weight: bold;
+   cursor: pointer;
+   transition: 800ms;
+   border: 3px solid black;
+}
+#btnImage3:hover {
+   background-color: lightgreen;
+}
+.wolfIcon {
+   display: block;
+}
+.cactusIcon {
+   display: none;
+}
+.bearIcon {
+   display: none;
+}
+#totalCoin {
+   width: 50px;
+   height: 50px;
+   position: absolute;
+   top: 35px;
+   left: 160px;
+}
+#totalCoin2 {
+   top: 22px;
+   left: 220px;
+   font-weight: bold;
+   font-family: cursive;
+   font-size: 22px;
+   color: red;
+   background-color: transparent;
+   position: absolute;
+}
+#iconGold1 {
+   width: 50px;
+   height: 50px;
+   position: absolute;
+   top: 595px;
+   left: 135px;
+}
+#iconGold2 {
+   width: 50px;
+   height: 50px;
+   position: absolute;
+   top: 595px;
+   left: 485px;
+}
+#iconGold3 {
+   width: 50px;
+   height: 50px;
+   position: absolute;
+   top: 595px;
+   left: 825px;
 }
