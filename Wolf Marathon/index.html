@@ -39,37 +39,45 @@
          <div id="menu">
             <h1 id="gameTitle">Wolf Marathon</h1>
             <h3>You must login first to play!</h3>
-            <button type="button" class="menuBtn" id="playBtn" onclick="startgame()">PLAY</button>
-            <button type="button" class="menuBtn" onclick="storeBtn()">STORE</button>
+            <button type="button" onclick="startgame()">PLAY</button>
+            <button type="button" onclick="storeBtn()">STORE</button>
          </div>
          <div id="store">
-            <img src="images/coin1.png" id="totalCoin" alt="coin">
-            <p id="totalCoin2">Total Coins:</p>
+            <div id="walletSection">
+               <p>Wallet</p>
+               <div>
+                  <img src="images/coin1.png" alt="your wallet">
+                  <span id="wallet">0</span>
+               </div>
+            </div>
+            <div id="navigation">
+               <a href="#" class="action-button green active" id="btnWolf" onclick="selectSkin(0)">Wolf</a>
+               <a href="#" class="action-button yellow" id="btnCactus" onclick="selectSkin(1)">Cactus</a>
+               <a href="#" class="action-button red" id="btnBear" onclick="selectSkin(2)">Bear</a>
+            </div>
+            <div id="skins-section">
+               <div class="outer-frame">
+                  <img src="images/wolf_jump1.png" class="inner-frame" alt="skin #1">
+               </div>
+               <div class="outer-frame">
+                  <img src="images/wolf_jump2.png" class="inner-frame" alt="skin #2">
+               </div>
+               <div class="outer-frame">
+                  <img src="images/wolf_jump3.png" class="inner-frame" alt="skin #3">
+               </div>
+            </div>
+            <div id="buy-section">
+               <button type="button" class="buyBtn" onclick="playerBuy(0)">
+                  <span name="textBuyBtn">200</span><img src="images/coin1.png" alt="coin" class="buyIcon">
+               </button>
+               <button type="button" class="buyBtn" onclick="playerBuy(1)">
+                  <span name="textBuyBtn">400</span><img src="images/coin1.png" alt="coin" class="buyIcon">
+               </button>
+               <button type="button" class="buyBtn" onclick="playerBuy(2)">
+                  <span name="textBuyBtn">600</span><img src="images/coin1.png" alt="coin" class="buyIcon">
+               </button>
+            </div>
             <button type="button" id="backStore" onclick="backStore()"></button>
-            <a href="#" class="action-button shadow animate green" id="myWolf" onclick="buyWolf()">Wolf</a>
-            <a href="#" class="action-button shadow animate yellow" id="myCactus" onclick="buyCactus()">Cactus</a>
-            <a href="#" class="action-button shadow animate red" id="myBear" onclick="buyBear()">Bear</a>
-            <div class="cactusBorder">
-               <img src="images/wolf_run1.png" class="myIcon wolfIcon" alt="Wolf">
-               <img src="images/cactus1.png" class="myIcon cactusIcon" alt="Cactus">
-               <img src="images/bear1.png" class="myIcon bearIcon" alt="Bear">
-            </div>
-            <div class="cactusBorder1">
-               <img src="images/wolf_run2.png" class="myIcon wolfIcon" alt="Wolf">
-               <img src="images/cactus2.png" class="myIcon cactusIcon" alt="Cactus">
-               <img src="images/bear2.png" class="myIcon bearIcon" alt="Bear">
-            </div>
-            <div class="cactusBorder2">
-               <img src="images/wolf_run3.png" class="myIcon wolfIcon" alt="Wolf">
-               <img src="images/cactus3.png" class="myIcon cactusIcon" alt="Cactus">
-               <img src="images/bear3.png" class="myIcon bearIcon" alt="Bear">
-            </div>
-            <button type="button" id="btnImage1" onclick="buyWolf()">200</button>
-            <button type="button" id="btnImage2" onclick="buyCactus()">400</button>
-            <button type="button" id="btnImage3" onclick="buyBear()">600</button>
-            <img src="images/coin1.png" alt="coin" id="iconGold1">
-            <img src="images/coin1.png" alt="coin" id="iconGold2">
-            <img src="images/coin1.png" alt="coin" id="iconGold3">
          </div>
       </div>
       <div id="playZone">
@@ -80,9 +88,9 @@
       <hr id="footline" style="size:3px" />
    </main>
    <footer>
-      <h3>HOW TO PLAY?</h3>
+      <h3><span style="color:cyan">HOW TO PLAY?</span></h3>
       <h3>Press space bar or arrow up to jump. <br> Avoid obstacles and collect coins for fabulous skins in store.</h3>
-      <h4>Any bug found please contact <a style="color:coral;" href = "mailto:hung9cong@gmail.com?subject = Feedback&body = Message">here</a></h4>
+      <h4><span style="color:tomato">Any bug found please contact</span> <a style="color:greenyellow;" href = "mailto:hung9cong@gmail.com?subject = Feedback&body = Message">here</a></h4>
    </footer>
    <br>
    <audio src="sounds/background.mp3" id="music" loop></audio>

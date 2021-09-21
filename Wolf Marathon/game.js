@@ -1,24 +1,36 @@
+//DoAnCNTT-2021
+
 var canvas = document.getElementById("playCanvas");
 var context = canvas.getContext("2d");
 var menu = document.getElementById("menu");
 var info = menu.getBoundingClientRect();
 var music = document.getElementById("music");
+var buyBtn = document.getElementsByClassName("buyBtn");
+var textBuyBtn = document.getElementsByName("textBuyBtn");
+var buyIcon = document.getElementsByClassName("buyIcon");
+var textWallet = document.getElementById("wallet");
 
 canvas.width = info.width;
 canvas.height = info.height;
 music.volume = 0.4;
 var score = 0;
-var wallet = 0;
+var wallet = 700;
 var difficulty = 0;
 var playerStatus = 0; //0-run 1-jump 2-die
+var skinPrice = [200, 400, 600];
+var wolfSkin = [0,1,2]; // 0-chưa mua 1-đã mua 2-đã trang bị
+var cactusSkin = [1,0,2];
+var bearSkin = [2,1,0];
+var skinTarget = "wolf";
 
-var player = new wolf(info.height*0.605);
+var player = new wolf(info.height * 0.605);
 var obs = new obsticals(info.width, 415);
 
 var isPause = false;
 var isMusic = false;
 var isLoging = false;
-//#region game mechanic
+
+//#region game section
 function startgame() {
     document.getElementById("playCanvas").style.display = "block";
     document.getElementById("pauseBtn").style.display = "block";
@@ -47,7 +59,7 @@ function loop() {
         context.clearRect(0, 0, canvas.width, canvas.height);
         if (player.isJump) {
             if (player.jump(difficulty)) { //jump done
-                if(!player.jumpDelay)
+                if (!player.jumpDelay)
                     player.isJump = false;
                 player.g = 0.1;
                 player.isFall = false;
@@ -61,7 +73,7 @@ function loop() {
         spawnObstacle();
         drawObstacle();
         drawPlayer();
-        
+
     }
     setTimeout(() => loop(), 10);
 }
@@ -90,6 +102,7 @@ function pause_resumeGame() {
         isPause = false;
     }
 }
+
 function toggleMusic() {
     if (!isMusic) {
         music.play();
@@ -101,6 +114,7 @@ function toggleMusic() {
         document.getElementById("soundBtn").style.backgroundImage = "url('images/sound_off.png')"
     }
 }
+
 function loginGame() {
     var login = document.getElementById("loginBtn");
     if (login.checked) {
@@ -114,6 +128,7 @@ function loginGame() {
         login.checked = true;
     }
 }
+
 function signUpGame() {
     var signup = document.getElementById("signUpBtn");
     if (signup.checked) {
@@ -127,62 +142,122 @@ function signUpGame() {
         signup.checked = true;
     }
 }
+
 function cancelLogin() {
     document.getElementById("loginBtn").checked = false;
     document.getElementById("signUpBtn").checked = false;
     document.getElementById("main").style.opacity = 1;
 }
+
 function storeBtn() {
     document.getElementById("storeBtn").checked = true;
+    textWallet.textContent = wallet.toString();
+    selectSkin(0);
 }
+
 function backStore() {
     document.getElementById("storeBtn").checked = false;
 }
-function buyWolf() {
-    var wolf = document.getElementsByClassName("wolfIcon");
-    var cactus = document.getElementsByClassName("cactusIcon");
-    var bear = document.getElementsByClassName("bearIcon");
-    for(var i=0; i<wolf.length;i++){
-        wolf[i].style.display = "block";
-        cactus[i].style.display = "none";
-        bear[i].style.display = "none";
+
+function playerBuy(slot){
+    if(skinTarget == "wolf"){
+        buy_equipSkin(wolfSkin, slot);
+        update_BuyBtn(wolfSkin);
+    }
+    else if(skinTarget == "cactus"){
+        buy_equipSkin(cactusSkin, slot);
+        update_BuyBtn(cactusSkin);
+    }
+    else{
+        buy_equipSkin(bearSkin, slot);
+        update_BuyBtn(bearSkin);
     }
 }
-function buyCactus() {
-    var wolf = document.getElementsByClassName("wolfIcon");
-    var cactus = document.getElementsByClassName("cactusIcon");
-    var bear = document.getElementsByClassName("bearIcon");
-    for(var i=0; i<wolf.length;i++){
-        wolf[i].style.display = "none";
-        cactus[i].style.display = "block";
-        bear[i].style.display = "none";
+
+function buy_equipSkin(skin, slot){
+    if(skin[slot] == 0){
+        skin[slot] = 1;
+        bill(slot);
+    }
+    else{
+        for(let i = 0;i<skin.length;i++){
+            if(skin[i] == 2){
+                skin[i] = 1;
+            }
+        }
+        skin[slot] = 2;
     }
 }
-function buyBear() {
-    var wolf = document.getElementsByClassName("wolfIcon");
-    var cactus = document.getElementsByClassName("cactusIcon");
-    var bear = document.getElementsByClassName("bearIcon");
-    for(var i=0; i<wolf.length;i++){
-        wolf[i].style.display = "none";
-        cactus[i].style.display = "none";
-        bear[i].style.display = "block";
+
+function bill(slot){
+    wallet -= skinPrice[slot];
+    textWallet.textContent = wallet.toString();
+}
+
+function selectSkin(option) {
+    let btnWolf = document.getElementById("btnWolf");
+    let btnCactus = document.getElementById("btnCactus");
+    let btnBear = document.getElementById("btnBear");
+    let slots = document.getElementsByClassName("inner-frame");
+    if (option == 0) { //wolf
+        btnWolf.classList.add("active");
+        btnCactus.classList.remove("active");
+        btnBear.classList.remove("active");
+        slots[0].src = "images/wolf_jump1.png";
+        slots[1].src = "images/wolf_jump2.png";
+        slots[2].src = "images/wolf_jump3.png";
+        update_BuyBtn(wolfSkin);
+        skinTarget = "wolf";
+    }
+    else if (option == 1) { //cactus
+        btnWolf.classList.remove("active");
+        btnCactus.classList.add("active");
+        btnBear.classList.remove("active");
+        slots[0].src = "images/cactus1.png";
+        slots[1].src = "images/cactus2.png";
+        slots[2].src = "images/cactus3.png";
+        update_BuyBtn(cactusSkin);
+        skinTarget = "cactus";
+    }
+    else if (option == 2) { //bear
+        btnWolf.classList.remove("active");
+        btnCactus.classList.remove("active");
+        btnBear.classList.add("active");
+        slots[0].src = "images/bear1.png";
+        slots[1].src = "images/bear2.png";
+        slots[2].src = "images/bear3.png";
+        update_BuyBtn(bearSkin);
+        skinTarget = "bear";
     }
 }
-function buyWolf() {
-    document.getElementById("iconGold1").style.display = "none";
-    document.getElementById("btnImage1").innerText = "EQUIP";
-    let flag = document.querySelector("#btnImage1");
-    flag.addEventListener(flag.style.backgroundColor = "red");
+
+function update_BuyBtn(skin) {
+    for (let i = 0; i < skin.length; i++) {
+        if (skin[i] == 0) {
+            buyBtn[i].classList.remove("equippedBtn");
+            buyBtn[i].classList.remove("equipBtn");
+            buyIcon[i].style.display = "block";
+            textBuyBtn[i].innerText = skinPrice[i].toString();
+            if (wallet < skinPrice[i]) {
+                buyBtn[i].classList.add("poorBtn");
+            }
+            else {
+                buyBtn[i].classList.remove("poorBtn");
+            }
+        }
+        else {
+            buyIcon[i].style.display = "none";
+            if (skin[i] == 1) {
+                buyBtn[i].classList.add("equipBtn");
+                buyBtn[i].classList.remove("equippedBtn");
+                textBuyBtn[i].innerText = "EQUIP";
+            }
+            else {
+                buyBtn[i].classList.add("equippedBtn");
+                buyBtn[i].classList.remove("equipBtn");
+                textBuyBtn[i].innerText = "EQUIPPED";
+            }
+        }
+    }
 }
-function buyCactus() {
-    document.getElementById("iconGold2").style.display = "none";
-    document.getElementById("btnImage2").innerText = "EQUIP";
-    let flag = document.querySelector("#btnImage2");
-    flag.addEventListener(flag.style.backgroundColor = "red");
-}
-function buyBear() {
-    document.getElementById("iconGold3").style.display = "none";
-    document.getElementById("btnImage3").innerText = "EQUIP";
-    let flag = document.querySelector("#btnImage3");
-    flag.addEventListener(flag.style.backgroundColor = "red");
-}
+

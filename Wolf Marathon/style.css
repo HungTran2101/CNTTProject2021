@@ -1,23 +1,23 @@
-body {   
+body {
    background-image: linear-gradient(to bottom right, black, rgb(99, 98, 98));
    margin: 0;
    font-family: cursive;
 }
-main{
+main {
    position: relative;
    transition: opacity 300ms;
 }
-main hr{
+main hr {
    width: 60%;
    padding: 2.5px;
    background-color: rgb(199, 202, 6);
    border: none;
    border-radius: 100%;
 }
-header{
+header {
    text-align: center;
 }
-header input:checked ~ #loginForm{
+header input:checked ~ #loginForm {
    border: 5px solid rgb(143, 142, 142);
    top: 300px;
 }
@@ -27,19 +27,19 @@ header input:checked ~ #loginForm{
 #signUpBtn:checked ~ #loginForm {
    height: 330px;
 }
-#loginBtn:checked + button{
+#loginBtn:checked + button {
    width: 12vw;
    background-color: rgb(35, 250, 100);
    color: black;
    border: 3px solid black;
 }
-#signUpBtn:checked + button{
+#signUpBtn:checked + button {
    width: 12vw;
    background-color: rgb(35, 250, 100);
    color: black;
    border: 3px solid black;
 }
-#loginForm{
+#loginForm {
    position: absolute;
    min-width: 360px;
    margin-left: auto;
@@ -57,7 +57,7 @@ header input:checked ~ #loginForm{
    overflow: hidden;
 }
 #loginForm button {
-   width:105px;
+   width: 105px;
    height: 40px;
    font-family: cursive;
    font-weight: bold;
@@ -71,7 +71,7 @@ header input:checked ~ #loginForm{
 }
 #signInBtn {
    margin-right: 8px;
-   background-color:rgb(50, 145, 37);
+   background-color: rgb(50, 145, 37);
    transition: background-color 300ms;
 }
 #cancelBtn {
@@ -80,30 +80,30 @@ header input:checked ~ #loginForm{
    transition: background-color 300ms;
 }
 #signInBtn:hover {
-   background-color:rgb(30, 255, 0);
+   background-color: rgb(30, 255, 0);
    border: solid 3px white;
 }
 #cancelBtn:hover {
    background-color: rgb(255, 38, 0);
    border: solid 3px white;
 }
-#loginForm label{
+#loginForm label {
    font-weight: bold;
    font-size: 20px;
    color: rgb(162, 233, 171);
 }
-#lblConfPass{
+#lblConfPass {
    overflow: hidden;
    display: block;
    height: 0;
    opacity: 0;
    transition: all 500ms;
 }
-#chbxConfPass:checked ~ #lblConfPass{
+#chbxConfPass:checked ~ #lblConfPass {
    height: 84px;
    opacity: 1;
 }
-.input{
+.input {
    outline: 0;
    min-width: 160px;
    width: 12vw;
@@ -115,9 +115,9 @@ header input:checked ~ #loginForm{
    font-family: cursive;
    font-size: 20px;
    color: wheat;
-   background-color:transparent;
+   background-color: transparent;
 }
-#headline{
+#headline {
    margin-bottom: 20px;
    margin-top: 25px;
 }
@@ -141,9 +141,9 @@ header input:checked ~ #loginForm{
    text-align: center;
    transition: height 700ms;
 }
-#menu button{
+#menu button {
    min-width: 125px;
-   background-color: rgba(60, 255, 0, 0.411);
+   background-color: rgb(38, 161, 0);
    border: 3px solid rgb(15, 20, 20);
    border-radius: 25px;
    cursor: pointer;
@@ -154,22 +154,10 @@ header input:checked ~ #loginForm{
    height: 5vh;
    transition: 200ms;
 }
-#menu button:hover{
+#menu button:hover {
    width: 8vw;
    background-color: rgb(0, 255, 0);
    transition: 200ms;
-}
-#store {
-   font-weight: bold;
-   position: relative;
-   width: 65vw;
-   height: 73vh;
-   margin: auto;
-   background-image: url("images/store1.png");
-   background-size:cover;
-}
-#storeBtn:checked ~ #menu {
-   height: 0;
 }
 #gameTitle {
    color: rgb(248, 70, 39);
@@ -180,17 +168,60 @@ header input:checked ~ #loginForm{
    text-align: center;
    -webkit-text-stroke: 3px black;
 }
-#menu h3{
+#menu h3 {
    display: none;
 }
-
-#footline{
-   margin-top: 20px;
+#store {
+   font-weight: bold;
+   position: relative;
+   width: 65vw;
+   height: 73vh;
+   margin: auto;
+   background-image: url("images/store.png");
+   background-size: cover;
+}
+#storeBtn:checked ~ #menu {
+   height: 0;
+}
+#walletSection {
+   text-align: center;
+   padding-top: 25px;
+}
+#walletSection p {
+   margin-top: 0px;
+   margin-bottom: 10px;
+   font-size: xx-large;
+}
+#walletSection div {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: x-large;
+}
+#walletSection img {
+   width: 32px;
+   height: 32px;
+   margin-right: 10px;
+}
+#navigation {
+   margin-top: 30px;
+   display: flex;
+   justify-content: space-around;
+}
+#skins-section {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+}
+#buy-section{
+   display: flex;
+   justify-content: space-around;
+   margin-top: 10px;
 }
 #playZone {
    position: relative;
 }
-#playZone div{
+#playZone div {
    position: absolute;
    top: 2vh;
    left: 18vw;
@@ -219,7 +250,7 @@ header input:checked ~ #loginForm{
 }
 #playCanvas {
    min-width: 470px;
-   image-rendering:auto;
+   image-rendering: auto;
    width: 65vw;
    height: 73vh;
    margin: auto;
@@ -243,12 +274,14 @@ header input:checked ~ #loginForm{
    border: none;
    display: block;
 }
-footer{
+#footline {
+   margin-top: 20px;
+}
+footer {
    text-align: center;
-   font-family: cursive;
    color: white;
 }
-.btnLog-Sign{
+.btnLog-Sign {
    min-width: 120px;
    background-color: transparent;
    border: 3px solid rgb(2, 227, 243);
@@ -262,7 +295,7 @@ footer{
    font-size: 25px;
    transition: all 300ms;
 }
-.btnLog-Sign:hover{
+.btnLog-Sign:hover {
    width: 12vw;
    background-color: rgb(21, 163, 64);
    color: black;
@@ -271,195 +304,84 @@ footer{
 .noDisplay {
    display: none;
 }
-#myWolf {
-   left: 175px;
-   top: 150px;
+.active {
+   pointer-events: none;
+   filter: brightness(70%);
 }
-#myCactus {
-   left: 350px;
-   top: 150px;
-}
-#myBear {
-   left: 525px;
-   top: 150px;
-}
-.animate {
-   transition: all 0.1s;
-   -webkit-transition: all 0.1s;
-}
-
 .action-button {
-   position: relative;
    padding: 10px 40px;
-   margin: 0 10px 10px 0;
-   float: left;
    border-radius: 10px;
-   font-family: cursive;
    font-size: 25px;
    color: black;
    text-decoration: none;
+   transition: all 0.1s;
+}
+.action-button:active {
+   transform: translate(0px, 5px);
+   border-bottom: 1px solid;
 }
 .red {
-   background-color: #E74C3C;
-   border-bottom: 5px solid #BD3E31;
-   text-shadow: 0 -2px #BD3E31;
+   background-color: #e74c3c;
+   border-bottom: 5px solid #a8372a;
+   text-shadow: 0 -2px #bd3e31;
 }
 .green {
-   background-color: #82BF56;
+   background-color: #7de632;
    border-bottom: 5px solid #669644;
    text-shadow: 0 -2px #669644;
 }
 .yellow {
-   background-color: #F2CF66;
-   border-bottom: 5px solid #D1B358;
-   text-shadow: 0 -2px #D1B358;
+   background-color: #ebb516;
+   border-bottom: 5px solid #a88210;
+   text-shadow: 0 -2px #a3862e;
 }
-
-.action-button:active {
-   transform: translate(0px,5px);
-   -webkit-transform: translate(0px,5px);
-   border-bottom: 1px solid;
-}
-.cactusBorder {
-   width: 300px;
-   height: 350px;
-   background-size: 300px 350px;
-   background-repeat: no-repeat;
+.outer-frame {
+   width: 17vw;
+   height: 37vh;
+   background-size: 17vw 37vh;
    background-image: url("images/cactusBorder.png");
-   background-color: transparent;
-   position: absolute;
-   top: 230px;
-   left: 90px;
-   display: block;
 }
-.cactusBorder1 {
-   width: 300px;
-   height: 350px;
-   background-size: 300px 350px;
-   background-repeat: no-repeat;
-   background-image: url("images/cactusBorder.png");
-   background-color: transparent;
-   position: absolute;
-   top: 230px;
-   left: 435px;
-   display: block;
+.inner-frame {
+   position: relative;
+   width: 10vw;
+   height: 23vh;
+   left: 4vw;
+   top: 10vh;
 }
-.cactusBorder2 {
-   width: 300px;
-   height: 350px;
-   background-size: 300px 350px;
-   background-repeat: no-repeat;
-   background-image: url("images/cactusBorder.png");
-   background-color: transparent;
-   position: absolute;
-   top: 230px;
-   left: 775px;
-   display: block;
-}
-.myIcon {
-   width: 180px;
-   height: 220px;
-   margin-left: 68px;
-   margin-top: 95px;
-}
-#btnImage1 {
-   width: 120px;
-   height: 40px;
-   top: 600px;
-   left: 195px;
-   position: absolute;
-   background-color: gold;
+.buyBtn{
+   display:flex;
+   justify-content:space-evenly;
+   align-items: center;
+   width: 130px;
+   height: 45px;
+   background-color: greenyellow;
    border-radius: 20px;
-   font-size: 16px;
+   font-size: 17px;
    font-family: cursive;
    font-weight: bold;
    cursor: pointer;
-   transition: 800ms;
-   border: 3px solid black;
+   transition:300ms;
+   border: 2px solid black;
 }
-#btnImage1:hover {
-   background-color: lightgreen;
+.buyBtn:hover{
+   background-color: rgb(70, 255, 70);
 }
-#btnImage2 {
-   width: 120px;
-   height: 40px;
-   top: 600px;
-   left: 545px;
-   position: absolute;
-   background-color: gold;
-   border-radius: 20px;
-   font-size: 16px;
-   font-family: cursive;
-   font-weight: bold;
-   cursor: pointer;
-   transition: 800ms;
-   border: 3px solid black;
+.poorBtn{
+   pointer-events: none;
+   background-color: tomato;
 }
-#btnImage2:hover {
-   background-color: lightgreen;
+.equipBtn{
+   background-color:cyan;
 }
-#btnImage3 {
-   width: 120px;
-   height: 40px;
-   top: 600px;
-   left: 885px;
-   position: absolute;
-   background-color: gold;
-   border-radius: 20px;
-   font-size: 16px;
-   font-family: cursive;
-   font-weight: bold;
-   cursor: pointer;
-   transition: 800ms;
-   border: 3px solid black;
+.equipBtn:hover{
+   background-color:rgb(0, 223, 223);
 }
-#btnImage3:hover {
-   background-color: lightgreen;
+.equippedBtn{
+   pointer-events: none;
+   background-color:orange;
+   filter:brightness(80%);
 }
-.wolfIcon {
-   display: block;
-}
-.cactusIcon {
-   display: none;
-}
-.bearIcon {
-   display: none;
-}
-#totalCoin {
-   width: 50px;
-   height: 50px;
-   position: absolute;
-   top: 35px;
-   left: 160px;
-}
-#totalCoin2 {
-   top: 22px;
-   left: 220px;
-   font-weight: bold;
-   font-family: cursive;
-   font-size: 22px;
-   color: red;
-   background-color: transparent;
-   position: absolute;
-}
-#iconGold1 {
-   width: 50px;
-   height: 50px;
-   position: absolute;
-   top: 595px;
-   left: 135px;
-}
-#iconGold2 {
-   width: 50px;
-   height: 50px;
-   position: absolute;
-   top: 595px;
-   left: 485px;
-}
-#iconGold3 {
-   width: 50px;
-   height: 50px;
-   position: absolute;
-   top: 595px;
-   left: 825px;
+.buyIcon{
+   width:32px;
+   height: 32px;
 }
