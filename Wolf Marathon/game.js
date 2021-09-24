@@ -15,22 +15,27 @@ canvas.height = info.height;
 music.volume = 0.4;
 var score = 0;
 var wallet = 700;
-var difficulty = 0;
+var difficulty = 1;
 var playerStatus = 0; //0-run 1-jump 2-die
 var skinPrice = [200, 400, 600];
-var wolfSkin = [0,1,2]; // 0-chưa mua 1-đã mua 2-đã trang bị
-var cactusSkin = [1,0,2];
-var bearSkin = [2,1,0];
+var wolfSkin = [0, 1, 2]; // 0-for sell 1-equip 2-equipped
+var cactusSkin = [1, 0, 2];
+var bearSkin = [2, 1, 0];
 var skinTarget = "wolf";
+var currentObs = null;
 
-var player = new wolf(info.height * 0.605);
-var obs = new obsticals(info.width, 415);
+var player = new wolf(info.height * 0.570);
+var obs = new obsticals(info.width, info.height * 0.611);
 
+var obsSpawned = false;
 var isPause = false;
 var isMusic = false;
-var isLoging = false;
 
 //#region game section
+function loadData() {
+    updateSkin();
+}
+
 function startgame() {
     document.getElementById("playCanvas").style.display = "block";
     document.getElementById("pauseBtn").style.display = "block";
@@ -51,36 +56,66 @@ function init() {
     wallet = 0;
     isPause = false;
     player.isJump = false;
-    player.loadImg(0);
     loop();
 }
 function loop() {
     if (!isPause) {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        if (player.isJump) {
-            if (player.jump(difficulty)) { //jump done
-                if (!player.jumpDelay)
-                    player.isJump = false;
-                player.g = 0.1;
-                player.isFall = false;
-                player.jumpDelay = false;
-            }
-            playerStatus = 1;
-        }
-        else {
-            playerStatus = 0;
-        }
+        playerJump();
         spawnObstacle();
+        spawnCoin();
+
+        drawCoin();
         drawObstacle();
         drawPlayer();
-
     }
-    setTimeout(() => loop(), 10);
+    setTimeout(() => loop(), 10 - difficulty);
+}
+function spawnCoin() {
+
+}
+function drawCoin() {
+
 }
 function spawnObstacle() {
-
+    if (!obsSpawned) {
+        let type = Math.round(Math.random() * (7 + difficulty));
+        obs.x = info.width;
+        obsSpawned = true;
+        if (type >= 6 && type <= 6 + difficulty) {
+            currentObs = obs.imgBear;
+            obs.y = obs.yBear;
+        }
+        else {
+            currentObs = obs.imgCactus;
+            obs.y = obs.yCactus;
+        }
+    }
+}
+function playerJump() {
+    if (player.isJump) {
+        if (player.jump()) { //jump done
+            if (!player.jumpDelay)
+                player.isJump = false;
+            else player.jumpDelay = false;
+            player.g = player.baseG;
+            player.isFall = false;
+        }
+        playerStatus = 1;
+    }
+    else {
+        playerStatus = 0;
+    }
 }
 function drawObstacle() {
+    if (obsSpawned) {
+        obs.x -= 5; //obs move
+        context.drawImage(currentObs, obs.x, obs.y, obs.width, obs.height);
+        if (obs.x < -obs.width) {
+            obs.x = info.width;
+            obsSpawned = false;
+        }
+    }
 
 }
 function drawPlayer() {
@@ -92,6 +127,7 @@ function drawPlayer() {
 }
 //#endregion
 
+//#region Interface section
 function pause_resumeGame() {
     if (!isPause) {
         document.getElementById("pauseBtn").style.backgroundImage = "url('images/resume_btn.png')"
@@ -159,37 +195,61 @@ function backStore() {
     document.getElementById("storeBtn").checked = false;
 }
 
-function playerBuy(slot){
-    if(skinTarget == "wolf"){
+function playerBuy(slot) {
+    if (skinTarget == "wolf") {
         buy_equipSkin(wolfSkin, slot);
         update_BuyBtn(wolfSkin);
     }
-    else if(skinTarget == "cactus"){
+    else if (skinTarget == "cactus") {
         buy_equipSkin(cactusSkin, slot);
         update_BuyBtn(cactusSkin);
     }
-    else{
+    else {
         buy_equipSkin(bearSkin, slot);
         update_BuyBtn(bearSkin);
     }
 }
 
-function buy_equipSkin(skin, slot){
-    if(skin[slot] == 0){
+function buy_equipSkin(skin, slot) {
+    if (skin[slot] == 0) { //buy
         skin[slot] = 1;
         bill(slot);
     }
-    else{
-        for(let i = 0;i<skin.length;i++){
-            if(skin[i] == 2){
+    else { //equip
+        for (let i = 0; i < skin.length; i++) {
+            if (skin[i] == 2) {
                 skin[i] = 1;
             }
         }
         skin[slot] = 2;
+        updateSkin();
     }
 }
 
-function bill(slot){
+function updateSkin() {
+    for (let i = 0; i < wolfSkin.length; i++) {
+        if (wolfSkin[i] == 2) {
+            player.loadImg(i + 1);
+            break;
+        }
+    }
+
+    for (let i = 0; i < bearSkin.length; i++) {
+        if (bearSkin[i] == 2) {
+            obs.loadImageBear(i + 1);
+            break;
+        }
+    }
+
+    for (let i = 0; i < cactusSkin.length; i++) {
+        if (cactusSkin[i] == 2) {
+            obs.loadImageCactus(i + 1);
+            break;
+        }
+    }
+}
+
+function bill(slot) {
     wallet -= skinPrice[slot];
     textWallet.textContent = wallet.toString();
 }
@@ -260,4 +320,4 @@ function update_BuyBtn(skin) {
         }
     }
 }
-
+//#endregion
