@@ -14,13 +14,13 @@ canvas.width = info.width;
 canvas.height = info.height;
 music.volume = 0.4;
 var score = 0;
-var wallet = 700;
+var wallet = 3000;
 var difficulty = 0;
 var playerStatus = 0; //0-run 1-jump 2-die
 var skinPrice = [200, 400, 600];
-var wolfSkin = [0,1,2]; // 0-chưa mua 1-đã mua 2-đã trang bị
-var cactusSkin = [1,0,2];
-var bearSkin = [2,1,0];
+var wolfSkin = [1,1,2]; // 0-chưa mua 1-đã mua 2-đã trang bị
+var cactusSkin = [1,2,0];
+var bearSkin = [1,1,1];
 var skinTarget = "wolf";
 
 var player = new wolf(info.height * 0.605);
@@ -73,7 +73,6 @@ function loop() {
         spawnObstacle();
         drawObstacle();
         drawPlayer();
-
     }
     setTimeout(() => loop(), 10);
 }
@@ -179,7 +178,7 @@ function buy_equipSkin(skin, slot){
         skin[slot] = 1;
         bill(slot);
     }
-    else{
+    else{ //Dùng để Equip -> Equipped
         for(let i = 0;i<skin.length;i++){
             if(skin[i] == 2){
                 skin[i] = 1;
