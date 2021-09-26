@@ -30,6 +30,7 @@ var obs = new obsticals(info.width, info.height * 0.611);
 var obsSpawned = false;
 var isPause = false;
 var isMusic = false;
+var isLose = false;
 
 //#region game section
 function loadData() {
@@ -59,17 +60,28 @@ function init() {
     loop();
 }
 function loop() {
-    if (!isPause) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        playerJump();
-        spawnObstacle();
-        spawnCoin();
-
-        drawCoin();
-        drawObstacle();
-        drawPlayer();
+    if(!isLose){
+        if (!isPause) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            playerJump();
+            spawnObstacle();
+            spawnCoin();
+            checkLose();
+    
+            drawCoin();
+            drawObstacle();
+            drawPlayer();
+        }
+        setTimeout(() => loop(), 10 - difficulty);
     }
-    setTimeout(() => loop(), 10 - difficulty);
+}
+function checkLose() {
+    if(obs.x <= player.x + player.width && obs.x + obs.width >= player.x){ //conflict x
+        if(player.y + player.height >= obs.y){
+            isLose = true;
+            playerStatus = 2;
+        }
+    }
 }
 function spawnCoin() {
 
