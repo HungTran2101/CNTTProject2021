@@ -23,11 +23,12 @@ var cactusSkin = [1, 0, 2];
 var bearSkin = [2, 1, 0];
 var skinTarget = "wolf";
 var currentObs = null;
-
+var currentCoin = null;
 var player = new wolf(info.height * 0.570);
 var obs = new obsticals(info.width, info.height * 0.611);
-
+var coin = new coins(info.width, info.height * 0.611);
 var obsSpawned = false;
+var coinSpawned = false;
 var isPause = false;
 var isMusic = false;
 var isLose = false;
@@ -84,15 +85,24 @@ function checkLose() {
     }
 }
 function spawnCoin() {
-
-}
-function drawCoin() {
-
+    if (!coinSpawned) {
+        let type = Math.round(Math.random() * (1500 + difficulty));
+        if ( type <= 10 ){
+            coinSpawned = true;
+            if (type <= 7) {
+                currentCoin = coin.imgYellowCoin;
+                coin.y = coin.yYellowCoin;
+            } else {
+                currentCoin = coin.imgBlueCoin;
+                coin.y = coin.yBlueCoin;
+            }
+        }
+    }
 }
 function spawnObstacle() {
     if (!obsSpawned) {
         let type = Math.round(Math.random() * (7 + difficulty));
-        obs.x = info.width;
+        // obs.x = info.width;
         obsSpawned = true;
         if (type >= 6 && type <= 6 + difficulty) {
             currentObs = obs.imgBear;
@@ -119,16 +129,25 @@ function playerJump() {
         playerStatus = 0;
     }
 }
+function drawCoin() {
+    if (coinSpawned) {
+        coin.x -= 4;
+        context.drawImage(currentCoin, coin.x, coin.y, coin.width, coin.height);
+        if (coin.x < -coin.width) {
+            coin.x = info.width;
+            coinSpawned = false;
+        }
+    }
+}
 function drawObstacle() {
     if (obsSpawned) {
-        obs.x -= 5; //obs move
+        obs.x -= 6; //obs move
         context.drawImage(currentObs, obs.x, obs.y, obs.width, obs.height);
         if (obs.x < -obs.width) {
             obs.x = info.width;
             obsSpawned = false;
         }
     }
-
 }
 function drawPlayer() {
     switch (playerStatus) {
@@ -227,9 +246,9 @@ function buy_equipSkin(skin, slot) {
         skin[slot] = 1;
         bill(slot);
     }
-    else { //equip
-        for (let i = 0; i < skin.length; i++) {
-            if (skin[i] == 2) {
+    else{ //Dùng để Equip -> Equipped
+        for(let i = 0;i<skin.length;i++){
+            if(skin[i] == 2){
                 skin[i] = 1;
             }
         }
@@ -259,6 +278,8 @@ function updateSkin() {
             break;
         }
     }
+    coin.loadImageYellowCoin();
+    coin.loadImageBlueCoin();
 }
 
 function bill(slot) {

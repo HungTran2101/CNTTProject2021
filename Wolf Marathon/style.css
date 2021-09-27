@@ -188,7 +188,7 @@ header input:checked ~ #loginForm {
    padding-top: 25px;
 }
 #walletSection p {
-   margin-top: 0px;
+   margin-top: 0;
    margin-bottom: 10px;
    font-size: xx-large;
 }
