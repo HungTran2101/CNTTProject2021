@@ -1,13 +1,14 @@
 class wolf {
     constructor(y) {
-        this.x = 250;
+        this.x = 300;
         this.y = y;
         this.width = 100;
         this.height = 120;
         
-        this.g = 0.2;
+        this.baseG = 0.3
+        this.g = this.baseG;
         this.preY = this.y;
-        this.jumpDistance = 120;
+        this.jumpDistance = 170;
 
         this.isJump = false;
         this.jumpDelay = false;
@@ -17,21 +18,21 @@ class wolf {
         this.img_jump = null;
         this.img_die = null;
     }
-    loadImg(skin) {
+    loadImg(slot) {
         this.img_run = new Image;
         this.img_jump = new Image;
         this.img_die = new Image;
-        if (skin == 0) {
+        if (slot == 0) {
             this.img_run.src = "images/wolf_run.png"
             this.img_jump.src = "images/wolf_jump.png"
             this.img_die.src = "images/wolf_die.png"
         }
-        else if (skin == 1) {
+        else if (slot == 1) {
             this.img_run.src = "images/wolf_run1.png"
             this.img_jump.src = "images/wolf_jump1.png"
             this.img_die.src = "images/wolf_die1.png"
         }
-        else if (skin == 2) {
+        else if (slot == 2) {
             this.img_run.src = "images/wolf_run2.png"
             this.img_jump.src = "images/wolf_jump2.png"
             this.img_die.src = "images/wolf_die2.png"
@@ -42,9 +43,9 @@ class wolf {
             this.img_die.src = "images/wolf_die3.png"
         }
     }
-    jump(difficulty) {
+    jump() {
         if (this.preY - this.y < this.jumpDistance && !this.isFall) {
-            this.y -= 2;
+            this.y -= 3;
             return false;
         }
         else {
@@ -52,7 +53,7 @@ class wolf {
         }
         if (this.preY > this.y && this.isFall) {
                 this.y += this.g;
-                this.g *= (1.05 + difficulty*0.01);
+                this.g *= 1.05;
             return false;
         }
         this.y = this.preY;

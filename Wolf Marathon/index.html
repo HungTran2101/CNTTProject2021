@@ -12,7 +12,7 @@
    <title>Wolf Marathon</title>
 </head>
 
-<body>
+<body onload="loadData()">
    <header>
       <input class="noDisplay" type="checkbox" id="loginBtn">
       <button type="button" class="btnLog-Sign" onclick="loginGame()">Login</button>
@@ -46,7 +46,7 @@
             <div id="walletSection">
                <p>Wallet</p>
                <div>
-                  <img src="images/coin1.png" alt="your wallet">
+                  <img src="images/yellowCoin.png" alt="your wallet">
                   <span id="wallet">0</span>
                </div>
             </div>
@@ -68,13 +68,13 @@
             </div>
             <div id="buy-section">
                <button type="button" class="buyBtn" onclick="playerBuy(0)">
-                  <span name="textBuyBtn">200</span><img src="images/coin1.png" alt="coin" class="buyIcon">
+                  <span name="textBuyBtn">200</span><img src="images/yellowCoin.png" alt="coin" class="buyIcon">
                </button>
                <button type="button" class="buyBtn" onclick="playerBuy(1)">
-                  <span name="textBuyBtn">400</span><img src="images/coin1.png" alt="coin" class="buyIcon">
+                  <span name="textBuyBtn">400</span><img src="images/yellowCoin.png" alt="coin" class="buyIcon">
                </button>
                <button type="button" class="buyBtn" onclick="playerBuy(2)">
-                  <span name="textBuyBtn">600</span><img src="images/coin1.png" alt="coin" class="buyIcon">
+                  <span name="textBuyBtn">600</span><img src="images/yellowCoin.png" alt="coin" class="buyIcon">
                </button>
             </div>
             <button type="button" id="backStore" onclick="backStore()"></button>
@@ -90,13 +90,17 @@
    <footer>
       <h3><span style="color:cyan">HOW TO PLAY?</span></h3>
       <h3>Press space bar or arrow up to jump. <br> Avoid obstacles and collect coins for fabulous skins in store.</h3>
-      <h4><span style="color:tomato">Any bug found please contact</span> <a style="color:greenyellow;" href = "mailto:hung9cong@gmail.com?subject = Feedback&body = Message">here</a></h4>
+      <h4>
+         <span style="color:tomato">Any bug found please contact</span> 
+         <a style="color:greenyellow;" href = "mailto:hung9cong@gmail.com?subject = Feedback&body = Message">here</a>
+      </h4>
    </footer>
    <br>
    <audio src="sounds/background.mp3" id="music" loop></audio>
 </body>
 <script src="wolf.js"></script>
 <script src="obsticals.js"></script>
+<script src="coins.js"></script>
 <script src="game.js"></script>
 
 </html>

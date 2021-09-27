@@ -137,7 +137,7 @@ header input:checked ~ #loginForm {
    height: 73vh;
    margin: auto;
    background-image: url("images/background.png");
-   background-size: cover;
+   background-size: 65vw 73vh;
    text-align: center;
    transition: height 700ms;
 }
@@ -183,7 +183,7 @@ header input:checked ~ #loginForm {
 #storeBtn:checked ~ #menu {
    height: 0;
 }
-#wallwalletSection {
+#walletSection {
    text-align: center;
    padding-top: 25px;
 }
@@ -258,7 +258,7 @@ header input:checked ~ #loginForm {
    border: 3px solid rgb(255, 255, 255);
    border-radius: 5%;
    background-image: url("images/background.png");
-   background-size: cover;
+   background-size: 65vw 73vh;
    z-index: -1;
 }
 #soundBtn {
