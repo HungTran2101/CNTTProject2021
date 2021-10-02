@@ -9,7 +9,7 @@ var buyBtn = document.getElementsByClassName("buyBtn");
 var textBuyBtn = document.getElementsByName("textBuyBtn");
 var buyIcon = document.getElementsByClassName("buyIcon");
 var textWallet = document.getElementById("wallet");
-
+var myScores = document.getElementById("score");
 canvas.width = info.width;
 canvas.height = info.height;
 music.volume = 0.4;
@@ -42,12 +42,27 @@ function startgame() {
     document.getElementById("playCanvas").style.display = "block";
     document.getElementById("pauseBtn").style.display = "block";
     document.getElementById("Forms").style.display = "none";
-    document.addEventListener("keypress", function onPress(event) {
-        if (event.key == " " && !isPause) {
-            event.preventDefault();
-            player.isJump = true;
-            if (player.y < player.preY && player.y > (player.preY - player.jumpDistance / 1.5) && player.isFall) {
-                player.jumpDelay = true;
+    document.getElementById("scoreAndWallet").style.display = "block";
+    document.addEventListener("keydown", function onPress(event) {
+        if (!isPause) {
+            if (event.key == " " || event.key == "ArrowUp") {
+                event.preventDefault();
+                player.isJump = true;
+                if (player.y < player.preY && player.y > (player.preY - player.jumpDistance / 1.5) && player.isFall) {
+                    player.jumpDelay = true;
+                }
+            }
+            else if (event.key == "ArrowLeft") {
+                event.preventDefault();
+                if (player.x > 50) {
+                    player.move(-18);
+                }
+            }
+            else if (event.key == "ArrowRight") {
+                event.preventDefault();
+                if (player.x < info.width - player.width -50) {
+                    player.move(18);
+                }
             }
         }
     });
@@ -84,6 +99,10 @@ function checkLose() {
         }
     }
 }
+function scores() {
+    score += 1;
+    myScores.textContent = score.toString();
+}
 function spawnCoin() {
     if (!coinSpawned) {
         let type = Math.round(Math.random() * (1500 + difficulty));
@@ -102,7 +121,6 @@ function spawnCoin() {
 function spawnObstacle() {
     if (!obsSpawned) {
         let type = Math.round(Math.random() * (7 + difficulty));
-        // obs.x = info.width;
         obsSpawned = true;
         if (type >= 6 && type <= 6 + difficulty) {
             currentObs = obs.imgBear;
@@ -116,7 +134,7 @@ function spawnObstacle() {
 }
 function playerJump() {
     if (player.isJump) {
-        if (player.jump()) { //jump done
+        if (player.jump()) {
             if (!player.jumpDelay)
                 player.isJump = false;
             else player.jumpDelay = false;
@@ -131,7 +149,7 @@ function playerJump() {
 }
 function drawCoin() {
     if (coinSpawned) {
-        coin.x -= 4;
+        coin.x -= 3;
         context.drawImage(currentCoin, coin.x, coin.y, coin.width, coin.height);
         if (coin.x < -coin.width) {
             coin.x = info.width;
@@ -141,7 +159,7 @@ function drawCoin() {
 }
 function drawObstacle() {
     if (obsSpawned) {
-        obs.x -= 6; //obs move
+        obs.x -= 4; //obs move
         context.drawImage(currentObs, obs.x, obs.y, obs.width, obs.height);
         if (obs.x < -obs.width) {
             obs.x = info.width;
@@ -163,10 +181,12 @@ function pause_resumeGame() {
     if (!isPause) {
         document.getElementById("pauseBtn").style.backgroundImage = "url('images/resume_btn.png')"
         isPause = true;
+        document.getElementById("pauseForm").style.display = "block";
     }
     else {
         document.getElementById("pauseBtn").style.backgroundImage = "url('images/pause_btn.png')"
         isPause = false;
+        document.getElementById("pauseForm").style.display = "none";
     }
 }
 
@@ -240,7 +260,6 @@ function playerBuy(slot) {
         update_BuyBtn(bearSkin);
     }
 }
-
 function buy_equipSkin(skin, slot) {
     if (skin[slot] == 0) { //buy
         skin[slot] = 1;
