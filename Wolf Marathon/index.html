@@ -82,7 +82,20 @@
       </div>
       <div id="playZone">
          <canvas id="playCanvas"></canvas>
-         <div id="pauseBtn" onclick="pause_resumeGame()"></div>
+         <div id="pauseBtn" class="pauseBtn" onclick="pause_resumeGame()"></div>
+         <div id="scoreAndWallet">
+            <p>Scores: <span id="score">0</span></p>
+            <p>Wallet: <span>0</span></p><img src="images/yellowCoin.png" alt="coin" id="divForWallet">
+         </div>
+         <div id="pauseForm">
+            <b style="-webkit-text-stroke: 3px red; color: white">PAUSED</b>
+         </div>
+         <div id="restartForm">
+            <h1>Game Over</h1>
+            <p style="font-size: 18px">Scores: <span>0</span> </p>
+            <button type="button" id="restartBtn" onclick="restartGame()">Restart</button>
+            <button type="button" id="quitBtn" onclick="quitGame()">Quit</button>
+         </div>
       </div>
       <button type="button" id="soundBtn" onclick="toggleMusic()"></button>
       <hr id="footline" style="size:3px" />

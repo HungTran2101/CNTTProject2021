@@ -11,6 +11,7 @@ class wolf {
         this.jumpDistance = 170;
 
         this.isJump = false;
+        this.isMove = false;
         this.jumpDelay = false;
         this.isFall = false;
 
@@ -58,5 +59,8 @@ class wolf {
         }
         this.y = this.preY;
         return true;
+    }
+    move(tmp) {
+        this.x += tmp;
     }
 }
