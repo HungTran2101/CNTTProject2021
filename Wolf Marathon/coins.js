@@ -1,15 +1,21 @@
 class coins {
     constructor(x, y) {
-        this.yYellowCoin = y - 170;
-        this.yBlueCoin = y - 170;
+        this.yYellowCoin = y + 50;
+        this.yBlueCoin = y;
+        this.rYellowCoin = 40;
+        this.rBlueCoin = 30;
+        this.vYellowCoin = 5;
+        this.vBlueCoin = 10;
 
         this.x = x;
         this.y = this.yYellowCoin;
-        this.width = 40;
-        this.height = 45;
+        this.resolution = this.rYellowCoin;
+        this.value = this.vYellowCoin;
 
         this.imgYellowCoin = null;
         this.imgBlueCoin = null;
+        this.loadImageYellowCoin();
+        this.loadImageBlueCoin();
     }
     loadImageYellowCoin() {
         this.imgYellowCoin = new Image;
@@ -18,5 +24,13 @@ class coins {
     loadImageBlueCoin() {
         this.imgBlueCoin = new Image;
         this.imgBlueCoin.src = "images/blueCoin.png";
+    }
+    move(x) {
+        this.x -= 3;
+        if (this.x < -this.resolution) {
+            coin.x = x;
+            return true;
+        }
+        return false;
     }
 }

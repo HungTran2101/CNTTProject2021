@@ -1,14 +1,14 @@
 class wolf {
-    constructor(y) {
-        this.x = 300;
-        this.y = y;
+    constructor(x, y) {
+        this.x = x * 0.3;
+        this.y = y * 0.57;
         this.width = 100;
         this.height = 120;
-        
+
         this.baseG = 0.3
         this.g = this.baseG;
         this.preY = this.y;
-        this.jumpDistance = 170;
+        this.jumpDistance = 160;
 
         this.isJump = false;
         this.isMove = false;
@@ -46,21 +46,21 @@ class wolf {
     }
     jump() {
         if (this.preY - this.y < this.jumpDistance && !this.isFall) {
-            this.y -= 3;
+            this.y -= 4;
             return false;
         }
         else {
             this.isFall = true;
         }
         if (this.preY > this.y && this.isFall) {
-                this.y += this.g;
-                this.g *= 1.05;
+            this.y += this.g;
+            this.g *= 1.07;
             return false;
         }
         this.y = this.preY;
         return true;
     }
-    move(tmp) {
-        this.x += tmp;
+    move(direction) {
+        this.x += direction;
     }
 }

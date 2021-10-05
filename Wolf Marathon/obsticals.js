@@ -1,7 +1,7 @@
 class obsticals {
     constructor(x, y) {
-        this.yBear = y - 30;
-        this.yCactus = y;
+        this.yBear = y * 0.611 - 30;
+        this.yCactus = y * 0.611;
 
         this.x = x;
         this.y = this.yCactus;
@@ -28,5 +28,13 @@ class obsticals {
             case 2: this.imgBear.src = "images/bear2.png"; break;
             case 3: this.imgBear.src = "images/bear3.png"; break;
         }
+    }
+    move(x) {
+        this.x -= 4; //obs move
+        if (this.x < -this.width) {
+            this.x = x;
+            return true;
+        }
+        return false;
     }
 }

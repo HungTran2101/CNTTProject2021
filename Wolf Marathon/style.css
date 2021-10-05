@@ -258,8 +258,9 @@ header input:checked ~ #loginForm {
    width: 300px;
    border: 3px solid black;
    border-radius: 30px;
+   padding: 10px 0;
    background-color: #f7e18a;
-   display: none;
+   display:none;
    z-index: 2;
 }
 #pauseForm {
@@ -276,13 +277,15 @@ header input:checked ~ #loginForm {
    top: 0;
    width: 150px;
    font-size: 20px;
-   right: 340px;
+   right: 400px;
    display: none;
+   font-family: cursive;
+   font-size: 20px;
+   font-weight: 900;
 }
 #divForWallet {
    width: 30px;
    height: 30px;
-   position: absolute;
    top: 68px;
    left: 100px;
 }
@@ -292,16 +295,14 @@ header input:checked ~ #loginForm {
    margin-right: 5px;
    font-size: 18px;
    font-family: cursive;
-   margin-bottom: 10px;
-   background-color: rgb(114, 217, 29);
+   background-color: green;
    border-radius: 15px;
    box-shadow: 3px 3px gray;
 }
 #restartBtn:hover {
    color: black !important;
    text-transform: uppercase;
-   text-decoration: none;
-   background: green;
+   background: rgb(114, 217, 29);;
    display: inline-block;
    border: none;
    transition: all 0.4s ease 0s;
@@ -312,19 +313,16 @@ header input:checked ~ #loginForm {
    margin-left: 5px;
    font-size: 18px;
    font-family: cursive;
-   margin-bottom: 10px;
-   background-color: tomato;
+   background-color: indianred;
    border-radius: 15px;
    box-shadow: 3px 3px gray;
+   transition: all 0.3s ease 0s;
 }
 #quitBtn:hover {
    color: black !important;
    text-transform: uppercase;
-   text-decoration: none;
-   background: indianred;
-   display: inline-block;
+   background: tomato;
    border: none;
-   transition: all 0.4s ease 0s;
 }
 #soundBtn {
    width: 80px;
@@ -344,7 +342,7 @@ header input:checked ~ #loginForm {
 }
 footer {
    text-align: center;
-   color: white;
+   color: rgb(219, 219, 219);
 }
 .btnLog-Sign {
    min-width: 120px;
@@ -462,4 +460,7 @@ footer {
    font-family: cursive;
    font-weight: bold;
    display: none;
+}
+.controlSpanText{
+   color: yellow;
 }

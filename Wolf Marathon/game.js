@@ -8,13 +8,20 @@ var music = document.getElementById("music");
 var buyBtn = document.getElementsByClassName("buyBtn");
 var textBuyBtn = document.getElementsByName("textBuyBtn");
 var buyIcon = document.getElementsByClassName("buyIcon");
-var textWallet = document.getElementById("wallet");
+var storeWallet = document.getElementById("wallet");
+var playWallet = document.getElementById("playWallet");
 var myScores = document.getElementById("score");
-canvas.width = info.width;
-canvas.height = info.height;
+
+canvas.width = innerWidth * 0.65;
+canvas.height = innerHeight * 0.73;
 music.volume = 0.4;
+
+var player; //(info.height * 0.570);
+var obs; //(info.width, info.height * 0.611);
+var coin;
+
 var score = 0;
-var wallet = 700;
+var wallet = 70000;
 var difficulty = 1;
 var playerStatus = 0; //0-run 1-jump 2-die
 var skinPrice = [200, 400, 600];
@@ -24,96 +31,148 @@ var bearSkin = [2, 1, 0];
 var skinTarget = "wolf";
 var currentObs = null;
 var currentCoin = null;
-var player = new wolf(info.height * 0.570);
-var obs = new obsticals(info.width, info.height * 0.611);
-var coin = new coins(info.width, info.height * 0.611);
+var playerMoveDirection = 0; //0 - not moving   10 - move right   -10 - move left
+
 var obsSpawned = false;
 var coinSpawned = false;
 var isPause = false;
 var isMusic = false;
 var isLose = false;
+var isHitCoin = false;
 
 //#region game section
 function loadData() {
-    updateSkin();
+    userInteraction();
 }
-
-function startgame() {
-    document.getElementById("playCanvas").style.display = "block";
-    document.getElementById("pauseBtn").style.display = "block";
-    document.getElementById("Forms").style.display = "none";
-    document.getElementById("scoreAndWallet").style.display = "block";
-    document.addEventListener("keydown", function onPress(event) {
+function userInteraction() {
+    window.addEventListener("resize", () => {
+        canvas.width = innerWidth * 0.65;
+        canvas.height = innerHeight * 0.73;
+    });
+    document.addEventListener("keyup", (event) => {
+        if(!isPause){
+            if (event.key == "ArrowLeft" || event.key == "ArrowRight" || event.key == "d" || event.key == "a") {
+                playerMoveDirection = 0;
+            }
+        }
+    });
+    document.addEventListener("keydown", (event) => {
         if (!isPause) {
-            if (event.key == " " || event.key == "ArrowUp") {
-                event.preventDefault();
+            event.preventDefault();
+            if (event.key == " " || event.key == "ArrowUp" || event.key == "w") {
                 player.isJump = true;
                 if (player.y < player.preY && player.y > (player.preY - player.jumpDistance / 1.5) && player.isFall) {
                     player.jumpDelay = true;
                 }
             }
-            else if (event.key == "ArrowLeft") {
-                event.preventDefault();
-                if (player.x > 50) {
-                    player.move(-18);
+            else if (event.key == "ArrowLeft" || event.key == "a") {
+                if (player.x > 30) {
+                    playerMoveDirection = -2;
                 }
             }
-            else if (event.key == "ArrowRight") {
-                event.preventDefault();
-                if (player.x < info.width - player.width -50) {
-                    player.move(18);
+            else if (event.key == "ArrowRight" || event.key == "d") {
+                if (player.x < canvas.width - player.width - 30) {
+                    playerMoveDirection = 2;
                 }
             }
         }
     });
+}
+function startgame() {
+    document.getElementById("playCanvas").style.display = "block";
+    document.getElementById("pauseBtn").style.display = "block";
+    document.getElementById("Forms").style.display = "none";
+    document.getElementById("scoreAndWallet").style.display = "block";
     init();
 }
 function init() {
+    player = new wolf(canvas.width, canvas.height);
+    obs = new obsticals(canvas.width, canvas.height);
+    coin = new coins(canvas.width, player.preY - player.jumpDistance);
+
     score = 0;
-    wallet = 0;
+    difficulty = 1;
+
     isPause = false;
     player.isJump = false;
+    isLose = false;
+    obsSpawned = false;
+    coinSpawned = false;
+    isHitCoin = false;
+
+    document.getElementById("restartForm").style.display = "none";
+    updateSkin();
     loop();
 }
 function loop() {
-    if(!isLose){
+    if (!isLose) {
         if (!isPause) {
             context.clearRect(0, 0, canvas.width, canvas.height);
             playerJump();
+            playerMove();
             spawnObstacle();
             spawnCoin();
+            checkHitCoin();
             checkLose();
-    
+
             drawCoin();
             drawObstacle();
             drawPlayer();
+            gainScores();
+            increaseDifficulty();
         }
         setTimeout(() => loop(), 10 - difficulty);
     }
+    else {
+        gameOver();
+    }
+}
+function increaseDifficulty() {
+    if(score % 700 == 0 && difficulty < 9){
+        difficulty++;
+    }
+}
+function gameOver() {
+    document.getElementById("restartForm").style.display = "block";
+    document.getElementById("scoreGameOver").textContent = score.toString();
+}
+function checkHitCoin() {
+    if (coin.x <= player.x + player.width && coin.x + coin.resolution >= player.x) { //conflict x-axis
+        if (player.y <= coin.y + coin.resolution) { //conflict y-axis
+            coinSpawned = false;
+            wallet += coin.value;
+        }
+    }
+    playWallet.textContent = wallet.toString();
 }
 function checkLose() {
-    if(obs.x <= player.x + player.width && obs.x + obs.width >= player.x){ //conflict x
-        if(player.y + player.height >= obs.y){
+    if (obs.x <= player.x + player.width && obs.x + obs.width >= player.x) { //conflict x
+        if (player.y + player.height >= obs.y) {
             isLose = true;
             playerStatus = 2;
         }
     }
 }
-function scores() {
+function gainScores() {
     score += 1;
     myScores.textContent = score.toString();
 }
 function spawnCoin() {
     if (!coinSpawned) {
-        let type = Math.round(Math.random() * (1500 + difficulty));
-        if ( type <= 10 ){
+        let type = Math.round(Math.random() * (1000 + difficulty));
+        coin.x = info.width;
+        if (type <= 10) {
             coinSpawned = true;
             if (type <= 7) {
                 currentCoin = coin.imgYellowCoin;
                 coin.y = coin.yYellowCoin;
+                coin.resolution = coin.rYellowCoin;
+                coin.value = coin.vYellowCoin;
             } else {
                 currentCoin = coin.imgBlueCoin;
                 coin.y = coin.yBlueCoin;
+                coin.resolution = coin.rBlueCoin;
+                coin.value = coin.vBlueCoin;
             }
         }
     }
@@ -132,9 +191,12 @@ function spawnObstacle() {
         }
     }
 }
+function playerMove(){
+    player.move(playerMoveDirection);
+}
 function playerJump() {
     if (player.isJump) {
-        if (player.jump()) {
+        if (player.jump()) { //jump animation done
             if (!player.jumpDelay)
                 player.isJump = false;
             else player.jumpDelay = false;
@@ -149,22 +211,19 @@ function playerJump() {
 }
 function drawCoin() {
     if (coinSpawned) {
-        coin.x -= 3;
-        context.drawImage(currentCoin, coin.x, coin.y, coin.width, coin.height);
-        if (coin.x < -coin.width) {
-            coin.x = info.width;
+        if (coin.move(info.width)) { //coin go out of zone
             coinSpawned = false;
+            isHitCoin = false;
         }
+        context.drawImage(currentCoin, coin.x, coin.y, coin.resolution, coin.resolution);
     }
 }
 function drawObstacle() {
     if (obsSpawned) {
-        obs.x -= 4; //obs move
-        context.drawImage(currentObs, obs.x, obs.y, obs.width, obs.height);
-        if (obs.x < -obs.width) {
-            obs.x = info.width;
+        if (obs.move(info.width)) { //obs go out of zone
             obsSpawned = false;
         }
+        context.drawImage(currentObs, obs.x, obs.y, obs.width, obs.height);
     }
 }
 function drawPlayer() {
@@ -173,6 +232,13 @@ function drawPlayer() {
         case 1: context.drawImage(player.img_jump, player.x, player.y, player.width, player.height); break;
         case 2: context.drawImage(player.img_die, player.x, player.y, player.width, player.height); break;
     }
+}
+function quitGame() {
+    document.getElementById("playCanvas").style.display = "none";
+    document.getElementById("pauseBtn").style.display = "none";
+    document.getElementById("Forms").style.display = "block";
+    document.getElementById("scoreAndWallet").style.display = "none";
+    document.getElementById("restartForm").style.display = "none";
 }
 //#endregion
 
@@ -238,7 +304,7 @@ function cancelLogin() {
 
 function storeBtn() {
     document.getElementById("storeBtn").checked = true;
-    textWallet.textContent = wallet.toString();
+    storeWallet.textContent = wallet.toString();
     selectSkin(0);
 }
 
@@ -265,9 +331,9 @@ function buy_equipSkin(skin, slot) {
         skin[slot] = 1;
         bill(slot);
     }
-    else{ //Dùng để Equip -> Equipped
-        for(let i = 0;i<skin.length;i++){
-            if(skin[i] == 2){
+    else { //Dùng để Equip -> Equipped
+        for (let i = 0; i < skin.length; i++) {
+            if (skin[i] == 2) {
                 skin[i] = 1;
             }
         }
@@ -297,13 +363,11 @@ function updateSkin() {
             break;
         }
     }
-    coin.loadImageYellowCoin();
-    coin.loadImageBlueCoin();
 }
 
 function bill(slot) {
     wallet -= skinPrice[slot];
-    textWallet.textContent = wallet.toString();
+    storeWallet.textContent = wallet.toString();
 }
 
 function selectSkin(option) {

@@ -85,15 +85,18 @@
          <div id="pauseBtn" class="pauseBtn" onclick="pause_resumeGame()"></div>
          <div id="scoreAndWallet">
             <p>Scores: <span id="score">0</span></p>
-            <p>Wallet: <span>0</span></p><img src="images/yellowCoin.png" alt="coin" id="divForWallet">
+            <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+               Wallet: <span id="playWallet" style="margin: 0 5px;">0</span><img src="images/yellowCoin.png" alt="coin" id="divForWallet">
+            </div>
          </div>
          <div id="pauseForm">
             <b style="-webkit-text-stroke: 3px red; color: white">PAUSED</b>
          </div>
+         <button class="noDisplay" type="checkbox" id="restartFormCheckbox"></button>
          <div id="restartForm">
             <h1>Game Over</h1>
-            <p style="font-size: 18px">Scores: <span>0</span> </p>
-            <button type="button" id="restartBtn" onclick="restartGame()">Restart</button>
+            <p style="font-size: 18px">Scores: <span id="scoreGameOver">0</span> </p>
+            <button type="button" id="restartBtn" onclick="init()">Restart</button>
             <button type="button" id="quitBtn" onclick="quitGame()">Quit</button>
          </div>
       </div>
@@ -102,7 +105,7 @@
    </main>
    <footer>
       <h3><span style="color:cyan">HOW TO PLAY?</span></h3>
-      <h3>Press space bar or arrow up to jump. <br> Avoid obstacles and collect coins for fabulous skins in store.</h3>
+      <h3>Use <span class="controlSpanText">AD</span> or <span class="controlSpanText">Left/Right</span> key to move along. <br> Use <span class="controlSpanText">W</span> or <span class="controlSpanText">Spacebar</span> or <span class="controlSpanText">Up</span> key to jump. <br> Avoid obstacles and collect coins for fabulous skins in store.</h3>
       <h4>
          <span style="color:tomato">Any bug found please contact</span> 
          <a style="color:greenyellow;" href = "mailto:hung9cong@gmail.com?subject = Feedback&body = Message">here</a>
