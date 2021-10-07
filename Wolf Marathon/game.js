@@ -4,17 +4,25 @@ var canvas = document.getElementById("playCanvas");
 var context = canvas.getContext("2d");
 var menu = document.getElementById("menu");
 var info = menu.getBoundingClientRect();
-var music = document.getElementById("music");
 var buyBtn = document.getElementsByClassName("buyBtn");
 var textBuyBtn = document.getElementsByName("textBuyBtn");
 var buyIcon = document.getElementsByClassName("buyIcon");
 var storeWallet = document.getElementById("wallet");
 var playWallet = document.getElementById("playWallet");
 var myScores = document.getElementById("score");
+var music = document.getElementById("music");
+var soundJump = document.getElementById("soundJump");
+var soundCoin = document.getElementById("soundCoin");
+var soundLose = document.getElementById("soundLose");
+var soundSelect = document.getElementById("soundSelect");
 
 canvas.width = innerWidth * 0.65;
 canvas.height = innerHeight * 0.73;
-music.volume = 0.4;
+music.volume = 0.7;
+soundCoin.volume = 0.2;
+soundJump.volume = 0.2;
+soundLose.volume = 0.5;
+soundSelect.volume = 0.1;
 
 var player; //(info.height * 0.570);
 var obs; //(info.width, info.height * 0.611);
@@ -49,31 +57,42 @@ function userInteraction() {
         canvas.width = innerWidth * 0.65;
         canvas.height = innerHeight * 0.73;
     });
+    document.addEventListener("click", () => {
+        soundSelect.play();
+    })
     document.addEventListener("keyup", (event) => {
-        if(!isPause){
+        if (!isPause && !isLose) {
             if (event.key == "ArrowLeft" || event.key == "ArrowRight" || event.key == "d" || event.key == "a") {
                 playerMoveDirection = 0;
             }
         }
     });
     document.addEventListener("keydown", (event) => {
-        if (!isPause) {
-            event.preventDefault();
+        event.preventDefault();
+        if (!isPause && !isLose) {
             if (event.key == " " || event.key == "ArrowUp" || event.key == "w") {
+                soundJump.play();
                 player.isJump = true;
-                if (player.y < player.preY && player.y > (player.preY - player.jumpDistance / 1.5) && player.isFall) {
+                if (player.y < player.preY && player.y > (player.preY - player.jumpDistance / 1.5) /*&& player.isFall*/) {
                     player.jumpDelay = true;
                 }
             }
             else if (event.key == "ArrowLeft" || event.key == "a") {
-                if (player.x > 30) {
+                if (player.x > 0) {
                     playerMoveDirection = -2;
+                }
+                else {
+                    playerMoveDirection = 0;
                 }
             }
             else if (event.key == "ArrowRight" || event.key == "d") {
-                if (player.x < canvas.width - player.width - 30) {
+                if (player.x < canvas.width) {
                     playerMoveDirection = 2;
                 }
+                else {
+                    playerMoveDirection = 0;
+                }
+                console.log(player.x);
             }
         }
     });
@@ -128,19 +147,21 @@ function loop() {
     }
 }
 function increaseDifficulty() {
-    if(score % 700 == 0 && difficulty < 9){
+    if (score % 700 == 0 && difficulty < 9) {
         difficulty++;
     }
 }
 function gameOver() {
     document.getElementById("restartForm").style.display = "block";
     document.getElementById("scoreGameOver").textContent = score.toString();
+    soundLose.play();
 }
 function checkHitCoin() {
     if (coin.x <= player.x + player.width && coin.x + coin.resolution >= player.x) { //conflict x-axis
         if (player.y <= coin.y + coin.resolution) { //conflict y-axis
             coinSpawned = false;
             wallet += coin.value;
+            soundCoin.play();
         }
     }
     playWallet.textContent = wallet.toString();
@@ -191,27 +212,40 @@ function spawnObstacle() {
         }
     }
 }
-function playerMove(){
+function playerMove() {
     player.move(playerMoveDirection);
 }
 function playerJump() {
     if (player.isJump) {
-        if (player.jump()) { //jump animation done
+        if (player.jump()) {
             if (!player.jumpDelay)
                 player.isJump = false;
-            else player.jumpDelay = false;
-            player.g = player.baseG;
-            player.isFall = false;
+            else
+                player.jumpDelay = false;
         }
         playerStatus = 1;
     }
     else {
         playerStatus = 0;
     }
+
+    // if (player.isJump) {
+    //     if (player.jump()) { //jump animation done
+    //         if (!player.jumpDelay)
+    //             player.isJump = false;
+    //         else player.jumpDelay = false;
+    //         player.g = player.baseG;
+    //         player.isFall = false;
+    //     }
+    //     playerStatus = 1;
+    // }
+    // else {
+    //     playerStatus = 0;
+    // }
 }
 function drawCoin() {
     if (coinSpawned) {
-        if (coin.move(info.width)) { //coin go out of zone
+        if (coin.move(canvas.width)) { //coin go out of zone
             coinSpawned = false;
             isHitCoin = false;
         }
@@ -220,7 +254,7 @@ function drawCoin() {
 }
 function drawObstacle() {
     if (obsSpawned) {
-        if (obs.move(info.width)) { //obs go out of zone
+        if (obs.move(canvas.width)) { //obs go out of zone
             obsSpawned = false;
         }
         context.drawImage(currentObs, obs.x, obs.y, obs.width, obs.height);
@@ -244,15 +278,17 @@ function quitGame() {
 
 //#region Interface section
 function pause_resumeGame() {
-    if (!isPause) {
-        document.getElementById("pauseBtn").style.backgroundImage = "url('images/resume_btn.png')"
-        isPause = true;
-        document.getElementById("pauseForm").style.display = "block";
-    }
-    else {
-        document.getElementById("pauseBtn").style.backgroundImage = "url('images/pause_btn.png')"
-        isPause = false;
-        document.getElementById("pauseForm").style.display = "none";
+    if (!isLose) {
+        if (!isPause) {
+            document.getElementById("pauseBtn").style.backgroundImage = "url('images/resume_btn.png')"
+            isPause = true;
+            document.getElementById("pauseForm").style.display = "block";
+        }
+        else {
+            document.getElementById("pauseBtn").style.backgroundImage = "url('images/pause_btn.png')"
+            isPause = false;
+            document.getElementById("pauseForm").style.display = "none";
+        }
     }
 }
 

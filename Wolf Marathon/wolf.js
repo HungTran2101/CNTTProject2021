@@ -5,10 +5,11 @@ class wolf {
         this.width = 100;
         this.height = 120;
 
-        this.baseG = 0.3
+        this.baseG = -6;
+        this.speedG = 0.11;
         this.g = this.baseG;
         this.preY = this.y;
-        this.jumpDistance = 160;
+        this.jumpDistance = 170;
 
         this.isJump = false;
         this.isMove = false;
@@ -45,20 +46,29 @@ class wolf {
         }
     }
     jump() {
-        if (this.preY - this.y < this.jumpDistance && !this.isFall) {
-            this.y -= 4;
-            return false;
+        this.y += this.g;
+        this.g += this.speedG;
+        if(this.y > this.preY){
+            this.y = this.preY;
+            this.g = this.baseG;
+            return true;
         }
-        else {
-            this.isFall = true;
-        }
-        if (this.preY > this.y && this.isFall) {
-            this.y += this.g;
-            this.g *= 1.07;
-            return false;
-        }
-        this.y = this.preY;
-        return true;
+        return false;
+
+        // if (this.preY - this.y < this.jumpDistance && !this.isFall) {
+        //     this.y -= 4;
+        //     return false;
+        // }
+        // else {
+        //     this.isFall = true;
+        // }
+        // if (this.preY > this.y && this.isFall) {
+        //     this.y += this.g;
+        //     this.g *= 1.07;
+        //     return false;
+        // }
+        // this.y = this.preY;
+        // return true;
     }
     move(direction) {
         this.x += direction;
