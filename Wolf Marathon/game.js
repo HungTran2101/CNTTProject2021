@@ -84,7 +84,7 @@ function loop() {
             spawnObstacle();
             spawnCoin();
             checkHitCoin();
-            //checkLose();
+            checkLose();
 
             //drawBackground();
             drawCoin();
