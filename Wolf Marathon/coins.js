@@ -25,10 +25,9 @@ class coins {
         this.imgBlueCoin = new Image;
         this.imgBlueCoin.src = "images/blueCoin.png";
     }
-    move(x) {
+    move() {
         this.x -= 3;
         if (this.x < -this.resolution) {
-            coin.x = x;
             return true;
         }
         return false;

@@ -29,10 +29,9 @@ class obsticals {
             case 3: this.imgBear.src = "images/bear3.png"; break;
         }
     }
-    move(x) {
+    move() {
         this.x -= 4; //obs move
         if (this.x < -this.width) {
-            this.x = x;
             return true;
         }
         return false;
