@@ -20,8 +20,8 @@ function userInteraction() {
         }
     });
     document.addEventListener("keydown", (event) => {
-        event.preventDefault();
         if (!isPause && !isLose) {
+            event.preventDefault();
             if (event.key == " " || event.key == "ArrowUp" || event.key == "w") {
                 soundJump.play();
                 player.isJump = true;

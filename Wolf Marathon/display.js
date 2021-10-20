@@ -27,7 +27,9 @@ function toggleMusic() {
 }
 
 function loginGame() {
-    var login = document.getElementById("loginBtn");
+    document.getElementById("passInput").value = "";
+    document.getElementById("confPassInput").value = "";
+    let login = document.getElementById("loginBtn");
     if (login.checked) {
         document.getElementById("main").style.opacity = 1;
         login.checked = false;
@@ -41,7 +43,8 @@ function loginGame() {
 }
 
 function signUpGame() {
-    var signup = document.getElementById("signUpBtn");
+    document.getElementById("passInput").value = "";
+    let signup = document.getElementById("signUpBtn");
     if (signup.checked) {
         document.getElementById("main").style.opacity = 1;
         signup.checked = false;
@@ -53,13 +56,53 @@ function signUpGame() {
         signup.checked = true;
     }
 }
-
+function validateInput() {
+    let login = document.getElementById("loginBtn");
+    username = document.getElementById("userInput").value;
+    password = document.getElementById("passInput").value;
+    confPass = document.getElementById("confPassInput").value;
+    if(username == ""){
+        alert("Please enter your username");
+        return false;
+    }
+    else if(password == ""){
+        alert("Please enter your password");
+        return false;
+    }
+    else if(!login.checked){
+        if(confPass == ""){
+            alert("Please confirm your password");
+            return false;
+        }
+        else if(password != confPass){
+            alert("Confirm password does not match");
+            return false;
+        }
+    }
+    return true;
+}
+function login(){
+    if(validateInput())
+    {
+        document.querySelector("#menu div").style.display= "block";
+        document.querySelector("#menu h3").style.display = "none";
+        document.getElementById("playerInfo").style.display = "flex";
+        document.getElementById("navigation").style.display = "none";
+        document.querySelector(".welcome").innerHTML = "Welcome, " + username;
+        cancelLogin();
+    }
+}
 function cancelLogin() {
     document.getElementById("loginBtn").checked = false;
     document.getElementById("signUpBtn").checked = false;
     document.getElementById("main").style.opacity = 1;
 }
-
+function logout(){
+    document.querySelector("#menu div").style.display= "none";
+    document.querySelector("#menu h3").style.display = "block";
+    document.getElementById("playerInfo").style.display = "none";
+    document.getElementById("navigation").style.display = "flex";
+}
 function storeBtn() {
     document.getElementById("storeBtn").checked = true;
     storeWallet.textContent = wallet.toString();

@@ -15,10 +15,20 @@
 <body onload="loadData()">
    <header>
       <input class="noDisplay" type="checkbox" id="loginBtn">
-      <button type="button" class="btnLog-Sign" onclick="loginGame()">Login</button>
-      <br>
       <input class="noDisplay" type="checkbox" id="signUpBtn">
-      <button type="button" class="btnLog-Sign" onclick="signUpGame()">Sign up</button>
+      <div id="navigation">
+         <button type="button" class="btnLog-Sign" onclick="loginGame()">Login</button>
+         <button type="button" class="btnLog-Sign" onclick="signUpGame()">Sign up</button>
+      </div>
+      <div id="playerInfo">
+         <span class="welcome">Welcome</span>
+         <div class="verticalLine"></div>
+         <div>
+            <span class="logout-changePass" onclick="logout()">Logout</span>
+            <br>
+            <span class="logout-changePass">Change Password</span>
+         </div>
+      </div>
       <div id="loginForm">
          <label id="lblUser" for="userInput">Username<br><input class="input" type="text" id="userInput"
                placeholder="Your name" /></label></br>
@@ -38,9 +48,11 @@
          <input class="noDisplay" type="checkbox" id="storeBtn">
          <div id="menu">
             <h1 id="gameTitle">Wolf Marathon</h1>
-            <h3>You must login first to play!</h3>
-            <button type="button" onclick="startgame()">PLAY</button>
-            <button type="button" onclick="storeBtn()">STORE</button>
+            <h3>You need to login/sign up to play!</h3>
+            <div style="display: none;">
+               <button type="button" onclick="startgame()">PLAY</button>
+               <button type="button" onclick="storeBtn()">STORE</button>
+            </div>
          </div>
          <div id="store">
             <div id="walletSection">
@@ -50,7 +62,7 @@
                   <span id="wallet">0</span>
                </div>
             </div>
-            <div id="navigation">
+            <div id="navigationStore">
                <a href="#" class="action-button green active" id="btnWolf" onclick="selectSkin(0)">Wolf</a>
                <a href="#" class="action-button yellow" id="btnCactus" onclick="selectSkin(1)">Cactus</a>
                <a href="#" class="action-button red" id="btnBear" onclick="selectSkin(2)">Bear</a>
@@ -104,7 +116,7 @@
    </main>
    <footer>
       <h3><span style="color:cyan">HOW TO PLAY?</span></h3>
-      <h3>Use <span class="controlSpanText">AD</span> or <span class="controlSpanText">Left/Right</span> key to move along. <br> Use <span class="controlSpanText">W</span> or <span class="controlSpanText">Spacebar</span> or <span class="controlSpanText">Up</span> key to jump. <br> Avoid obstacles and collect coins for fabulous skins in store.</h3>
+      <h3>Use <span class="controlSpanText">AD</span> or <span class="controlSpanText">Left/Right</span> key to move along. <br> Use <span class="controlSpanText">W/Spacebar/Up</span> key to jump. <br> Avoid obstacles and collect coins for fabulous skins in store.</h3>
       <h4>
          <span style="color:tomato">Any bug found please contact</span> 
          <a style="color:greenyellow;" href = "mailto:hung9cong@gmail.com?subject = Feedback&body = Message">here</a>

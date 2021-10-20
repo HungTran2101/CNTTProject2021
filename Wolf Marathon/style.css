@@ -16,10 +16,20 @@ main hr {
 }
 header {
    text-align: center;
+   height: 110px;
 }
 header input:checked ~ #loginForm {
    border: 5px solid rgb(143, 142, 142);
    top: 300px;
+}
+#playerInfo {
+   display: none;
+   justify-content: space-around;
+   align-items: center;
+   margin: 0 auto;
+   padding: 40px 0;
+   min-width: 244px;
+   width: 50vw;
 }
 #loginBtn:checked ~ #loginForm {
    height: 242px;
@@ -27,17 +37,22 @@ header input:checked ~ #loginForm {
 #signUpBtn:checked ~ #loginForm {
    height: 330px;
 }
-#loginBtn:checked + button {
+#loginBtn:checked ~ #navigation button:nth-child(1) {
    width: 12vw;
    background-color: rgb(35, 250, 100);
    color: black;
    border: 3px solid black;
 }
-#signUpBtn:checked + button {
+#signUpBtn:checked ~ #navigation button:nth-child(2) {
    width: 12vw;
    background-color: rgb(35, 250, 100);
    color: black;
    border: 3px solid black;
+}
+#navigation {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 #loginForm {
    position: absolute;
@@ -103,20 +118,7 @@ header input:checked ~ #loginForm {
    height: 84px;
    opacity: 1;
 }
-.input {
-   outline: 0;
-   min-width: 160px;
-   width: 12vw;
-   height: 4vh;
-   border: 3px solid cyan;
-   border-radius: 50px;
-   margin-bottom: 10px;
-   text-align: center;
-   font-family: cursive;
-   font-size: 20px;
-   color: wheat;
-   background-color: transparent;
-}
+
 #headline {
    margin-bottom: 20px;
    margin-top: 25px;
@@ -131,14 +133,14 @@ header input:checked ~ #loginForm {
    overflow: hidden;
 }
 #menu {
-   font-weight: bold;
-   position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
    width: 65vw;
    height: 73vh;
    margin: auto;
    background-image: url("images/background.png");
    background-size: 65vw 73vh;
-   text-align: center;
    transition: height 700ms;
 }
 #menu button {
@@ -152,24 +154,26 @@ header input:checked ~ #loginForm {
    font-size: 20px;
    width: 7vw;
    height: 5vh;
-   transition: 200ms;
+   transition: all 200ms;
 }
 #menu button:hover {
-   width: 8vw;
    background-color: rgb(0, 255, 0);
-   transition: 200ms;
 }
 #gameTitle {
    color: rgb(248, 70, 39);
    font-size: 90px;
+   font-weight: bold;
    margin-top: 0;
    margin-bottom: 40px;
    padding-top: 150px;
-   text-align: center;
+   text-shadow: 0px 5px 5px black;
    -webkit-text-stroke: 3px black;
 }
 #menu h3 {
-   display: none;
+   color: rgb(123, 255, 0);
+   font-size: 30px;
+   text-shadow: 0px 5px 5px black;
+   -webkit-text-stroke: 2px rgb(4, 51, 0);
 }
 #store {
    font-weight: bold;
@@ -203,7 +207,7 @@ header input:checked ~ #loginForm {
    height: 32px;
    margin-right: 10px;
 }
-#navigation {
+#navigationStore {
    margin-top: 30px;
    display: flex;
    justify-content: space-around;
@@ -213,7 +217,7 @@ header input:checked ~ #loginForm {
    flex-direction: row;
    justify-content: space-around;
 }
-#buy-section{
+#buy-section {
    display: flex;
    justify-content: space-around;
    margin-top: 10px;
@@ -260,7 +264,7 @@ header input:checked ~ #loginForm {
    border-radius: 30px;
    padding: 10px 0;
    background-color: #f7e18a;
-   display:none;
+   display: none;
    z-index: 2;
 }
 #pauseForm {
@@ -302,7 +306,7 @@ header input:checked ~ #loginForm {
 #restartBtn:hover {
    color: black !important;
    text-transform: uppercase;
-   background: rgb(114, 217, 29);;
+   background: rgb(114, 217, 29);
    display: inline-block;
    border: none;
    transition: all 0.4s ease 0s;
@@ -343,6 +347,57 @@ header input:checked ~ #loginForm {
 footer {
    text-align: center;
    color: rgb(219, 219, 219);
+}
+.welcome {
+   color: #FFAE00;
+   font-size: x-large;
+   transition: all 0.2s;
+}
+.welcome:hover{
+   cursor:default;
+   text-shadow:
+    0 0 7px #c48600,
+    0 0 10px #c48600,
+    0 0 21px #c48600,
+    0 0 42px white,
+    0 0 82px white;
+}
+.logout-changePass {
+   color: rgb(0, 175, 175);
+   font-style: italic;
+   font-size: large;
+   text-decoration: underline;
+   transition: all 0.5s;
+}
+.logout-changePass:hover {
+   cursor: pointer;
+   color: cyan;
+   text-shadow:
+    0 0 7px cyan,
+    0 0 10px cyan,
+    0 0 21px cyan,
+    0 0 42px white,
+    0 0 82px white;
+}
+.verticalLine {
+   border: 2px solid orange;
+   border-radius: 100%;
+   height: 50px;
+   margin: 0 20px;
+}
+.input {
+   outline: 0;
+   min-width: 160px;
+   width: 12vw;
+   height: 4vh;
+   border: 3px solid cyan;
+   border-radius: 50px;
+   margin-bottom: 10px;
+   text-align: center;
+   font-family: cursive;
+   font-size: 20px;
+   color: wheat;
+   background-color: transparent;
 }
 .btnLog-Sign {
    min-width: 120px;
@@ -411,9 +466,9 @@ footer {
    left: 4vw;
    top: 10vh;
 }
-.buyBtn{
-   display:flex;
-   justify-content:space-evenly;
+.buyBtn {
+   display: flex;
+   justify-content: space-evenly;
    align-items: center;
    width: 130px;
    height: 45px;
@@ -423,29 +478,29 @@ footer {
    font-family: cursive;
    font-weight: bold;
    cursor: pointer;
-   transition:300ms;
+   transition: 300ms;
    border: 2px solid black;
 }
-.buyBtn:hover{
+.buyBtn:hover {
    background-color: rgb(70, 255, 70);
 }
-.poorBtn{
+.poorBtn {
    pointer-events: none;
    background-color: tomato;
 }
-.equipBtn{
-   background-color:cyan;
+.equipBtn {
+   background-color: cyan;
 }
-.equipBtn:hover{
-   background-color:rgb(0, 223, 223);
+.equipBtn:hover {
+   background-color: rgb(0, 223, 223);
 }
-.equippedBtn{
+.equippedBtn {
    pointer-events: none;
-   background-color:orange;
-   filter:brightness(80%);
+   background-color: orange;
+   filter: brightness(80%);
 }
-.buyIcon{
-   width:32px;
+.buyIcon {
+   width: 32px;
    height: 32px;
 }
 .pauseBtn {
@@ -461,6 +516,6 @@ footer {
    font-weight: bold;
    display: none;
 }
-.controlSpanText{
+.controlSpanText {
    color: yellow;
 }
