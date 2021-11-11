@@ -1,36 +1,29 @@
-// Import
 const express = require('express');
+var exphbs  = require('express-handlebars');
+
 const app = express();
-// const bodyParser = require('body-parser')
-// const cors = require('cors')
-const port = 3000;
 
-// const mysql = require('mysql2');
-// const con = mysql.createConnection({
-//     host: "localhost",
-//     port: "3306",
-//     user: "root",
-//     password: "root123",
-//     database: "doan_cntt"
-// });
-// module.exports = con;
+app.use(express.urlencoded({
+    extended: true
+}));
 
+app.engine('hbs', exphbs({
+    layoutsDir: 'views/_layouts',
+    defaultLayout: 'main.hbs',
+    partialsDir: 'views/_partials',
+    extname: '.hbs'
+}));
 
-// Static Files
+app.set('view engine', 'hbs');
+
 app.use(express.static('public'));
 
-//connect to server
-// app.use(bodyParser.json() );       // to support JSON-encoded bodies
-
-// app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-//     extended: true})); 
-// app.use(cors());
-
-
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/views/index.html');
+    res.render('home');
 })
 
-// Listenning
-app.listen(port, () => console.info(`listening on http://localhost:${port}`));
+const routeAccount = require('../Wolf Marathon/routes/_account.route');
+app.use('/login', routeAccount);
 
+const PORT = 3000;
+app.listen(PORT, () => console.info(`listening on http://localhost:${PORT}`));
