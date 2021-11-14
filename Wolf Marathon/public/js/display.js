@@ -26,7 +26,7 @@ function toggleMusic() {
     }
 }
 
-function loginOption() {
+function loginOption(message) {
     document.getElementById("passInput").value = "";
     document.getElementById("confPassInput").value = "";
     let login = document.getElementById("loginBtn");
@@ -38,11 +38,13 @@ function loginOption() {
         document.getElementById("signUpBtn").checked = false;
         document.getElementById("chbxConfPass").checked = false;
         document.getElementById("signInBtn").innerHTML = "Sign in";
+        document.getElementById("formType").value = "signin";
+        document.getElementById("alert").innerHTML = message;
         login.checked = true;
     }
 }
 
-function signUpOption() {
+function signUpOption(message) {
     document.getElementById("passInput").value = "";
     let signup = document.getElementById("signUpBtn");
     if (signup.checked) {
@@ -53,7 +55,45 @@ function signUpOption() {
         document.getElementById("chbxConfPass").checked = true;
         document.getElementById("loginBtn").checked = false;
         document.getElementById("signInBtn").innerHTML = "Sign up";
+        document.getElementById("formType").value = "signup";
+        document.getElementById("alert").innerHTML = message;
         signup.checked = true;
+    }
+}
+function validateInput(login, username, password, confPass) {
+    let alertText = document.getElementById("alert");
+    if (username == "") {
+        alertText.innerHTML = "Please enter your username";
+        return false;
+    }
+    else if (password == "") {
+        alertText.innerHTML = "Please enter your password";
+        return false;
+    }
+    else if (!login.checked) {
+        if (confPass == "") {
+            alertText.innerHTML = "Please confirm your password";
+            return false;
+        }
+        else if (password != confPass) {
+            alertText.innerHTML = "Confirm password does not match";
+            return false;
+        }
+    }
+    return true;
+}
+function login() {
+    let login = document.getElementById("loginBtn");
+    let username = document.getElementById("userInput").value;
+    let password = document.getElementById("passInput").value;
+    let confPass = document.getElementById("confPassInput").value;
+    if (validateInput(login, username, password, confPass)) {
+        document.getElementById("loginForm").submit();
+        // document.querySelector("#menu div").style.display = "block";
+        // document.querySelector("#menu h3").style.display = "none";
+        // document.getElementById("playerInfo").style.display = "flex";
+        // document.getElementById("navigation").style.display = "none";
+        // document.querySelector(".welcome").innerHTML = "Welcome, " + username;
     }
 }
 function cancelLogin() {
@@ -61,8 +101,30 @@ function cancelLogin() {
     document.getElementById("signUpBtn").checked = false;
     document.getElementById("main").style.opacity = 1;
 }
-function logout(){
-    document.querySelector("#menu div").style.display= "none";
+function loadData(userdata) {
+    userID = Number(userdata.id);
+    userName = userdata.username;
+    highscore = Number(userdata.highscore);
+    wallet = Number(userdata.money);
+    for (let i = 0; i < 3; i++) {
+        wolfSkin[i] = Number(userdata.wolf[i]);
+        cactusSkin[i] = Number(userdata.cactus[i]);
+        bearSkin[i] = Number(userdata.bear[i]);
+    }
+}
+function loginSuccess(userdata) {
+    loadData(userdata);
+    document.querySelector("#menu div").style.display = "block";
+    document.querySelector("#menu h3").style.display = "none";
+    document.getElementById("playerInfo").style.display = "flex";
+    document.getElementById("navigation").style.display = "none";
+    document.querySelector(".welcome").innerHTML = "Welcome, " + userdata.username;
+}
+function loginFailed() {
+
+}
+function logout() {
+    document.querySelector("#menu div").style.display = "none";
     document.querySelector("#menu h3").style.display = "block";
     document.getElementById("playerInfo").style.display = "none";
     document.getElementById("navigation").style.display = "flex";
@@ -113,6 +175,7 @@ function updateSkin() {
             player.loadImg(i + 1);
             break;
         }
+        player.loadImg(0);
     }
 
     for (let i = 0; i < bearSkin.length; i++) {
@@ -120,6 +183,7 @@ function updateSkin() {
             obs.loadImageBear(i + 1);
             break;
         }
+        obs.loadImageBear(0);
     }
 
     for (let i = 0; i < cactusSkin.length; i++) {
@@ -127,6 +191,7 @@ function updateSkin() {
             obs.loadImageCactus(i + 1);
             break;
         }
+        obs.loadImageCactus(0);
     }
 }
 

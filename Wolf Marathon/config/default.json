@@ -3,11 +3,8 @@
         "host": "localhost",
         "port": 3306,
         "user": "root",
-        "password": "root",
+        "password": "root123",
         "database": "doan_cntt",
         "connectionLimit": 50
-    },
-    "pagination": {
-        "limit": 6
     }
 }

@@ -32,10 +32,10 @@ header input:checked ~ #loginForm {
    width: 50vw;
 }
 #loginBtn:checked ~ #loginForm {
-   height: 242px;
+   height: 247px;
 }
 #signUpBtn:checked ~ #loginForm {
-   height: 330px;
+   height: 335px;
 }
 #loginBtn:checked ~ #navigation button:nth-child(1) {
    width: 12vw;
@@ -78,18 +78,19 @@ header input:checked ~ #loginForm {
    font-weight: bold;
    font-size: 20px;
    padding-bottom: 0;
-   margin-top: 0;
    cursor: pointer;
    color: black;
    border: solid 2px rgb(192, 192, 192);
    border-radius: 15px;
 }
 #signInBtn {
+   margin-top: 5px;
    margin-right: 8px;
    background-color: rgb(50, 145, 37);
    transition: background-color 300ms;
 }
 #cancelBtn {
+   margin-top: 5px;
    margin-left: 8px;
    background-color: rgb(167, 63, 44);
    transition: background-color 300ms;
@@ -518,4 +519,7 @@ footer {
 }
 .controlSpanText {
    color: yellow;
+}
+.alert {
+   color: rgb(233, 73, 73);
 }

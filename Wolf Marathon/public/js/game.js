@@ -1,88 +1,5 @@
 //DoAnCNTT-2021
 
-//const db = require('./db');
-// db.connect(function(err) {
-//     if (err) throw err;
-//     var sql = "SELECT * FROM user_info";
-//     db.query(sql, function(err, results) {
-//         if (err) throw err;
-//         console.log(results);
-//     })
-// });
-// var person1;
-// requirejs(["db"], function(db) {
-//     //This function is called when scripts/helper/util.js is loaded.
-//     //If util.js calls define(), then this function is not fired until
-//     //util's dependencies have loaded, and the util argument will hold
-//     //the module value for "helper/util".
-//     person1 = db;
-// });
-
-// person1.getdata(function(rows) {
-//     // use rows here
-//     console.log(rows);
-// });
-
-//#region game section
-// function loadData() {
-//     var sql = "SELECT * FROM user_info";
-//     doQuery(sql);
-// }
-// function doQuery(sql){
-//     db.query(sql, function(err, results) {
-//         if (err){
-//             throw err;
-//         }
-//         console.log(results);
-//     })
-//     db.end(function (error) {
-//         if (!!error) {
-//             console.log(error);
-//         }
-//         else {
-//             console.log('Closed!:(');
-//         }
-//     });
-//     return true;
-// }
-function validateInput(login, username, password, confPass) {
-    
-    if(username == ""){
-        alert("Please enter your username");
-        return false;
-    }
-    else if(password == ""){
-        alert("Please enter your password");
-        return false;
-    }
-    else if(!login.checked){
-        if(confPass == ""){
-            alert("Please confirm your password");
-            return false;
-        }
-        else if(password != confPass){
-            alert("Confirm password does not match");
-            return false;
-        }
-    }
-    return true;
-}
-function login(){
-    let login = document.getElementById("loginBtn");
-    let username = document.getElementById("userInput").value;
-    let password = document.getElementById("passInput").value;
-    let confPass = document.getElementById("confPassInput").value;
-    if(validateInput(login, username, password, confPass))
-    {
-        //loadData();
-        document.querySelector("#menu div").style.display= "block";
-        document.querySelector("#menu h3").style.display = "none";
-        document.getElementById("playerInfo").style.display = "flex";
-        document.getElementById("navigation").style.display = "none";
-        document.querySelector(".welcome").innerHTML = "Welcome, " + username;
-        cancelLogin();
-    }
-}
 function userInteraction() {
     window.addEventListener("resize", () => {
         canvas.width = innerWidth * 0.65;
@@ -109,20 +26,10 @@ function userInteraction() {
                 }
             }
             else if (event.key == "ArrowLeft" || event.key == "a") {
-                if (player.x > 0) {
-                    playerMoveDirection = -2;
-                }
-                else {
-                    playerMoveDirection = 0;
-                }
+                playerMoveDirection = -2;
             }
             else if (event.key == "ArrowRight" || event.key == "d") {
-                if (player.x + player.width < canvas.width) {
-                    playerMoveDirection = 2;
-                }
-                else {
-                    playerMoveDirection = 0;
-                }
+                playerMoveDirection = 2;
             }
         }
     });
@@ -249,6 +156,10 @@ function spawnObstacle() {
     }
 }
 function playerMove() {
+    if(player.x <= 0 && playerMoveDirection == -2)
+        playerMoveDirection = 0;
+    if (player.x + player.width >= canvas.width && playerMoveDirection == 2)
+        playerMoveDirection = 0;
     player.move(playerMoveDirection);
 }
 function playerJump() {

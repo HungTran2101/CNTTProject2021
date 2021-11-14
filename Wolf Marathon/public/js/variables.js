@@ -18,7 +18,7 @@ var soundSelect = document.getElementById("soundSelect");
 
 canvas.width = innerWidth * 0.65;
 canvas.height = innerHeight * 0.73;
-music.volume = 0.5;
+music.volume = 0.2;
 soundCoin.volume = 0.1;
 soundJump.volume = 0.1;
 soundLose.volume = 0.5;
@@ -29,6 +29,7 @@ var obs = new obsticals(canvas.width, canvas.height);; //(info.width, info.heigh
 var coin = new coins(canvas.width, player.preY - player.jumpDistance);;
 
 var score = 0;
+var highscore = 0;
 var wallet = 70000;
 var difficulty = 1;
 var playerStatus = 0; //0-run 1-jump 2-die
@@ -46,3 +47,5 @@ var coinSpawned = false;
 var isPause = false;
 var isMusic = false;
 var isLose = true;
+var userName = "";
+var userID = null;
