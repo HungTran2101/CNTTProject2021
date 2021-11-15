@@ -14,8 +14,8 @@
       <input class="noDisplay" type="checkbox" id="loginBtn">
       <input class="noDisplay" type="checkbox" id="signUpBtn">
       <div id="navigation">
-         <button type="button" class="btnLog-Sign" onclick="loginOption('')">Login</button>
-         <button type="button" class="btnLog-Sign" onclick="signUpOption('')">Sign up</button>
+         <button type="button" class="btnLog-Sign" onclick="loginOption('', '')">Login</button>
+         <button type="button" class="btnLog-Sign" onclick="signUpOption('', '')">Sign up</button>
       </div>
       <div id="playerInfo">
          <span class="welcome">Welcome</span>
@@ -135,22 +135,27 @@
 <script src="js/display.js"></script>
 <script src="js/game.js"></script>
 <script>
-   let islog = '<%=data%>';
-   if(islog != 'wrongAcc' && islog != ''){
-      let userdata = {
-         id: '<%=data.id%>',
-         username: '<%=data.username%>',
-         highscore: '<%=data.highscore%>',
-         money: '<%=data.money%>',
-         wolf: '<%=data.wolf%>',
-         cactus: '<%=data.cactus%>',
-         bear: '<%=data.bear%>',
-      };
-      loginSuccess(userdata);
-   }
-   else if(islog == 'wrongAcc'){
-      loginOption("Account doesn't exist")
-   }
-
+    let data = '<%=data%>';
+    if(data == 'wrongAcc'){
+        loginOption("Account doesn't exist", "red");
+    }
+    else if(data == 'succeed'){
+        loginOption("Register succeed!", "green");
+    }
+    else if(data == 'failed'){
+        signUpOption("User existed!", "red");
+    }
+    else if(data != ''){
+        let userdata = {
+            id: '<%=data.id%>',
+            username: '<%=data.username%>',
+            highscore: '<%=data.highscore%>',
+            money: '<%=data.money%>',
+             wolf: '<%=data.wolf%>',
+             cactus: '<%=data.cactus%>',
+             bear: '<%=data.bear%>',
+        };
+        loginSuccess(userdata);
+    }
 </script>
 </html>
