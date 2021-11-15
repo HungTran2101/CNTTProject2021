@@ -28,12 +28,22 @@ app.post('/', function (req, res) {
                 else{
                     res.render('main', {data: 'wrongAcc'});
                 }
-                
+
             });
-        
     }
     else {
-
+        let username = req.body.username;
+        let password = req.body.password;
+        db.addUser(username, password,
+            function (isAdded){
+                console.log('From Server:' + isAdded);
+                if(isAdded){
+                    res.render('main', {data: 'succeed'});
+                }
+                else{
+                    res.render('main', {data: 'failed'});
+                }
+        });
     }
 });
 

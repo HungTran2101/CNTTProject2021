@@ -26,7 +26,7 @@ function toggleMusic() {
     }
 }
 
-function loginOption(message) {
+function loginOption(message, color) {
     document.getElementById("passInput").value = "";
     document.getElementById("confPassInput").value = "";
     let login = document.getElementById("loginBtn");
@@ -39,12 +39,13 @@ function loginOption(message) {
         document.getElementById("chbxConfPass").checked = false;
         document.getElementById("signInBtn").innerHTML = "Sign in";
         document.getElementById("formType").value = "signin";
+        document.getElementById("alert").style.color = color;
         document.getElementById("alert").innerHTML = message;
         login.checked = true;
     }
 }
 
-function signUpOption(message) {
+function signUpOption(message, color) {
     document.getElementById("passInput").value = "";
     let signup = document.getElementById("signUpBtn");
     if (signup.checked) {
@@ -56,6 +57,7 @@ function signUpOption(message) {
         document.getElementById("loginBtn").checked = false;
         document.getElementById("signInBtn").innerHTML = "Sign up";
         document.getElementById("formType").value = "signup";
+        document.getElementById("alert").style.color = color;
         document.getElementById("alert").innerHTML = message;
         signup.checked = true;
     }
