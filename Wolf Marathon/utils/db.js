@@ -48,17 +48,17 @@ module.exports = {
         checkUser(para1, function(results){
             newUser = results;
             console.log('From DB:' + newUser);
+            if(newUser){
+                pool.query(sql, [para1, para2], function (error, results){
+                    if(error){
+                        console.log(error.sqlMessage);
+                    }
+                    return fn(true);
+                })
+            }
+            else {
+                return fn(false);
+            }
         });
-        if(newUser){
-            pool.query(sql, [para1, para2], function (error, results){
-                if(error){
-                    console.log(error.sqlMessage);
-                }
-                return fn(true);
-            })
-        }
-        else {
-            return fn(false);
-        }
     }
 };
