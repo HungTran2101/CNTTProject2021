@@ -133,4 +133,4 @@ function getCookie(cname, cookies) {
 }
 
 const PORT = 3000;
-app.listen(PORT, () => console.info(`listening on http://localhost:${PORT}/`));
+app.listen(process.env.PORT || PORT, () => console.log(`listening on http://localhost:${PORT}/`));

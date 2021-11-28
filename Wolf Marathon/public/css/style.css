@@ -233,8 +233,7 @@ header input:checked ~ #loginForm {
    position: absolute;
 }
 #defaultSkinBtn{
-   position: absolute;
-   left: 27.25vw;
+   margin: auto;
    margin-top: 20px;
    background-color: aliceblue;
 }
