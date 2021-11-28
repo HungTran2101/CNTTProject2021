@@ -9,7 +9,6 @@ var textBuyBtn = document.getElementsByName("textBuyBtn");
 var buyIcon = document.getElementsByClassName("buyIcon");
 var storeWallet = document.getElementById("wallet");
 var playWallet = document.getElementById("playWallet");
-var myScores = document.getElementById("score");
 var music = document.getElementById("music");
 var soundJump = document.getElementById("soundJump");
 var soundCoin = document.getElementById("soundCoin");

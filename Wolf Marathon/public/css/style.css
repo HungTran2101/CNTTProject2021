@@ -232,6 +232,15 @@ header input:checked ~ #loginForm {
 #playZone div {
    position: absolute;
 }
+#defaultSkinBtn{
+   position: absolute;
+   left: 27.25vw;
+   margin-top: 20px;
+   background-color: aliceblue;
+}
+#defaultSkinBtn:hover{
+   background-color: rgb(212, 218, 223);
+}
 #backStore {
    width: 60px;
    height: 60px;

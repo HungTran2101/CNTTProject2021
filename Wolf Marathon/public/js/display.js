@@ -95,14 +95,14 @@ function loadData(userdata) {
         bearSkin[i] = Number(userdata.bear[i]);
     }
 }
-function setCookies(){
+function setCookies() {
     document.cookie = `id=${userID}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
-    document.cookie = `highscore=${highscore}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
+    document.cookie = `highscore=${Math.round(highscore)}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
     document.cookie = `username=${userName}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
     document.cookie = `money=${wallet}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
-    document.cookie = `wolf=${wolfSkin.toString().replace(/,/g,"")}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
-    document.cookie = `bear=${bearSkin.toString().replace(/,/g,"")}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
-    document.cookie = `cactus=${cactusSkin.toString().replace(/,/g,"")}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
+    document.cookie = `wolf=${wolfSkin.toString().replace(/,/g, "")}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
+    document.cookie = `bear=${bearSkin.toString().replace(/,/g, "")}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
+    document.cookie = `cactus=${cactusSkin.toString().replace(/,/g, "")}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
 }
 function loginSuccess(userdata) {
     loadData(userdata);
@@ -145,6 +145,7 @@ function playerBuy(slot) {
         buy_equipSkin(bearSkin, slot);
         update_BuyBtn(bearSkin);
     }
+    setCookies();
 }
 function buy_equipSkin(skin, slot) {
     if (skin[slot] == 0) { //buy
@@ -258,5 +259,38 @@ function update_BuyBtn(skin) {
             }
         }
     }
+}
+function defaultSkin() {
+    if (skinTarget == 'wolf') {
+        for (let i = 0; i < wolfSkin.length; i++) {
+            if(wolfSkin[i] == 2){
+                wolfSkin[i] = 1;
+                break;
+            }
+        }
+        updateSkin();
+        update_BuyBtn(wolfSkin);
+    }
+    else if (skinTarget == 'bear') {
+        for (let i = 0; i < bearSkin.length; i++) {
+            if(bearSkin[i] == 2){
+                bearSkin[i] = 1;
+                break;
+            }
+        }
+        updateSkin();
+        update_BuyBtn(bearSkin);
+    }
+    else if (skinTarget == 'cactus') {
+        for (let i = 0; i < cactusSkin.length; i++) {
+            if(cactusSkin[i] == 2){
+                cactusSkin[i] = 1;
+                break;
+            }
+        }
+        updateSkin();
+        update_BuyBtn(cactusSkin);
+    }
+    setCookies();
 }
 //#endregion

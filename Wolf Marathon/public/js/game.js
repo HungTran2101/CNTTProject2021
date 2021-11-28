@@ -39,7 +39,6 @@ function startgame() {
     document.getElementById("pauseBtn").style.display = "block";
     document.getElementById("Forms").style.display = "none";
     document.getElementById("scoreAndWallet").style.display = "block";
-    document.getElementById("highscore").textContent = Math.round(highscore).toString();
     init();
 }
 function init() {
@@ -59,6 +58,7 @@ function init() {
     obsSpawned = false;
     coinSpawned = false;
 
+    document.getElementById("highscore").textContent = Math.round(highscore).toString();
     document.getElementById("restartForm").style.display = "none";
     updateSkin();
     startBgAnimation();
@@ -99,7 +99,7 @@ function gameOver() {
         highscore = score;
     }
     stopBgAnimation();
-    loadCookies();
+    setCookies();
     soundLose.play();
 }
 function checkHitCoin() {
@@ -122,7 +122,7 @@ function checkLose() {
 }
 function gainScores() {
     score += 0.1;
-    myScores.textContent = Math.round(score).toString();
+    document.getElementById("score").textContent = Math.round(score).toString();
 }
 function spawnCoin() {
     if (!coinSpawned) {

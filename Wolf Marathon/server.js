@@ -14,30 +14,37 @@ app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
     let cookies = req.headers.cookie;
-    if(cookies !== undefined){
-        if ('logout' === req.query.action) {
-            console.log('in logout');
+    if (cookies !== undefined) {
+        if (checkCookiesValid(cookies)) {
+            if ('logout' === req.query.action) {
+                console.log('logout');
+
+                let user = convertCookiesToUser(cookies);
+                db.updateUser(user, function(result){
+                    if(result){
+                        res.render('main', { data: 'logout' });
+                    }
+                    else{
+                        console.log('logout failed');
+                    }
+                })
+            }
+            else {
+                console.log('cookies valid');
+                let user = convertCookiesToUser(cookies);
+                res.render('main', { data: user });
+            }
+        }
+        else {
+            console.log('cookies not valid');
             res.render('main', { data: 'logout' });
         }
-        else{
-            console.log('in else logout');
-            let id = getCookie('id',cookies);
-            let username = getCookie('username',cookies);
-            let highscore = getCookie('highscore',cookies);
-            let money = getCookie('money',cookies);
-            let wolf = getCookie('wolf',cookies);
-            let bear = getCookie('bear',cookies);
-            let cactus = getCookie('cactus',cookies);
-
-            let result = db.setupUser(id, username, highscore, money, wolf, bear, cactus);
-            res.render('main', { data: result });
-        }
     }
-    else{
+    else {
         console.log('in default');
         res.render('main', { data: '' });
     }
-    
+
 });
 
 app.post('/', function (req, res) {
@@ -53,7 +60,6 @@ app.post('/', function (req, res) {
                 else {
                     res.render('main', { data: 'wrongAcc' });
                 }
-
             });
     }
     else if ('signup' === req.query.action) {
@@ -73,6 +79,44 @@ app.post('/', function (req, res) {
     }
 });
 
+function checkCookiesValid(cookies) {
+    let count = 0;
+    if (getCookie('id', cookies) != '') {
+        count++;
+    }
+    if (getCookie('username', cookies) != '') {
+        count++;
+    }
+    if (getCookie('highscore', cookies) != '') {
+        count++;
+    }
+    if (getCookie('money', cookies) != '') {
+        count++;
+    }
+    if (getCookie('wolf', cookies) != '') {
+        count++;
+    }
+    if (getCookie('bear', cookies) != '') {
+        count++;
+    }
+    if (getCookie('cactus', cookies) != '') {
+        count++;
+    }
+
+    return count == 7;
+}
+function convertCookiesToUser(cookies) {
+    let userdata = {
+        id: getCookie('id', cookies),
+        username: getCookie('username', cookies),
+        highscore: getCookie('highscore', cookies),
+        money: getCookie('money', cookies),
+        wolf: getCookie('wolf', cookies),
+        bear: getCookie('bear', cookies),
+        cactus: getCookie('cactus', cookies)
+    }
+    return userdata;
+}
 function getCookie(cname, cookies) {
     let name = cname + "=";
     let ca = cookies.split(';');
@@ -85,7 +129,7 @@ function getCookie(cname, cookies) {
             return c.substring(name.length, c.length);
         }
     }
-    return "";
+    return '';
 }
 
 const PORT = 3000;
