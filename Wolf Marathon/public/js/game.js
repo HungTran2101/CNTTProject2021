@@ -26,10 +26,10 @@ function userInteraction() {
                 }
             }
             else if (event.key == "ArrowLeft" || event.key == "a") {
-                playerMoveDirection = -2;
+                playerMoveDirection = player.speedBackward;
             }
             else if (event.key == "ArrowRight" || event.key == "d") {
-                playerMoveDirection = 2;
+                playerMoveDirection = player.speedForward;
             }
         }
     });
@@ -39,6 +39,7 @@ function startgame() {
     document.getElementById("pauseBtn").style.display = "block";
     document.getElementById("Forms").style.display = "none";
     document.getElementById("scoreAndWallet").style.display = "block";
+    document.getElementById("highscore").textContent = Math.round(highscore).toString();
     init();
 }
 function init() {
@@ -60,6 +61,7 @@ function init() {
 
     document.getElementById("restartForm").style.display = "none";
     updateSkin();
+    startBgAnimation();
     loop();
 }
 function loop() {
@@ -73,7 +75,6 @@ function loop() {
             checkHitCoin();
             checkLose();
 
-            //drawBackground();
             drawCoin();
             drawObstacle();
             drawPlayer();
@@ -94,6 +95,11 @@ function increaseDifficulty() {
 function gameOver() {
     document.getElementById("restartForm").style.display = "block";
     document.getElementById("scoreGameOver").textContent = Math.round(score).toString();
+    if(score > highscore){
+        highscore = score;
+    }
+    stopBgAnimation();
+    loadCookies();
     soundLose.play();
 }
 function checkHitCoin() {
@@ -156,9 +162,9 @@ function spawnObstacle() {
     }
 }
 function playerMove() {
-    if(player.x <= 0 && playerMoveDirection == -2)
+    if(player.x <= 0 && playerMoveDirection == player.speedBackward)
         playerMoveDirection = 0;
-    if (player.x + player.width >= canvas.width && playerMoveDirection == 2)
+    if (player.x + player.width >= canvas.width && playerMoveDirection == player.speedForward)
         playerMoveDirection = 0;
     player.move(playerMoveDirection);
 }
@@ -174,18 +180,6 @@ function playerJump() {
     }
     else {
         playerStatus = 0;
-    }
-}
-function drawBackground() {
-    context.drawImage(backgroundImage, background1X - 10, 0, canvas.width, canvas.height);
-    context.drawImage(backgroundImage, background2X - 10, 0, canvas.width, canvas.height);
-    background1X -= 1;
-    background2X -= 1;
-    if (background1X < -canvas.width) {
-        background1X = canvas.width;
-    }
-    else if (background2X < -canvas.width) {
-        background2X = canvas.width;
     }
 }
 function drawCoin() {
@@ -211,11 +205,35 @@ function drawPlayer() {
         case 2: context.drawImage(player.img_die, player.x, player.y, player.width, player.height); break;
     }
 }
+function pause_resumeGame() {
+    if (!isLose) {
+        if (!isPause) {
+            document.getElementById("pauseBtn").style.backgroundImage = "url('../images/resume_btn.png')"
+            isPause = true;
+            document.getElementById("pauseForm").style.display = "block";
+            stopBgAnimation();
+        }
+        else {
+            document.getElementById("pauseBtn").style.backgroundImage = "url('../images/pause_btn.png')"
+            isPause = false;
+            document.getElementById("pauseForm").style.display = "none";
+            startBgAnimation();
+        }
+    }
+}
 function quitGame() {
     document.getElementById("playCanvas").style.display = "none";
     document.getElementById("pauseBtn").style.display = "none";
     document.getElementById("Forms").style.display = "block";
     document.getElementById("scoreAndWallet").style.display = "none";
     document.getElementById("restartForm").style.display = "none";
+}
+
+function stopBgAnimation() {
+    canvas.style.animation = '';  
+}
+
+function startBgAnimation() {
+    canvas.style.animation = 'backgroundAnimation 3.1s infinite linear';
 }
 //#endregion

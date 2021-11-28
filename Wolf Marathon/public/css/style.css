@@ -280,13 +280,17 @@ header input:checked ~ #loginForm {
 }
 #scoreAndWallet {
    top: 0;
-   width: 150px;
+   width: 300px;
    font-size: 20px;
-   right: 400px;
+   right: 14vw;
+   margin-top: 10px;
    display: none;
    font-family: cursive;
    font-size: 20px;
    font-weight: 900;
+}
+#scoreAndWallet p{
+   margin: 0;
 }
 #divForWallet {
    width: 30px;
@@ -305,8 +309,7 @@ header input:checked ~ #loginForm {
    box-shadow: 3px 3px gray;
 }
 #restartBtn:hover {
-   color: black !important;
-   text-transform: uppercase;
+   font-weight: 900;
    background: rgb(114, 217, 29);
    display: inline-block;
    border: none;
@@ -324,8 +327,7 @@ header input:checked ~ #loginForm {
    transition: all 0.3s ease 0s;
 }
 #quitBtn:hover {
-   color: black !important;
-   text-transform: uppercase;
+   font-weight: 900;
    background: tomato;
    border: none;
 }
@@ -522,4 +524,8 @@ footer {
 }
 .alert {
    color: rgb(233, 73, 73);
+}
+@keyframes backgroundAnimation {
+   0% { background-position-x: 65vw }
+   100% { background-position-x: 0 }
 }

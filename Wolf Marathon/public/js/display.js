@@ -1,18 +1,4 @@
 //#region Interface section
-function pause_resumeGame() {
-    if (!isLose) {
-        if (!isPause) {
-            document.getElementById("pauseBtn").style.backgroundImage = "url('../images/resume_btn.png')"
-            isPause = true;
-            document.getElementById("pauseForm").style.display = "block";
-        }
-        else {
-            document.getElementById("pauseBtn").style.backgroundImage = "url('../images/pause_btn.png')"
-            isPause = false;
-            document.getElementById("pauseForm").style.display = "none";
-        }
-    }
-}
 
 function toggleMusic() {
     if (!isMusic) {
@@ -38,7 +24,7 @@ function loginOption(message, color) {
         document.getElementById("signUpBtn").checked = false;
         document.getElementById("chbxConfPass").checked = false;
         document.getElementById("signInBtn").innerHTML = "Sign in";
-        document.getElementById("formType").value = "signin";
+        document.getElementById("loginForm").action = '/?action=signin'
         document.getElementById("alert").style.color = color;
         document.getElementById("alert").innerHTML = message;
         login.checked = true;
@@ -56,7 +42,7 @@ function signUpOption(message, color) {
         document.getElementById("chbxConfPass").checked = true;
         document.getElementById("loginBtn").checked = false;
         document.getElementById("signInBtn").innerHTML = "Sign up";
-        document.getElementById("formType").value = "signup";
+        document.getElementById("loginForm").action = '/?action=signup'
         document.getElementById("alert").style.color = color;
         document.getElementById("alert").innerHTML = message;
         signup.checked = true;
@@ -91,11 +77,6 @@ function login() {
     let confPass = document.getElementById("confPassInput").value;
     if (validateInput(login, username, password, confPass)) {
         document.getElementById("loginForm").submit();
-        // document.querySelector("#menu div").style.display = "block";
-        // document.querySelector("#menu h3").style.display = "none";
-        // document.getElementById("playerInfo").style.display = "flex";
-        // document.getElementById("navigation").style.display = "none";
-        // document.querySelector(".welcome").innerHTML = "Welcome, " + username;
     }
 }
 function cancelLogin() {
@@ -114,22 +95,32 @@ function loadData(userdata) {
         bearSkin[i] = Number(userdata.bear[i]);
     }
 }
+function setCookies(){
+    document.cookie = `id=${userID}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
+    document.cookie = `highscore=${highscore}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
+    document.cookie = `username=${userName}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
+    document.cookie = `money=${wallet}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
+    document.cookie = `wolf=${wolfSkin.toString().replace(/,/g,"")}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
+    document.cookie = `bear=${bearSkin.toString().replace(/,/g,"")}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
+    document.cookie = `cactus=${cactusSkin.toString().replace(/,/g,"")}; expires=Thu, 18 Dec 2022 12:00:00 UTC`;
+}
 function loginSuccess(userdata) {
     loadData(userdata);
+    setCookies();
     document.querySelector("#menu div").style.display = "block";
     document.querySelector("#menu h3").style.display = "none";
     document.getElementById("playerInfo").style.display = "flex";
     document.getElementById("navigation").style.display = "none";
     document.querySelector(".welcome").innerHTML = "Welcome, " + userdata.username;
 }
-function loginFailed() {
-
-}
 function logout() {
-    document.querySelector("#menu div").style.display = "none";
-    document.querySelector("#menu h3").style.display = "block";
-    document.getElementById("playerInfo").style.display = "none";
-    document.getElementById("navigation").style.display = "flex";
+    document.cookie = `id= ; expires=Thu, 18 Dec 1999 12:00:00 UTC`;
+    document.cookie = `highscore= ; expires=Thu, 18 Dec 1999 12:00:00 UTC`;
+    document.cookie = `username= ; expires=Thu, 18 Dec 1999 12:00:00 UTC`;
+    document.cookie = `money= ; expires=Thu, 18 Dec 1999 12:00:00 UTC`;
+    document.cookie = `wolf= ; expires=Thu, 18 Dec 1999 12:00:00 UTC`;
+    document.cookie = `bear= ; expires=Thu, 18 Dec 1999 12:00:00 UTC`;
+    document.cookie = `cactus= ; expires=Thu, 18 Dec 1999 12:00:00 UTC`;
 }
 function storeBtn() {
     document.getElementById("storeBtn").checked = true;

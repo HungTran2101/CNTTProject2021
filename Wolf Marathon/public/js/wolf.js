@@ -9,6 +9,8 @@ class wolf {
         this.speedG = 0.11;
         this.g = this.baseG;
         this.preY = this.y;
+        this.speedBackward = -4;
+        this.speedForward = 2;
         this.jumpDistance = 170;
 
         this.isJump = false;

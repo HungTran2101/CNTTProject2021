@@ -21,13 +21,10 @@
          <span class="welcome">Welcome</span>
          <div class="verticalLine"></div>
          <div>
-            <a href="/" class="logout-changePass">Logout</a>
-            <br>
-            <span class="logout-changePass">Change Password</span>
+            <a href="/?action=logout" class="logout-changePass">Logout</a>
          </div>
       </div>
-      <form action="" id="loginForm" method="post">
-         <input type="hidden" name="formType" id="formType" value="signin"/>
+      <form action="/" id="loginForm" method="post">
          <label id="lblUser" for="userInput">Username<br><input class="input" type="text" id="userInput" name="username"
                placeholder="Your name" /></label></br>
          <label id="lblPass" for="passInput">Password<br><input class="input" type="password" id="passInput" name="password"
@@ -95,6 +92,7 @@
          <canvas id="playCanvas"></canvas>
          <div id="pauseBtn" class="pauseBtn" onclick="pause_resumeGame()"></div>
          <div id="scoreAndWallet">
+            <p>High Scores: <span id="highscore">0</span></p>
             <p>Scores: <span id="score">0</span></p>
             <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
                Wallet: <span id="playWallet" style="margin: 0 5px;">0</span><img src="images/yellowCoin.png" alt="coin" id="divForWallet">
@@ -135,27 +133,30 @@
 <script src="js/display.js"></script>
 <script src="js/game.js"></script>
 <script>
-    let data = '<%=data%>';
-    if(data == 'wrongAcc'){
-        loginOption("Account doesn't exist", "red");
-    }
-    else if(data == 'succeed'){
-        loginOption("Register succeed!", "green");
-    }
-    else if(data == 'failed'){
-        signUpOption("User existed!", "red");
-    }
-    else if(data != ''){
-        let userdata = {
+   let data = '<%=data%>';
+   if(data == 'wrongAcc'){
+      loginOption("Your username or password is incorrect!", "red");
+   }
+   else if(data == 'succeed'){
+      loginOption("Register succeed!", "green");
+   }
+   else if(data == 'failed'){
+      signUpOption("User existed!", "red");
+   }
+   else if(data == 'logout'){
+      logout();
+   }
+   else if(data != ''){
+      let userdata = {
             id: '<%=data.id%>',
             username: '<%=data.username%>',
             highscore: '<%=data.highscore%>',
             money: '<%=data.money%>',
-             wolf: '<%=data.wolf%>',
-             cactus: '<%=data.cactus%>',
-             bear: '<%=data.bear%>',
-        };
-        loginSuccess(userdata);
-    }
+            wolf: '<%=data.wolf%>',
+            cactus: '<%=data.cactus%>',
+            bear: '<%=data.bear%>',
+      };
+      loginSuccess(userdata);
+   }
 </script>
 </html>

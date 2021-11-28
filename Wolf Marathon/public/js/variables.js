@@ -24,9 +24,9 @@ soundJump.volume = 0.1;
 soundLose.volume = 0.5;
 soundSelect.volume = 0.1;
 
-var player = new wolf(canvas.width, canvas.height);; //(info.height * 0.570);
-var obs = new obsticals(canvas.width, canvas.height);; //(info.width, info.height * 0.611);
-var coin = new coins(canvas.width, player.preY - player.jumpDistance);;
+var player = new wolf(canvas.width, canvas.height); //(info.height * 0.570);
+var obs = new obsticals(canvas.width, canvas.height); //(info.width, info.height * 0.611);
+var coin = new coins(canvas.width, player.preY - player.jumpDistance);
 
 var score = 0;
 var highscore = 0;
@@ -34,9 +34,9 @@ var wallet = 70000;
 var difficulty = 1;
 var playerStatus = 0; //0-run 1-jump 2-die
 var skinPrice = [200, 400, 600];
-var wolfSkin = [0, 1, 2]; // 0-for sell 1-equip 2-equipped
-var cactusSkin = [1, 0, 2];
-var bearSkin = [2, 1, 0];
+var wolfSkin = [0, 0, 0]; // 0-for sell 1-equip 2-equipped
+var cactusSkin = [0, 0, 0];
+var bearSkin = [0, 0, 0];
 var skinTarget = "wolf";
 var currentObs = null;
 var currentCoin = null;
