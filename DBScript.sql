@@ -33,6 +33,16 @@ CREATE TABLE `skins` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `skins`
+--
+
+LOCK TABLES `skins` WRITE;
+/*!40000 ALTER TABLE `skins` DISABLE KEYS */;
+INSERT INTO `skins` VALUES (5,'000','000','000');
+/*!40000 ALTER TABLE `skins` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_info`
 --
 
@@ -46,8 +56,18 @@ CREATE TABLE `user_info` (
   `highscore` int DEFAULT NULL,
   `money` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_info`
+--
+
+LOCK TABLES `user_info` WRITE;
+/*!40000 ALTER TABLE `user_info` DISABLE KEYS */;
+INSERT INTO `user_info` VALUES (5,'admin','$2a$08$4RfIDr7MjKH0VnmLTi/EruBjOvVqOe3fN15fWQhKuSg7BoMTro9ii',0,99999);
+/*!40000 ALTER TABLE `user_info` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -73,4 +93,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-28 20:30:22
+-- Dump completed on 2021-12-08 22:41:31
