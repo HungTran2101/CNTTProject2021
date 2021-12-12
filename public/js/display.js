@@ -186,6 +186,13 @@ function buy_equipSkin(skin, slot) {
     }
 }
 
+//trừ tiền khi người dùng mua thành công
+function bill(slot) {
+    wallet -= skinPrice[slot];
+    storeWallet.textContent = wallet.toString();
+}
+
+
 //load trang phục vào cho các nhân vật và vật cản tương ứng
 function updateSkin() {
     for (let i = 0; i < wolfSkin.length; i++) {
