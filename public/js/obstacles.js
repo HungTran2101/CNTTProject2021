@@ -1,0 +1,42 @@
+class obstacles {
+    //khởi tạo đối tượng của class
+    constructor(x, y) {
+        this.yBear = y * 0.611 - 30;
+        this.yCactus = y * 0.611;
+
+        this.x = x;
+        this.y = this.yCactus;
+        this.width = 80;
+        this.height = 90;
+
+        this.imgCactus = null;
+        this.imgBear = null;
+    }
+    //load hình ảnh cho chướng ngại vật
+    loadImageCactus(slot) {
+        this.imgCactus = new Image;
+        switch (slot) {
+            case 0: this.imgCactus.src = "../images/cactus.png"; break;
+            case 1: this.imgCactus.src = "../images/cactus1.png"; break;
+            case 2: this.imgCactus.src = "../images/cactus2.png"; break;
+            case 3: this.imgCactus.src = "../images/cactus3.png"; break;
+        }
+    }
+    loadImageBear(slot) {
+        this.imgBear = new Image;
+        switch (slot) {
+            case 0: this.imgBear.src = "../images/bear.png"; break;
+            case 1: this.imgBear.src = "../images/bear1.png"; break;
+            case 2: this.imgBear.src = "../images/bear2.png"; break;
+            case 3: this.imgBear.src = "../images/bear3.png"; break;
+        }
+    }
+    //xử lí khi chướng ngại vật di chuyển
+    move() {
+        this.x -= 4; //obs move
+        if (this.x < -this.width) {
+            return true;
+        }
+        return false;
+    }
+}
