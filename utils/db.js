@@ -23,6 +23,17 @@ function checkUser(para1, fn) {
     })
 }
 
+function lastUserId(fn){
+    let sql = 'select max(id) as last_id from user_info';
+    pool.query(sql, function (error, results) {
+        if (error) {
+            console.log(error.sqlMessage);
+            throw error;
+        }
+        return fn(results[0].last_id)
+    })
+}
+
 module.exports = {
     //kiểm tra login thành công hay không
     checkLogin: function (username, password, fn) {
@@ -52,16 +63,26 @@ module.exports = {
 
     //thêm user mới vào database
     addUser: function (username, password, fn) {
-        let sql = 'insert into user_info set username = ?, password = ?, highscore = 0, money = 0';
+        let addUser = 'insert into user_info set username = ?, password = ?, highscore = 0, money = 0';
+        let addSkin = "insert into skins set user_id = ?, wolf='000', cactus='000', bear='000'";
         checkUser(username, function (results) {
             if (results) {
-                pool.query(sql, [username, password], function (error) {
+                pool.query(addUser, [username, password], function (error) {
                     if (error) {
                         console.log(error.sqlMessage);
                         throw error;
                     }
-                    else
-                        return fn(true);
+                    let user_id;
+                    lastUserId(function (results){
+                        user_id = results;
+                        pool.query(addSkin, [user_id], function (error){
+                            if (error) {
+                                console.log(error.sqlMessage);
+                                throw error;
+                            }
+                            return fn(true);
+                        })
+                    })
                 })
             }
             else {
