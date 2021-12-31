@@ -1,10 +1,10 @@
 {
     "mysql": {
-        "host": "sql6.freemysqlhosting.net",
+        "host": "localhost",
         "port": 3306,
-        "user": "sql6461774",
-        "password": "e6aiDwACaq",
-        "database": "sql6461774",
+        "user": "root",
+        "password": "root123",
+        "database": "doan_cntt",
         "connectionLimit": 50
     }
 }

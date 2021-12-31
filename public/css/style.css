@@ -191,17 +191,18 @@ header input:checked ~ #loginForm {
 #walletSection {
    text-align: center;
    padding-top: 25px;
+   height: 8vh;
 }
 #walletSection p {
    margin-top: 0;
    margin-bottom: 10px;
-   font-size: xx-large;
+   font-size: 4vh;
 }
 #walletSection div {
    display: flex;
    align-items: center;
    justify-content: center;
-   font-size: x-large;
+   font-size: 2vh;
 }
 #walletSection img {
    width: 32px;
@@ -212,6 +213,7 @@ header input:checked ~ #loginForm {
    margin-top: 30px;
    display: flex;
    justify-content: space-around;
+   height: 7vh;
 }
 #skins-section {
    display: flex;
@@ -440,7 +442,7 @@ footer {
 .action-button {
    padding: 10px 40px;
    border-radius: 10px;
-   font-size: 25px;
+   font-size: 3vh;
    color: black;
    text-decoration: none;
    transition: all 0.1s;
@@ -481,11 +483,11 @@ footer {
    display: flex;
    justify-content: space-evenly;
    align-items: center;
-   width: 130px;
-   height: 45px;
+   width: 7vw;
+   height: 5vh;
    background-color: greenyellow;
    border-radius: 20px;
-   font-size: 17px;
+   font-size: 2vh;
    font-family: cursive;
    font-weight: bold;
    cursor: pointer;
