@@ -15,7 +15,7 @@ var soundCoin = document.getElementById("soundCoin");
 var soundLose = document.getElementById("soundLose");
 var soundSelect = document.getElementById("soundSelect");
 
-canvas.width = innerWidth * 0.65;
+canvas.width = innerWidth * 0.8;
 canvas.height = innerHeight * 0.73;
 music.volume = 0.2;
 soundCoin.volume = 0.1;

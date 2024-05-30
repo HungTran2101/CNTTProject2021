@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-   <meta charset="UTF-8" />
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <meta name="author" content="www.twitter.com/cheeriottis">
-   <link rel="stylesheet" href="css/style.css" />
-   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-   <title>Wolf Marathon</title>
-</head>
-<body onload="userInteraction()">
-   <header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="www.twitter.com/cheeriottis" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <title>Wolf Marathon</title>
+  </head>
+  <body onload="initOnload()">
+    <!-- <header>
       <input class="noDisplay" type="checkbox" id="loginBtn">
       <input class="noDisplay" type="checkbox" id="signUpBtn">
       <div id="navigation">
@@ -37,127 +41,189 @@
          <button type="button" id="signInBtn" onclick="login()">Sign in</button>
          <button type="button" id="cancelBtn" onclick="cancelLogin()">Cancel</button>
       </form>
-   </header>
-   <main id="main">
-      <hr id="headline" style="size:3px" />
+   </header> -->
+    <br />
+    <br />
+    <main id="main">
+      <hr id="headline" style="size: 3px" />
       <div id="Forms">
-         <input class="noDisplay" type="checkbox" id="storeBtn">
-         <div id="menu">
-            <h1 id="gameTitle">Wolf Marathon</h1>
-            <h3>You need to login to play!</h3>
-            <div style="display: none;">
-               <button type="button" onclick="startgame()">PLAY</button>
-               <button type="button" onclick="storeBtn()">STORE</button>
+        <input class="noDisplay" type="checkbox" id="storeBtn" />
+        <div id="menu">
+          <h1 id="gameTitle">Wolf Marathon</h1>
+          <!-- <h3>You need to login to play!</h3> -->
+          <div>
+            <button type="button" onclick="startgame()">PLAY</button>
+            <button type="button" onclick="storeBtn()">STORE</button>
+          </div>
+        </div>
+        <div id="store">
+          <div id="walletSection">
+            <p>Wallet</p>
+            <div>
+              <img src="images/yellowCoin.png" alt="your wallet" />
+              <span id="wallet">0</span>
             </div>
-         </div>
-         <div id="store">
-            <div id="walletSection">
-               <p>Wallet</p>
-               <div>
-                  <img src="images/yellowCoin.png" alt="your wallet">
-                  <span id="wallet">0</span>
-               </div>
+          </div>
+          <div id="navigationStore">
+            <a
+              href="#"
+              class="action-button green active"
+              id="btnWolf"
+              onclick="selectSkin(0)"
+              >Wolf</a
+            >
+            <a
+              href="#"
+              class="action-button yellow"
+              id="btnCactus"
+              onclick="selectSkin(1)"
+              >Cactus</a
+            >
+            <a
+              href="#"
+              class="action-button red"
+              id="btnBear"
+              onclick="selectSkin(2)"
+              >Bear</a
+            >
+          </div>
+          <div id="skins-section">
+            <div class="outer-frame">
+              <img
+                src="images/wolf_jump1.png"
+                class="inner-frame"
+                alt="skin #1"
+              />
             </div>
-            <div id="navigationStore">
-               <a href="#" class="action-button green active" id="btnWolf" onclick="selectSkin(0)">Wolf</a>
-               <a href="#" class="action-button yellow" id="btnCactus" onclick="selectSkin(1)">Cactus</a>
-               <a href="#" class="action-button red" id="btnBear" onclick="selectSkin(2)">Bear</a>
+            <div class="outer-frame">
+              <img
+                src="images/wolf_jump2.png"
+                class="inner-frame"
+                alt="skin #2"
+              />
             </div>
-            <div id="skins-section">
-               <div class="outer-frame">
-                  <img src="images/wolf_jump1.png" class="inner-frame" alt="skin #1">
-               </div>
-               <div class="outer-frame">
-                  <img src="images/wolf_jump2.png" class="inner-frame" alt="skin #2">
-               </div>
-               <div class="outer-frame">
-                  <img src="images/wolf_jump3.png" class="inner-frame" alt="skin #3">
-               </div>
+            <div class="outer-frame">
+              <img
+                src="images/wolf_jump3.png"
+                class="inner-frame"
+                alt="skin #3"
+              />
             </div>
-            <div id="buy-section">
-               <button type="button" class="buyBtn" onclick="playerBuy(0)">
-                  <span name="textBuyBtn">200</span><img src="images/yellowCoin.png" alt="coin" class="buyIcon">
-               </button>
-               <button type="button" class="buyBtn" onclick="playerBuy(1)">
-                  <span name="textBuyBtn">400</span><img src="images/yellowCoin.png" alt="coin" class="buyIcon">
-               </button>
-               <button type="button" class="buyBtn" onclick="playerBuy(2)">
-                  <span name="textBuyBtn">600</span><img src="images/yellowCoin.png" alt="coin" class="buyIcon">
-               </button>
-            </div>
-            <button type="button" class="buyBtn" id="defaultSkinBtn" onclick="defaultSkin()">Default skin</button>
-            <button type="button" id="backStore" onclick="backStore()"></button>
-         </div>
+          </div>
+          <div id="buy-section">
+            <button type="button" class="buyBtn" onclick="playerBuy(0)">
+              <span name="textBuyBtn">200</span
+              ><img src="images/yellowCoin.png" alt="coin" class="buyIcon" />
+            </button>
+            <button type="button" class="buyBtn" onclick="playerBuy(1)">
+              <span name="textBuyBtn">400</span
+              ><img src="images/yellowCoin.png" alt="coin" class="buyIcon" />
+            </button>
+            <button type="button" class="buyBtn" onclick="playerBuy(2)">
+              <span name="textBuyBtn">600</span
+              ><img src="images/yellowCoin.png" alt="coin" class="buyIcon" />
+            </button>
+          </div>
+          <button
+            type="button"
+            class="buyBtn"
+            id="defaultSkinBtn"
+            onclick="defaultSkin()"
+          >
+            Default skin
+          </button>
+          <button type="button" id="backStore" onclick="backStore()"></button>
+        </div>
       </div>
       <div id="playZone">
-         <canvas id="playCanvas"></canvas>
-         <div id="pauseBtn" class="pauseBtn" onclick="pause_resumeGame()"></div>
-         <div id="scoreAndWallet">
-            <p>High Scores: <span id="highscore">0</span></p>
-            <p>Scores: <span id="score">0</span></p>
-            <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
-               Wallet: <span id="playWallet" style="margin: 0 5px;">0</span><img src="images/yellowCoin.png" alt="coin" id="divForWallet">
-            </div>
-         </div>
-         <div id="pauseForm">
-            <b style="-webkit-text-stroke: 3px red; color: white">PAUSED</b>
-         </div>
-         <div id="restartForm">
-            <h1>Game Over</h1>
-            <p style="font-size: 18px">Scores: <span id="scoreGameOver">0</span> </p>
-            <button type="button" id="restartBtn" onclick="init()">Restart</button>
-            <button type="button" id="quitBtn" onclick="quitGame()">Quit</button>
-         </div>
+        <canvas id="playCanvas"></canvas>
+        <div id="pauseBtn" class="pauseBtn" onclick="pause_resumeGame()"></div>
+        <div id="scoreAndWallet">
+          <p>High Scores: <span id="highscore">0</span></p>
+          <p>Scores: <span id="score">0</span></p>
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+            "
+          >
+            Wallet: <span id="playWallet" style="margin: 0 5px">0</span
+            ><img src="images/yellowCoin.png" alt="coin" id="divForWallet" />
+          </div>
+        </div>
+        <div id="pauseForm">
+          <b style="-webkit-text-stroke: 3px red; color: white">PAUSED</b>
+        </div>
+        <div id="restartForm">
+          <h1>Game Over</h1>
+          <p style="font-size: 18px">
+            Scores: <span id="scoreGameOver">0</span>
+          </p>
+          <button type="button" id="restartBtn" onclick="init()">
+            Restart
+          </button>
+          <button type="button" id="quitBtn" onclick="quitGame()">Quit</button>
+        </div>
       </div>
       <button type="button" id="soundBtn" onclick="toggleMusic()"></button>
-      <hr id="footline" style="size:3px" />
-   </main>
-   <footer>
-      <h3><span style="color:cyan">HOW TO PLAY?</span></h3>
-      <h3>Use <span class="controlSpanText">AD</span> or <span class="controlSpanText">Left/Right</span> key to move along. <br> Use <span class="controlSpanText">W/Spacebar/Up</span> key to jump. <br> Avoid obstacles and collect coins for fabulous skins in store.</h3>
+      <hr id="footline" style="size: 3px" />
+    </main>
+    <footer>
+      <h3><span style="color: cyan">HOW TO PLAY?</span></h3>
+      <h3>
+        Use <span class="controlSpanText">AD</span> or
+        <span class="controlSpanText">Left/Right</span> key to move along.
+        <br />
+        Use <span class="controlSpanText">W/Spacebar/Up</span> key to jump.
+        <br />
+        Avoid obstacles and collect coins for fabulous skins in store.
+      </h3>
       <h4>
-         <span style="color:tomato">Any bug found please contact</span> 
-         <a style="color:greenyellow;" href = "mailto:hung9cong@gmail.com?subject = Feedback&body = Message">here</a>
+        <span style="color: tomato">Any bug found please contact</span>
+        <a
+          style="color: greenyellow"
+          href="mailto:hung9cong@gmail.com?subject = Feedback&body = Message"
+          >here</a
+        >
       </h4>
-   </footer>
-   <br>
-   <audio src="sounds/Guitar.mp3" id="music" loop></audio>
-   <audio src="sounds/jump.wav" id="soundJump"></audio>
-   <audio src="sounds/lose.wav" id="soundLose"></audio>
-   <audio src="sounds/pickupCoin.wav" id="soundCoin"></audio>
-   <audio src="sounds/select.wav" id="soundSelect"></audio>
-</body>
-<script src="js/wolf.js"></script>
-<script src="js/obstacles.js"></script>
-<script src="js/coins.js"></script>
-<script src="js/variables.js"></script>
-<script src="js/display.js"></script>
-<script src="js/game.js"></script>
-<script>
-   let data = '<%=data%>';
-   if(data == 'wrongAcc'){
+    </footer>
+    <br />
+    <audio src="sounds/Guitar.mp3" id="music" loop></audio>
+    <audio src="sounds/jump.wav" id="soundJump"></audio>
+    <audio src="sounds/lose.wav" id="soundLose"></audio>
+    <audio src="sounds/pickupCoin.wav" id="soundCoin"></audio>
+    <audio src="sounds/select.wav" id="soundSelect"></audio>
+  </body>
+  <script src="js/localStorage.js"></script>
+  <script src="js/wolf.js"></script>
+  <script src="js/obstacles.js"></script>
+  <script src="js/coins.js"></script>
+  <script src="js/variables.js"></script>
+  <script src="js/display.js"></script>
+  <script src="js/game.js"></script>
+  <script>
+    let data = "<%=data%>";
+    if (data == "wrongAcc") {
       loginOption("Your username or password is incorrect!", "red");
-   }
-   else if(data == 'succeed'){
+    } else if (data == "succeed") {
       loginOption("Register succeed!", "green");
-   }
-   else if(data == 'failed'){
+    } else if (data == "failed") {
       signUpOption("User existed!", "red");
-   }
-   else if(data == 'logout'){
+    } else if (data == "logout") {
       logout();
-   }
-   else if(data != ''){
+    } else if (data != "") {
       let userdata = {
-            id: '<%=data.id%>',
-            username: '<%=data.username%>',
-            highscore: '<%=data.highscore%>',
-            money: '<%=data.money%>',
-            wolf: '<%=data.wolf%>',
-            cactus: '<%=data.cactus%>',
-            bear: '<%=data.bear%>',
+        id: "<%=data.id%>",
+        username: "<%=data.username%>",
+        highscore: "<%=data.highscore%>",
+        money: "<%=data.money%>",
+        wolf: "<%=data.wolf%>",
+        cactus: "<%=data.cactus%>",
+        bear: "<%=data.bear%>",
       };
       loginSuccess(userdata);
-   }
-</script>
+    }
+  </script>
 </html>

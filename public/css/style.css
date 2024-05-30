@@ -1,541 +1,538 @@
 body {
-   background-image: linear-gradient(to bottom right, black, rgb(99, 98, 98));
-   margin: 0;
-   font-family: cursive;
+  background-image: linear-gradient(to bottom right, black, rgb(99, 98, 98));
+  margin: 0;
+  font-family: cursive;
 }
 main {
-   position: relative;
-   transition: opacity 300ms;
+  position: relative;
+  transition: opacity 300ms;
 }
 main hr {
-   width: 60%;
-   padding: 2.5px;
-   background-color: rgb(199, 202, 6);
-   border: none;
-   border-radius: 100%;
+  width: 60%;
+  padding: 2.5px;
+  background-color: rgb(199, 202, 6);
+  border: none;
+  border-radius: 100%;
 }
 header {
-   text-align: center;
-   height: 110px;
+  text-align: center;
+  height: 110px;
 }
 header input:checked ~ #loginForm {
-   border: 5px solid rgb(143, 142, 142);
-   top: 300px;
+  border: 5px solid rgb(143, 142, 142);
+  top: 300px;
 }
 #playerInfo {
-   display: none;
-   justify-content: space-around;
-   align-items: center;
-   margin: 0 auto;
-   padding: 40px 0;
-   min-width: 244px;
-   width: 50vw;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  padding: 40px 0;
+  min-width: 244px;
+  width: 50vw;
 }
 #loginBtn:checked ~ #loginForm {
-   height: 247px;
+  height: 247px;
 }
 #signUpBtn:checked ~ #loginForm {
-   height: 335px;
+  height: 335px;
 }
 #loginBtn:checked ~ #navigation button:nth-child(1) {
-   width: 12vw;
-   background-color: rgb(35, 250, 100);
-   color: black;
-   border: 3px solid black;
+  width: 12vw;
+  background-color: rgb(35, 250, 100);
+  color: black;
+  border: 3px solid black;
 }
 #signUpBtn:checked ~ #navigation button:nth-child(2) {
-   width: 12vw;
-   background-color: rgb(35, 250, 100);
-   color: black;
-   border: 3px solid black;
+  width: 12vw;
+  background-color: rgb(35, 250, 100);
+  color: black;
+  border: 3px solid black;
 }
 #navigation {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #loginForm {
-   position: absolute;
-   min-width: 360px;
-   margin-left: auto;
-   margin-right: auto;
-   left: 0;
-   right: 0;
-   width: 20vw;
-   top: 0;
-   height: 0;
-   border-radius: 10%;
-   background-color: rgb(32, 32, 32);
-   border: 0 solid rgb(143, 142, 142);
-   z-index: 5;
-   transition: all 700ms;
-   overflow: hidden;
+  position: absolute;
+  min-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: 20vw;
+  top: 0;
+  height: 0;
+  border-radius: 10%;
+  background-color: rgb(32, 32, 32);
+  border: 0 solid rgb(143, 142, 142);
+  z-index: 5;
+  transition: all 700ms;
+  overflow: hidden;
 }
 #loginForm button {
-   width: 105px;
-   height: 40px;
-   font-family: cursive;
-   font-weight: bold;
-   font-size: 20px;
-   padding-bottom: 0;
-   cursor: pointer;
-   color: black;
-   border: solid 2px rgb(192, 192, 192);
-   border-radius: 15px;
+  width: 105px;
+  height: 40px;
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 0;
+  cursor: pointer;
+  color: black;
+  border: solid 2px rgb(192, 192, 192);
+  border-radius: 15px;
 }
 #signInBtn {
-   margin-top: 5px;
-   margin-right: 8px;
-   background-color: rgb(50, 145, 37);
-   transition: background-color 300ms;
+  margin-top: 5px;
+  margin-right: 8px;
+  background-color: rgb(50, 145, 37);
+  transition: background-color 300ms;
 }
 #cancelBtn {
-   margin-top: 5px;
-   margin-left: 8px;
-   background-color: rgb(167, 63, 44);
-   transition: background-color 300ms;
+  margin-top: 5px;
+  margin-left: 8px;
+  background-color: rgb(167, 63, 44);
+  transition: background-color 300ms;
 }
 #signInBtn:hover {
-   background-color: rgb(30, 255, 0);
-   border: solid 3px white;
+  background-color: rgb(30, 255, 0);
+  border: solid 3px white;
 }
 #cancelBtn:hover {
-   background-color: rgb(255, 38, 0);
-   border: solid 3px white;
+  background-color: rgb(255, 38, 0);
+  border: solid 3px white;
 }
 #loginForm label {
-   font-weight: bold;
-   font-size: 20px;
-   color: rgb(162, 233, 171);
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(162, 233, 171);
 }
 #lblConfPass {
-   overflow: hidden;
-   display: block;
-   height: 0;
-   opacity: 0;
-   transition: all 500ms;
+  overflow: hidden;
+  display: block;
+  height: 0;
+  opacity: 0;
+  transition: all 500ms;
 }
 #chbxConfPass:checked ~ #lblConfPass {
-   height: 84px;
-   opacity: 1;
+  height: 84px;
+  opacity: 1;
 }
 
 #headline {
-   margin-bottom: 20px;
-   margin-top: 25px;
+  margin-bottom: 20px;
+  margin-top: 25px;
 }
 #Forms {
-   flex-direction: column;
-   width: fit-content;
-   height: 73vh;
-   border: 3px solid rgb(255, 255, 255);
-   border-radius: 30px;
-   margin: auto;
-   overflow: hidden;
+  flex-direction: column;
+  width: fit-content;
+  height: 73vh;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 30px;
+  margin: auto;
+  overflow: hidden;
 }
 #menu {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   width: 65vw;
-   height: 73vh;
-   margin: auto;
-   background-image: url('../images/background.png');
-   background-size: 65vw 73vh;
-   transition: height 700ms;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 65vw;
+  height: 73vh;
+  margin: auto;
+  background-image: url("../images/background.png");
+  background-size: 65vw 73vh;
+  transition: height 700ms;
 }
 #menu button {
-   min-width: 125px;
-   background-color: rgb(38, 161, 0);
-   border: 3px solid rgb(15, 20, 20);
-   border-radius: 25px;
-   cursor: pointer;
-   font-family: cursive;
-   font-weight: bold;
-   font-size: 20px;
-   width: 7vw;
-   height: 5vh;
-   transition: all 200ms;
+  min-width: 125px;
+  background-color: rgb(38, 161, 0);
+  border: 3px solid rgb(15, 20, 20);
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 20px;
+  width: 7vw;
+  height: 5vh;
+  transition: all 200ms;
 }
 #menu button:hover {
-   background-color: rgb(0, 255, 0);
+  background-color: rgb(0, 255, 0);
 }
 #gameTitle {
-   color: rgb(248, 70, 39);
-   font-size: 90px;
-   font-weight: bold;
-   margin-top: 0;
-   margin-bottom: 40px;
-   padding-top: 150px;
-   text-shadow: 0px 5px 5px black;
-   -webkit-text-stroke: 3px black;
+  color: rgb(248, 70, 39);
+  font-size: 90px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 40px;
+  padding-top: 150px;
+  text-shadow: 0px 5px 5px black;
+  -webkit-text-stroke: 3px black;
 }
 #menu h3 {
-   color: rgb(123, 255, 0);
-   font-size: 30px;
-   text-shadow: 0px 5px 5px black;
-   -webkit-text-stroke: 2px rgb(4, 51, 0);
+  color: rgb(123, 255, 0);
+  font-size: 30px;
+  text-shadow: 0px 5px 5px black;
+  -webkit-text-stroke: 2px rgb(4, 51, 0);
 }
 #store {
-   font-weight: bold;
-   position: relative;
-   width: 65vw;
-   height: 73vh;
-   margin: auto;
-   background-image: url("../images/store.png");
-   background-size: cover;
+  font-weight: bold;
+  position: relative;
+  width: 65vw;
+  height: 73vh;
+  margin: auto;
+  background-image: url("../images/store.png");
+  background-size: cover;
 }
 #storeBtn:checked ~ #menu {
-   height: 0;
+  height: 0;
 }
 #walletSection {
-   text-align: center;
-   padding-top: 25px;
-   height: 8vh;
+  text-align: center;
+  padding-top: 25px;
+  height: 8vh;
 }
 #walletSection p {
-   margin-top: 0;
-   margin-bottom: 10px;
-   font-size: 4vh;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 4vh;
 }
 #walletSection div {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   font-size: 2vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2vh;
 }
 #walletSection img {
-   width: 32px;
-   height: 32px;
-   margin-right: 10px;
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
 }
 #navigationStore {
-   margin-top: 30px;
-   display: flex;
-   justify-content: space-around;
-   height: 7vh;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  height: 7vh;
 }
 #skins-section {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 #buy-section {
-   display: flex;
-   justify-content: space-around;
-   margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
 }
 #playZone {
-   position: relative;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #playZone div {
-   position: absolute;
+  position: absolute;
 }
-#defaultSkinBtn{
-   margin: auto;
-   margin-top: 20px;
-   background-color: aliceblue;
+#defaultSkinBtn {
+  margin: auto;
+  margin-top: 20px;
+  background-color: aliceblue;
 }
-#defaultSkinBtn:hover{
-   background-color: rgb(212, 218, 223);
+#defaultSkinBtn:hover {
+  background-color: rgb(212, 218, 223);
 }
 #backStore {
-   width: 60px;
-   height: 60px;
-   background-image: url("../images/back.png");
-   background-size: cover;
-   background-color: transparent;
-   position: absolute;
-   top: 1vw;
-   left: 2vh;
-   border: none;
-   cursor: pointer;
-   display: block;
+  width: 60px;
+  height: 60px;
+  background-image: url("../images/back.png");
+  background-size: cover;
+  background-color: transparent;
+  position: absolute;
+  top: 1vw;
+  left: 2vh;
+  border: none;
+  cursor: pointer;
+  display: block;
 }
 #playCanvas {
-   min-width: 470px;
-   image-rendering: auto;
-   width: 65vw;
-   height: 73vh;
-   margin: auto;
-   display: none;
-   border: 3px solid rgb(255, 255, 255);
-   border-radius: 30px;
-   background-image: url("../images/background.png");
-   background-size: 65vw 73vh;
-   z-index: -1;
+  min-width: 470px;
+  image-rendering: auto;
+  width: 65vw;
+  height: 73vh;
+  margin: auto;
+  display: none;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 30px;
+  background-image: url("../images/background.png");
+  background-size: 65vw 73vh;
+  z-index: -1;
 }
 #restartForm {
-   text-align: center;
-   width: 300px;
-   border: 3px solid black;
-   border-radius: 30px;
-   padding: 10px 0;
-   background-color: #f7e18a;
-   display: none;
-   z-index: 2;
+  top: 10px;
+  text-align: center;
+  width: 300px;
+  border: 3px solid black;
+  border-radius: 30px;
+  padding: 10px 0;
+  background-color: #f7e18a;
+  display: none;
+  z-index: 2;
 }
 #pauseForm {
-   text-align: center;
-   width: 500px;
-   border: none;
-   font-family: cursive;
-   font-size: 75px;
-   background-color: transparent;
-   display: none;
-   z-index: 2;
+  text-align: center;
+  width: 500px;
+  border: none;
+  font-family: cursive;
+  font-size: 75px;
+  background-color: transparent;
+  display: none;
+  z-index: 2;
 }
 #scoreAndWallet {
-   top: 0;
-   width: 300px;
-   font-size: 20px;
-   right: 14vw;
-   margin-top: 10px;
-   display: none;
-   font-family: cursive;
-   font-size: 20px;
-   font-weight: 900;
+  top: 0;
+  width: 300px;
+  font-size: 20px;
+  right: 14vw;
+  margin-top: 10px;
+  display: none;
+  font-family: cursive;
+  font-size: 20px;
+  font-weight: 900;
 }
-#scoreAndWallet p{
-   margin: 0;
+#scoreAndWallet p {
+  margin: 0;
 }
 #divForWallet {
-   width: 30px;
-   height: 30px;
-   top: 68px;
-   left: 100px;
+  width: 30px;
+  height: 30px;
+  top: 68px;
+  left: 100px;
 }
 #restartBtn {
-   width: 95px;
-   height: 50px;
-   margin-right: 5px;
-   font-size: 18px;
-   font-family: cursive;
-   background-color: green;
-   border-radius: 15px;
-   box-shadow: 3px 3px gray;
+  width: 95px;
+  height: 50px;
+  margin-right: 5px;
+  font-size: 18px;
+  font-family: cursive;
+  background-color: green;
+  border-radius: 15px;
+  box-shadow: 3px 3px gray;
 }
 #restartBtn:hover {
-   font-weight: 900;
-   background: rgb(114, 217, 29);
-   display: inline-block;
-   border: none;
-   transition: all 0.4s ease 0s;
+  font-weight: 900;
+  background: rgb(114, 217, 29);
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
 }
 #quitBtn {
-   width: 95px;
-   height: 50px;
-   margin-left: 5px;
-   font-size: 18px;
-   font-family: cursive;
-   background-color: indianred;
-   border-radius: 15px;
-   box-shadow: 3px 3px gray;
-   transition: all 0.3s ease 0s;
+  width: 95px;
+  height: 50px;
+  margin-left: 5px;
+  font-size: 18px;
+  font-family: cursive;
+  background-color: indianred;
+  border-radius: 15px;
+  box-shadow: 3px 3px gray;
+  transition: all 0.3s ease 0s;
 }
 #quitBtn:hover {
-   font-weight: 900;
-   background: tomato;
-   border: none;
+  font-weight: 900;
+  background: tomato;
+  border: none;
 }
 #soundBtn {
-   width: 80px;
-   height: 80px;
-   background-image: url("../images/sound_off.png");
-   background-size: cover;
-   background-color: transparent;
-   cursor: pointer;
-   position: absolute;
-   left: 18vw;
-   bottom: 3vh;
-   border: none;
-   display: block;
+  width: 80px;
+  height: 80px;
+  background-image: url("../images/sound_off.png");
+  background-size: cover;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  left: 18vw;
+  bottom: 3vh;
+  border: none;
+  display: block;
 }
 #footline {
-   margin-top: 20px;
+  margin-top: 20px;
 }
 footer {
-   text-align: center;
-   color: rgb(219, 219, 219);
+  text-align: center;
+  color: rgb(219, 219, 219);
 }
 .welcome {
-   color: #FFAE00;
-   font-size: x-large;
-   transition: all 0.2s;
+  color: #ffae00;
+  font-size: x-large;
+  transition: all 0.2s;
 }
-.welcome:hover{
-   cursor:default;
-   text-shadow:
-    0 0 7px #c48600,
-    0 0 10px #c48600,
-    0 0 21px #c48600,
-    0 0 42px white,
-    0 0 82px white;
+.welcome:hover {
+  cursor: default;
+  text-shadow: 0 0 7px #c48600, 0 0 10px #c48600, 0 0 21px #c48600,
+    0 0 42px white, 0 0 82px white;
 }
 .logout-changePass {
-   color: rgb(0, 175, 175);
-   font-style: italic;
-   font-size: large;
-   text-decoration: underline;
-   transition: all 0.5s;
+  color: rgb(0, 175, 175);
+  font-style: italic;
+  font-size: large;
+  text-decoration: underline;
+  transition: all 0.5s;
 }
 .logout-changePass:hover {
-   cursor: pointer;
-   color: cyan;
-   text-shadow:
-    0 0 7px cyan,
-    0 0 10px cyan,
-    0 0 21px cyan,
-    0 0 42px white,
+  cursor: pointer;
+  color: cyan;
+  text-shadow: 0 0 7px cyan, 0 0 10px cyan, 0 0 21px cyan, 0 0 42px white,
     0 0 82px white;
 }
 .verticalLine {
-   border: 2px solid orange;
-   border-radius: 100%;
-   height: 50px;
-   margin: 0 20px;
+  border: 2px solid orange;
+  border-radius: 100%;
+  height: 50px;
+  margin: 0 20px;
 }
 .input {
-   outline: 0;
-   min-width: 160px;
-   width: 12vw;
-   height: 4vh;
-   border: 3px solid cyan;
-   border-radius: 50px;
-   margin-bottom: 10px;
-   text-align: center;
-   font-family: cursive;
-   font-size: 20px;
-   color: wheat;
-   background-color: transparent;
+  outline: 0;
+  min-width: 160px;
+  width: 12vw;
+  height: 4vh;
+  border: 3px solid cyan;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: cursive;
+  font-size: 20px;
+  color: wheat;
+  background-color: transparent;
 }
 .btnLog-Sign {
-   min-width: 120px;
-   background-color: transparent;
-   border: 3px solid rgb(2, 227, 243);
-   border-radius: 25px;
-   margin-top: 15px;
-   width: 10vw;
-   cursor: pointer;
-   color: rgb(211, 248, 245);
-   font-family: cursive;
-   font-weight: bold;
-   font-size: 25px;
-   transition: all 300ms;
+  min-width: 120px;
+  background-color: transparent;
+  border: 3px solid rgb(2, 227, 243);
+  border-radius: 25px;
+  margin-top: 15px;
+  width: 10vw;
+  cursor: pointer;
+  color: rgb(211, 248, 245);
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 25px;
+  transition: all 300ms;
 }
 .btnLog-Sign:hover {
-   width: 12vw;
-   background-color: rgb(21, 163, 64);
-   color: black;
-   border: 3px solid black;
+  width: 12vw;
+  background-color: rgb(21, 163, 64);
+  color: black;
+  border: 3px solid black;
 }
 .noDisplay {
-   display: none;
+  display: none;
 }
 .active {
-   pointer-events: none;
-   filter: brightness(70%);
+  pointer-events: none;
+  filter: brightness(70%);
 }
 .action-button {
-   padding: 10px 40px;
-   border-radius: 10px;
-   font-size: 3vh;
-   color: black;
-   text-decoration: none;
-   transition: all 0.1s;
+  padding: 10px 40px;
+  border-radius: 10px;
+  font-size: 3vh;
+  color: black;
+  text-decoration: none;
+  transition: all 0.1s;
 }
 .action-button:active {
-   transform: translate(0px, 5px);
-   border-bottom: 1px solid;
+  transform: translate(0px, 5px);
+  border-bottom: 1px solid;
 }
 .red {
-   background-color: #e74c3c;
-   border-bottom: 5px solid #a8372a;
-   text-shadow: 0 -2px #bd3e31;
+  background-color: #e74c3c;
+  border-bottom: 5px solid #a8372a;
+  text-shadow: 0 -2px #bd3e31;
 }
 .green {
-   background-color: #7de632;
-   border-bottom: 5px solid #669644;
-   text-shadow: 0 -2px #669644;
+  background-color: #7de632;
+  border-bottom: 5px solid #669644;
+  text-shadow: 0 -2px #669644;
 }
 .yellow {
-   background-color: #ebb516;
-   border-bottom: 5px solid #a88210;
-   text-shadow: 0 -2px #a3862e;
+  background-color: #ebb516;
+  border-bottom: 5px solid #a88210;
+  text-shadow: 0 -2px #a3862e;
 }
 .outer-frame {
-   width: 17vw;
-   height: 37vh;
-   background-size: 17vw 37vh;
-   background-image: url("../images/cactusBorder.png");
+  width: 17vw;
+  height: 37vh;
+  background-size: 17vw 37vh;
+  background-image: url("../images/cactusBorder.png");
 }
 .inner-frame {
-   position: relative;
-   width: 10vw;
-   height: 23vh;
-   left: 4vw;
-   top: 10vh;
+  position: relative;
+  width: 10vw;
+  height: 23vh;
+  left: 4vw;
+  top: 10vh;
 }
 .buyBtn {
-   display: flex;
-   justify-content: space-evenly;
-   align-items: center;
-   width: 7vw;
-   height: 5vh;
-   background-color: greenyellow;
-   border-radius: 20px;
-   font-size: 2vh;
-   font-family: cursive;
-   font-weight: bold;
-   cursor: pointer;
-   transition: 300ms;
-   border: 2px solid black;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 7vw;
+  height: 5vh;
+  background-color: greenyellow;
+  border-radius: 20px;
+  font-size: 2vh;
+  font-family: cursive;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 300ms;
+  border: 2px solid black;
 }
 .buyBtn:hover {
-   background-color: rgb(70, 255, 70);
+  background-color: rgb(70, 255, 70);
 }
 .poorBtn {
-   pointer-events: none;
-   background-color: tomato;
+  pointer-events: none;
+  background-color: tomato;
 }
 .equipBtn {
-   background-color: cyan;
+  background-color: cyan;
 }
 .equipBtn:hover {
-   background-color: rgb(0, 223, 223);
+  background-color: rgb(0, 223, 223);
 }
 .equippedBtn {
-   pointer-events: none;
-   background-color: orange;
-   filter: brightness(80%);
+  pointer-events: none;
+  background-color: orange;
+  filter: brightness(80%);
 }
 .buyIcon {
-   width: 32px;
-   height: 32px;
+  width: 32px;
+  height: 32px;
 }
 .pauseBtn {
-   top: 2vh;
-   left: 18vw;
-   width: 60px;
-   height: 60px;
-   background-image: url("../images/pause_btn.png");
-   background-size: cover;
-   background-color: transparent;
-   cursor: pointer;
-   font-family: cursive;
-   font-weight: bold;
-   display: none;
+  top: 2vh;
+  left: 18vw;
+  width: 60px;
+  height: 60px;
+  background-image: url("../images/pause_btn.png");
+  background-size: cover;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: cursive;
+  font-weight: bold;
+  display: none;
 }
 .controlSpanText {
-   color: yellow;
+  color: yellow;
 }
 .alert {
-   color: rgb(233, 73, 73);
+  color: rgb(233, 73, 73);
 }
 @keyframes backgroundAnimation {
-   0% { background-position-x: 65vw }
-   100% { background-position-x: 0 }
+  0% {
+    background-position-x: 65vw;
+  }
+  100% {
+    background-position-x: 0;
+  }
 }
