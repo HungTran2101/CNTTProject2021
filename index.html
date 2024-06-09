@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="www.twitter.com/cheeriottis" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Pacifico"
       rel="stylesheet"
@@ -14,34 +14,6 @@
     <title>Wolf Marathon</title>
   </head>
   <body onload="initOnload()">
-    <!-- <header>
-      <input class="noDisplay" type="checkbox" id="loginBtn">
-      <input class="noDisplay" type="checkbox" id="signUpBtn">
-      <div id="navigation">
-         <button type="button" class="btnLog-Sign" onclick="loginOption('', '')">Login</button>
-         <button type="button" class="btnLog-Sign" onclick="signUpOption('', '')">Sign up</button>
-      </div>
-      <div id="playerInfo">
-         <span class="welcome">Welcome</span>
-         <div class="verticalLine"></div>
-         <div>
-            <a href="/?action=logout" class="logout-changePass">Logout</a>
-         </div>
-      </div>
-      <form action="/" id="loginForm" method="post">
-         <label id="lblUser" for="userInput">Username<br><input class="input" type="text" id="userInput" name="username"
-               placeholder="Your name" /></label></br>
-         <label id="lblPass" for="passInput">Password<br><input class="input" type="password" id="passInput" name="password"
-               placeholder="Your password" /></label></br>
-         <input class="noDisplay" type="checkbox" id="chbxConfPass" />
-         <label id="lblConfPass" for="confPassInput">Confirm Password<br><input class="input" type="password" name="confirm"
-               id="confPassInput" placeholder="Confirm here" /></label>
-         <span class="alert" id="alert"></span>
-         <br>
-         <button type="button" id="signInBtn" onclick="login()">Sign in</button>
-         <button type="button" id="cancelBtn" onclick="cancelLogin()">Cancel</button>
-      </form>
-   </header> -->
     <br />
     <br />
     <main id="main">
@@ -203,27 +175,4 @@
   <script src="js/variables.js"></script>
   <script src="js/display.js"></script>
   <script src="js/game.js"></script>
-  <script>
-    let data = "<%=data%>";
-    if (data == "wrongAcc") {
-      loginOption("Your username or password is incorrect!", "red");
-    } else if (data == "succeed") {
-      loginOption("Register succeed!", "green");
-    } else if (data == "failed") {
-      signUpOption("User existed!", "red");
-    } else if (data == "logout") {
-      logout();
-    } else if (data != "") {
-      let userdata = {
-        id: "<%=data.id%>",
-        username: "<%=data.username%>",
-        highscore: "<%=data.highscore%>",
-        money: "<%=data.money%>",
-        wolf: "<%=data.wolf%>",
-        cactus: "<%=data.cactus%>",
-        bear: "<%=data.bear%>",
-      };
-      loginSuccess(userdata);
-    }
-  </script>
 </html>
